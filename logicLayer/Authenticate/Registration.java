@@ -7,8 +7,22 @@ package logicLayer.Authenticate;
 
 /**
  *
- * @author Martin Sorensen
+ * @author Group 4.
  */
-public class Registration {
+public class Registration extends User {
+
+    public Registration(String name, String password, String type) {
+        super(name, password, type);
+    }
+
+    //Registrates users
+    public void registerUser(User user) {
+        System.out.println("User registrated!");
+    }
     
+    //Returns true if user is already createt.
+    public boolean checkUsername(String username) {
+        return true;
+    }
+
 }

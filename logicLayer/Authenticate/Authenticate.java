@@ -10,8 +10,22 @@ package logicLayer.Authenticate;
  * @author Martin Sorensen
  */
 public class Authenticate {
-    
-    private boolean loggedIn; 
-     
-    
+
+    private boolean loggedIn;
+
+    //User signes in.
+    public void signIn(User user) {
+        System.out.println("User signed in");
+    }
+
+    //User signes out.
+    public void signOut(User user) {
+        System.out.println("User signed out");
+    }
+
+    //returns true if user is logged in.
+    public boolean isUserLoggedIn(User user) {
+        return true;
+    }
+
 }

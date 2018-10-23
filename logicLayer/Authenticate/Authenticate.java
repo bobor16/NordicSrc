@@ -11,4 +11,7 @@ package logicLayer.Authenticate;
  */
 public class Authenticate {
     
+    private boolean loggedIn; 
+     
+    
 }

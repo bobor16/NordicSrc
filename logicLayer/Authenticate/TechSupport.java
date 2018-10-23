@@ -34,6 +34,8 @@ public class TechSupport {
     
     
     public TechSupport(String email, String phoneNumber, String FAQ){
-        
+        this.FAQ = FAQ;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 }

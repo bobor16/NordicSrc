@@ -24,6 +24,7 @@ public class PasswordValidation {
     Checks where the @param password only have chars matching the allowedCharacters array.
     */
 
+    
     public Boolean checkAllowedCharacters(String password) {
         char[] passwordArray = password.toCharArray();
         int arrayIncrementCheck = 0;

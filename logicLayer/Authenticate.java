@@ -4,15 +4,24 @@
  * and open the template in the editor.
  */
 package logicLayer;
+import iLogicLayer.iAuthenticate;
 
 /**
  *
  * @author Martin Sorensen
  */
-public class Authenticate {
+public class Authenticate implements iAuthenticate {
 
     private boolean loggedIn;
-
+    private int loginAttempts;
+    private String username;
+    private String userPassword;
+    //private boolean 
+    
+    public Authenticate(){
+        
+    }
+    
     //User signes in.
     public void signIn(User user) {
         System.out.println("User signed in");
@@ -24,8 +33,17 @@ public class Authenticate {
     }
 
     //returns true if user is logged in.
-    public boolean isUserLoggedIn(User user) {
-        return true;
+    public boolean isUserLoggedIn() {
+        return false;
     }
-
+    private void checkLoginCredentials(){
+        
+    }
+    private void loginMethod(){
+        
+        if(loginAttempts<3 && !isUserLoggedIn()){
+            User user = new User("morten@nordicsrc.com","123","nordicsrc");
+        }
+        
+    }
 }

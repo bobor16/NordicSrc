@@ -39,10 +39,11 @@ public class Authenticate implements iAuthenticate {
     private void checkLoginCredentials(){
         
     }
-    private void loginMethod(){
+    public void loginMethod(){
         
         if(loginAttempts<3 && !isUserLoggedIn()){
             User user = new User("morten@nordicsrc.com","123","nordicsrc");
+            System.out.println("Works");
         }
         
     }

@@ -22,7 +22,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-//import logicLayer.Authenticate; // Fix this when adding three layer architecture
+import logicLayer.Authenticate; // Fix this when adding three layer architecture
 import iLogicLayer.iAuthenticate;
 /**
  * FXML Controller class
@@ -59,8 +59,8 @@ public class LogInScreenController implements Initializable {
     @FXML
     private void LoginOnAction(ActionEvent event) {
         
-        //iAuthenticate iauthenticate = new Authenticate();
-        
+        iAuthenticate iauthenticate = new Authenticate();
+        iauthenticate.loginMethod();
         
     }
 

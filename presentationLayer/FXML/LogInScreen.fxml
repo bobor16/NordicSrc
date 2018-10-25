@@ -20,7 +20,7 @@
       <Label fx:id="ResetPaswordLabelLink" accessibleRole="BUTTON" layoutX="56.0" layoutY="190.0" text="Reset Password" textFill="#0000007e" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="192.0" />
       <ImageView fitHeight="74.0" fitWidth="156.0" layoutX="147.0">
          <image>
-            <Image url="@../assets/Capture.PNG" />
+            <Image url="@../assets/NordicSrcLogo.PNG" />
          </image>
       </ImageView>
    </children>

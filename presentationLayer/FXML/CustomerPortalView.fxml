@@ -2,10 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,14 +16,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.CustomerPortalViewController">
    <children>
-      <AnchorPane layoutX="100.0" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="50.0">
-         <children>
-            <ListView layoutX="85.0" layoutY="120.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-         </children>
-      </AnchorPane>
       <AnchorPane layoutX="425.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="40.0" layoutY="80.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="96.0" fitWidth="190.0" layoutX="40.0" layoutY="80.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                <image>
                   <Image url="@../../../../../../Capture.PNG" />
                </image>
@@ -69,15 +66,27 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="140.0" layoutY="-65.0" prefHeight="50.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MenuButton mnemonicParsing="false" prefWidth="75.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <ScrollPane layoutX="150.0" layoutY="140.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="395.0" />
+            <Label layoutX="14.0" layoutY="14.0" text="Case ID:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+            <Label fx:id="CaseIDLabel" layoutX="76.0" layoutY="15.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="15.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="50.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuButton mnemonicParsing="false" text="Options" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
                <items>
                   <MenuItem mnemonicParsing="false" text="Profile" />
                   <MenuItem mnemonicParsing="false" text="Settings" />
                   <MenuItem mnemonicParsing="false" text="Logout" />
                </items>
             </MenuButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <ListView AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
    </children>

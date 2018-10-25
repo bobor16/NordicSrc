@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.CustomerPortalViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.CustomerPortalViewController">
    <children>
       <AnchorPane layoutX="100.0" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="50.0">
          <children>
@@ -71,10 +71,11 @@
       </AnchorPane>
       <AnchorPane layoutX="140.0" layoutY="-65.0" prefHeight="50.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MenuButton mnemonicParsing="false" text="MenuButton" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+            <MenuButton mnemonicParsing="false" prefWidth="75.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                  <MenuItem mnemonicParsing="false" text="Profile" />
+                  <MenuItem mnemonicParsing="false" text="Settings" />
+                  <MenuItem mnemonicParsing="false" text="Logout" />
                </items>
             </MenuButton>
          </children>

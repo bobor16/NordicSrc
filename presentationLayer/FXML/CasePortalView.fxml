@@ -20,10 +20,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.CasePortalViewController">
    <children>
-      <MenuBar style="-fx-background-color: #0088ff;">
+      <MenuBar style="-fx-background-color: #3399CC;">
         <menus>
           <Menu mnemonicParsing="false" text="Options">
                <items>
@@ -105,7 +104,10 @@
                               <Insets top="5.0" />
                            </VBox.margin>
                         </Button>
-                        <Pane prefHeight="185.0" VBox.vgrow="ALWAYS" />
+                        <Pane prefHeight="185.0" VBox.vgrow="ALWAYS">
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding></Pane>
                         <Button mnemonicParsing="false" prefWidth="190.0" text="?">
                            <VBox.margin>
                               <Insets top="5.0" />

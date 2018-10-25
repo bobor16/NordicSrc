@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package presentationLayer;
 
 import java.io.IOException;
@@ -24,6 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import logicLayer.Authenticate; // Fix this when adding three layer architecture
 import iLogicLayer.iAuthenticate;
+import logicLayer.User;
 /**
  * FXML Controller class
  *
@@ -43,6 +40,7 @@ public class LogInScreenController implements Initializable {
     private Label passwordMsgLabel;
     @FXML
     private Label ResetPasword;
+    
 
     /*
      * Initializes the controller class.
@@ -57,10 +55,19 @@ public class LogInScreenController implements Initializable {
     }
 
     @FXML
-    private void LoginOnAction(ActionEvent event) {
+    private void LoginOnAction(ActionEvent event) { // not working atm
         
-        iAuthenticate iauthenticate = new Authenticate();
-        iauthenticate.loginMethod();
+      
+       //  iAuthenticate iauthenticate = new Authenticate(); // For when implementing interface?
+       Authenticate authenticate = new Authenticate();
+      
+       User currentUser = new User("none","none","none","morten@nordicsrc.com");
+       currentUser.setEmail(EmailField.getText());
+       
+       authenticate.setUserEnteredEmail(currentUser.getEmail());
+       authenticate.loginMethod(); 
+        
+        
         
     }
 

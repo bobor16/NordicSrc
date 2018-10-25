@@ -4,32 +4,34 @@
  * and open the template in the editor.
  */
 package logicLayer;
-import iLogicLayer.iAuthenticate;
+// import iLogicLayer.iAuthenticate;
+
 
 /**
  *
  * @author Martin Sorensen
  */
-public class Authenticate implements iAuthenticate {
+public class Authenticate {
 
     private boolean loggedIn;
-    private int loginAttempts;
     private String username;
     private String userPassword;
-    //private boolean 
+    private String userEnteredEmail;
+    private boolean stillHasLoginAttempts;
+ 
     
     public Authenticate(){
         
     }
     
-    //User signes in.
+    //User signs in.
     public void signIn(User user) {
-        System.out.println("User signed in");
+        System.out.println(user.getName()+" signed in");
     }
 
-    //User signes out.
+    //User signs out.
     public void signOut(User user) {
-        System.out.println("User signed out");
+        System.out.println(user.getName()+" signed out");
     }
 
     //returns true if user is logged in.
@@ -37,14 +39,45 @@ public class Authenticate implements iAuthenticate {
         return false;
     }
     private void checkLoginCredentials(){
-        
+        // need a method for checking characters / numbers input from user
     }
-    public void loginMethod(){
-        
-        if(loginAttempts<3 && !isUserLoggedIn()){
-            User user = new User("morten@nordicsrc.com","123","nordicsrc");
-            System.out.println("Works");
+    public void setUserEnteredEmail(String userEnteredEmail) {
+        this.userEnteredEmail = userEnteredEmail; 
+    }
+    
+      
+     public String getUserEnteredEmail() {
+        return userEnteredEmail;
+    }
+     
+    public void loginMethod(){ // Not working atm
+       
+      //  if(stillHasLoginAttempts && !isUserLoggedIn()){ add later
+          if(true && true){
+            System.out.println("User still has login attempts");
+            User user = new User("morten","123","nordicsrc","morten@nordicsrc.com");
+            
+            if(userEnteredEmail.equals(user.getEmail())){
+                signIn(user);
+                System.out.println("Correct email and password");
+            }
+            else{
+               // login attempt--
+                System.out.println("Wrong email/password");
+            }
+            
+        } else {
+            
+            System.out.println("No more login attempts");
         }
         
     }
+    
+    private boolean loginCredentialsValidation(User user){
+        return true;
+    }
+    
+    
+    
+    
 }

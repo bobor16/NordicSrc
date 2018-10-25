@@ -11,8 +11,8 @@ package logicLayer;
  */
 public class Registration extends User {
 
-    public Registration(String name, String password, String type) {
-        super(name, password, type);
+    public Registration(String name, String password, String type, String email) {
+        super(name, password, type, email);
     }
 
     //Registrates users

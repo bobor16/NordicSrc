@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.mvc.View?>
+<!--<?import com.gluonhq.charm.glisten.mvc.View?>-->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -44,10 +44,10 @@
                <children>
                   <ScrollPane layoutX="150.0" layoutY="140.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="395.0">
                      <content>
-                        <View />
+                        <!--<View />-->
                      </content>
                   </ScrollPane>
-                  <Label fx:id="CaseIDLabel" layoutX="76.0" layoutY="15.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="15.0" />
+                  <Label layoutX="76.0" layoutY="15.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="15.0" />
                   <GridPane layoutX="150.0" layoutY="153.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="100.0" />

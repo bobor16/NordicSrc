@@ -39,8 +39,8 @@ public class CasePortalViewController implements Initializable {
 
     @FXML
     private void loadSceneOnAction(ActionEvent event) throws IOException {
-        if (event.getSource().equals(loadScene)) {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("Test.fxml"));
+        if (event.getSource() == loadScene) {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML/Test.fxml"));
             rootPane.getChildren().setAll(pane);
         }
     }

@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.CasePortalViewController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.CasePortalViewController">
    <children>
       <MenuBar style="-fx-background-color: #3399CC;">
         <menus>
@@ -84,7 +84,7 @@
                   <PasswordField layoutX="26.0" layoutY="120.0" prefWidth="190.0" promptText="Search" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="110.0" />
                   <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="145.0">
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="190.0" text="Bid">
+                        <Button fx:id="loadScene" mnemonicParsing="false" onAction="#loadSceneOnAction" prefWidth="190.0" text="Bid">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>

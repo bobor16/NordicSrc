@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="14.0" layoutY="35.0" text="First Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="80.0" />
+      <TextField layoutX="130.0" layoutY="31.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="75.0" />
+      <Label layoutX="43.0" layoutY="69.0" text="Last Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="125.0" />
+      <TextField layoutX="187.0" layoutY="74.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="120.0" />
+      <Label layoutX="31.0" layoutY="167.0" text="Email" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="170.0" />
+      <Label layoutX="18.0" layoutY="222.0" text="Retype Email" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="225.0" />
+      <Label layoutX="38.0" layoutY="282.0" text="Password" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="280.0" />
+      <Label layoutX="33.0" layoutY="346.0" text="Retype Password" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="335.0" />
+      <VBox layoutX="216.0" layoutY="392.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="330.0">
+         <children>
+            <PasswordField />
+            <Label text="Test Label 123" />
+         </children>
+      </VBox>
+      <VBox layoutX="100.0" layoutY="465.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="275.0">
+         <children>
+            <PasswordField promptText="from 6 to 32 Charecters" />
+            <Label text="Label" />
+         </children>
+      </VBox>
+      <VBox layoutX="53.0" layoutY="453.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="165.0">
+         <children>
+            <TextField />
+            <Label text="Label" />
+         </children>
+      </VBox>
+      <VBox layoutX="176.0" layoutY="210.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="220.0">
+         <children>
+            <TextField />
+            <Label text="Label" />
+         </children>
+      </VBox>
+      <VBox layoutX="85.0" layoutY="417.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="465.0" />
+      <HBox layoutX="41.0" layoutY="546.0" AnchorPane.topAnchor="395.0">
+         <children>
+            <RadioButton mnemonicParsing="false" text="Employee" />
+            <RadioButton mnemonicParsing="false" text="Customer">
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Manufacturer">
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </RadioButton>
+         </children>
+      </HBox>
+      <Label layoutX="36.0" layoutY="511.0" text="Complany Name" AnchorPane.topAnchor="450.0" />
+      <TextField layoutX="161.0" layoutY="521.0" AnchorPane.topAnchor="445.0" />
+      <TextField layoutX="161.0" layoutY="549.0" AnchorPane.topAnchor="490.0" />
+      <Label layoutX="34.0" layoutY="555.0" text="CVR" AnchorPane.topAnchor="495.0" />
+      <Pane prefHeight="40.0" style="-fx-background-color: #3399CC;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="119.0" layoutY="6.0" text="Register User">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

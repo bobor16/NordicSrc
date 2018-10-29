@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1">
+<AnchorPane prefHeight="165.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0088ff;" />
+      <ImageView fx:id="productImage" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#MouseClickAction" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="285.0" AnchorPane.topAnchor="15.0">
+         <image>
+            <Image url="@../assets/NordicSrcLogo.PNG" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="productDeskriptionText" layoutX="286.0" layoutY="14.0" prefHeight="150.0" prefWidth="200.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sem vitae erat sollicitudin, ut fermentum nunc facilisis. Morbi sapien ante, sollicitudin et orci ultrices, lacinia tincidunt ante. Etiam eleifend pulvinar erat fermentum finibus. Cras sit amet gravida diam, nec ullamcorper enim. Sed aliquet enim et lorem tincidunt, nec vestibulum lectus pharetra." wrapText="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
    </children>
 </AnchorPane>

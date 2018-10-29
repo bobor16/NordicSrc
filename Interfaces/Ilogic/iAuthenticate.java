@@ -1,5 +1,5 @@
 
-package iLogicLayer;
+package Interfaces.Ilogic;
 
 import logicLayer.User;
 

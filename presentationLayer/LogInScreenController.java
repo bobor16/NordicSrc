@@ -1,6 +1,6 @@
-
 package presentationLayer;
 
+import Interfaces.Ilogic.Ilogic;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,14 +19,20 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import logicLayer.Authenticate; // Fix this when adding three layer architecture
-import iLogicLayer.iAuthenticate;
+import Interfaces.Ilogic.iAuthenticate;
+import javafx.scene.Parent;
 import logicLayer.User;
+
 /**
  * FXML Controller class
  *
  * @author rasmu
  */
 public class LogInScreenController implements Initializable {
+
+    private Ilogic logic;
+    static Scene scene;
+    private Parent root;
 
     @FXML
     private TextField EmailField;
@@ -40,15 +46,22 @@ public class LogInScreenController implements Initializable {
     private Label passwordMsgLabel;
     @FXML
     private Label ResetPasword;
-    
+
+    public LogInScreenController(Ilogic logic) {
+        this.logic = logic;
+    }
+
+    public Ilogic getLogic() { //Method that return logic variable value
+        return logic;
+    }
 
     /*
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        logic.print();
+    }
 
     @FXML
     private void pressEnter(KeyEvent event) throws IOException {
@@ -56,23 +69,11 @@ public class LogInScreenController implements Initializable {
 
     @FXML
     private void LoginOnAction(ActionEvent event) { // not working atm
-        
-      
-       //  iAuthenticate iauthenticate = new Authenticate(); // For when implementing interface?
-       Authenticate authenticate = new Authenticate();
-      
-       User currentUser = new User("none","none","none","morten@nordicsrc.com");
-       currentUser.setEmail(EmailField.getText());
-       
-       authenticate.setUserEnteredEmail(currentUser.getEmail());
-       authenticate.loginMethod(); 
-        
-        
-        
+
     }
 
     @FXML
     private void RegisterOnAction(ActionEvent event) {
     }
-    
+
 }

@@ -2,12 +2,21 @@
 package logicLayer;
 import java.util.Date;
 
-public class Bids {
+public class Offer {
     private int productPrice;
     private int shippingPrice;
     private int totalPrice;
     private String comment;
+    private Date completionDate;
 
+    public Offer(int productPrice, int shippingPrice, int totalPrice, String comment, Date completionDate){
+        this.productPrice = productPrice;
+        this.shippingPrice = shippingPrice;
+        this.totalPrice = totalPrice;
+        this.comment = comment;
+        this.completionDate = completionDate;
+    }
+    
     public int getProductPrice() {
         return productPrice;
     }
@@ -44,13 +53,12 @@ public class Bids {
         
     }
     
-    public void makeBid(){
+    public void makeOffer(){
         
     }
     
-    public void changeBid(){
+    public void changeOffer(){
         
     }
-    
     
 }

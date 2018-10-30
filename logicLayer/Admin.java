@@ -1,9 +1,13 @@
 
 package logicLayer;
 
-public class Admin {
+public class Admin extends User{
     
     private String FAQ;
+
+    public Admin(String name, String password, String type, String email) {
+        super(name, password, type, email);
+    }
     
     public void verifyManufacturerProfile(User user){
         
@@ -36,11 +40,5 @@ public class Admin {
     public void setFAQ(String FAQ) {
         this.FAQ = FAQ;
     }
-
-    public Admin(String FAQ) {
-        this.FAQ = FAQ;
-    }
-    
-    
     
 }

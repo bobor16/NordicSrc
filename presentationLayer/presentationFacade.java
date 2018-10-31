@@ -21,6 +21,7 @@ public class presentationFacade extends Application implements Interfaces.Iprese
 
     private static Ilogic logic;
     private static presentationFacade ui;
+    
     @Override
     public void injectLogic(Ilogic logic) {
         this.logic = logic;
@@ -42,7 +43,7 @@ public class presentationFacade extends Application implements Interfaces.Iprese
     }
     
     
-//    @Override
+    @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
         loader.setController(new LogInScreenController(logic));

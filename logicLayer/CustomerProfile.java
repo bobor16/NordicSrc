@@ -45,7 +45,7 @@ public class CustomerProfile extends User {
     }
     
     public Boolean isVerified(){
-        return true;
+        return verified == true;
     }
     
     public void placeOrder(){

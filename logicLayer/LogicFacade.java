@@ -60,10 +60,10 @@ public class LogicFacade implements Interfaces.Ilogic.Ilogic {
     public void setUserEnteredEmail(User user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
     @Override
-    public String getUserName(){
-        
+    public String getUserEmail(String userEmail){
+        System.out.println("userEmail in logic " + userEmail);
+       return data.getUserEmail(userEmail);
     }
 
 }

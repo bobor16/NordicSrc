@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces.Idata;
-
-import Interfaces.All.IUser;
-import Interfaces.Ilogic.Ilogic;
+package Interfaces.All;
 
 /**
  *
  * @author mehgn
  */
-public interface Idata extends IUser{
-    public void injectLogic(Ilogic logic);
-
+public interface IUser {
+    
+    public String getUserEmail(String userEmail);
 }

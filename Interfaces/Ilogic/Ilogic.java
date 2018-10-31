@@ -5,13 +5,15 @@
  */
 package Interfaces.Ilogic;
 
+import Interfaces.All.IUser;
+import Interfaces.All.iAuthenticate;
 import Interfaces.Idata.Idata;
 
 /**
  *
  * @author mehgn
  */
-public interface Ilogic extends iAuthenticate{
+public interface Ilogic extends iAuthenticate, IUser {
 
     public void injectData(Idata data);
 

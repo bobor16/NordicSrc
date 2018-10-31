@@ -19,7 +19,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import logicLayer.Authenticate; // Fix this when adding three layer architecture
-import Interfaces.Ilogic.iAuthenticate;
+import Interfaces.All.iAuthenticate;
 import javafx.scene.Parent;
 import logicLayer.User;
 
@@ -35,7 +35,7 @@ public class LogInScreenController implements Initializable {
     private Parent root;
 
     @FXML
-    private TextField EmailField;
+    private TextField emailField;
     @FXML
     private PasswordField PasswordField;
     @FXML
@@ -68,11 +68,16 @@ public class LogInScreenController implements Initializable {
 
     @FXML
     private void LoginOnAction(ActionEvent event) { 
-        
+        getUserEmail();
     }
 
     @FXML
     private void RegisterOnAction(ActionEvent event) {
     }
 
+    
+    private String getUserEmail(){
+        System.out.println("Email used to login; " + emailField.getText());
+        return logic.getUserEmail(emailField.getText());
+    }
 }

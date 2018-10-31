@@ -16,7 +16,9 @@ public class DataFacade implements Interfaces.Idata.Idata{
     
     private static Idata data;
     private static Ilogic logic;
+    DBUsers DBUsers;
     public DataFacade() {
+         DBUsers = new DBUsers();
     }
 
     public static Idata getInstance() {
@@ -26,6 +28,12 @@ public class DataFacade implements Interfaces.Idata.Idata{
     @Override
     public void injectLogic(Ilogic logic) {
         this.logic = logic;
+    }
+
+    @Override
+    public String getUserEmail(String userEmail) {
+        System.out.println("userEmail in datafacade" + userEmail);
+        return DBUsers.getUserEmail(userEmail);
     }
 
 }

@@ -1,4 +1,4 @@
-package Interfaces.Ilogic;
+package Interfaces.All;
 
 import logicLayer.User;
 

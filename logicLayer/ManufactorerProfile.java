@@ -9,11 +9,15 @@ package logicLayer;
  *
  * @author Bruger
  */
-public class ManufactorerProfile {
+public class ManufactorerProfile extends User {
     
     private String eMail;
     private String companyName;
     private String CVRnumber;
+
+    public ManufactorerProfile(String name, String password, String type, String email) {
+        super(name, password, type, email);
+    }
 
     public void seteMail(String eMail) {
         this.eMail = eMail;

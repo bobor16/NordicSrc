@@ -11,7 +11,8 @@ import Interfaces.Idata.Idata;
  *
  * @author mehgn
  */
-public interface Ilogic {   
+public interface Ilogic extends iAuthenticate{
+
     public void injectData(Idata data);
-    public void print();
+
 }

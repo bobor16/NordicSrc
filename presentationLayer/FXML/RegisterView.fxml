@@ -11,41 +11,41 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< Updated upstream
 <AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+=======
+<AnchorPane id="AnchorPane" prefHeight="627.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+>>>>>>> Stashed changes
    <children>
       <Label layoutX="14.0" layoutY="35.0" text="First Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="80.0" />
-      <TextField layoutX="130.0" layoutY="31.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="75.0" />
+      <TextField fx:id="firstNameField" layoutX="130.0" layoutY="31.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="75.0" />
       <Label layoutX="43.0" layoutY="69.0" text="Last Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="125.0" />
-      <TextField layoutX="187.0" layoutY="74.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="120.0" />
+      <TextField fx:id="lastNameField" layoutX="187.0" layoutY="74.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="120.0" />
       <Label layoutX="31.0" layoutY="167.0" text="Email" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="170.0" />
-      <Label layoutX="18.0" layoutY="222.0" text="Retype Email" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="225.0" />
+      <Label layoutX="18.0" layoutY="222.0" text="Verify Email" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="225.0" />
       <Label layoutX="38.0" layoutY="282.0" text="Password" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="280.0" />
-      <Label layoutX="33.0" layoutY="346.0" text="Retype Password" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="335.0" />
-      <VBox layoutX="216.0" layoutY="392.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="330.0">
-         <children>
-            <PasswordField />
-            <Label text="Test Label 123" />
-         </children>
-      </VBox>
+      <Label layoutX="35.0" layoutY="393.0" text="Verify Password" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="393.0" />
+      <VBox layoutX="216.0" layoutY="392.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="330.0" />
       <VBox layoutX="100.0" layoutY="465.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="275.0">
          <children>
-            <PasswordField promptText="from 6 to 32 Charecters" />
-            <Label text="Label" />
+            <PasswordField fx:id="passwordField" />
+            <Label fx:id="passwordLabel" text="Label" />
          </children>
       </VBox>
       <VBox layoutX="53.0" layoutY="453.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="165.0">
          <children>
-            <TextField />
-            <Label text="Label" />
+            <TextField fx:id="emailField" />
+            <Label fx:id="emailLabel" text="Label" />
          </children>
       </VBox>
       <VBox layoutX="176.0" layoutY="210.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="220.0">
          <children>
-            <TextField />
-            <Label text="Label" />
+            <TextField fx:id="verifyEmailField" />
+            <Label fx:id="verifyEmailLabel" text="Label" />
          </children>
       </VBox>
       <VBox layoutX="85.0" layoutY="417.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="465.0" />
+<<<<<<< Updated upstream
       <HBox layoutX="41.0" layoutY="546.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="395.0">
          <children>
             <RadioButton mnemonicParsing="false" text="Employee" />
@@ -65,14 +65,36 @@
       <TextField layoutX="161.0" layoutY="521.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="445.0" />
       <TextField layoutX="161.0" layoutY="549.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="490.0" />
       <Label layoutX="34.0" layoutY="555.0" text="CVR" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="495.0" />
+=======
+      <HBox layoutX="41.0" layoutY="546.0" AnchorPane.topAnchor="395.0" />
+      <Label layoutX="34.0" layoutY="508.0" text="Company Name" AnchorPane.topAnchor="508.0" />
+      <TextField fx:id="companyNameField" layoutX="206.0" layoutY="504.0" AnchorPane.topAnchor="504.0" />
+      <TextField fx:id="CVRField" layoutX="206.0" layoutY="550.0" AnchorPane.topAnchor="550.0" />
+      <Label layoutX="31.0" layoutY="554.0" prefHeight="18.0" prefWidth="28.0" text="CVR" AnchorPane.topAnchor="554.0" />
+>>>>>>> Stashed changes
       <Pane prefHeight="40.0" style="-fx-background-color: #3399CC;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="119.0" layoutY="6.0" text="Register User">
+            <Label layoutX="139.0" layoutY="7.0" text="Register User">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
       </Pane>
+      <Label layoutX="11.0" layoutY="330.0" prefHeight="18.0" prefWidth="291.0" text="Your password must be between 6 and 32 characters" />
+      <RadioButton fx:id="manufacturerRadioButton" layoutX="248.0" layoutY="452.0" mnemonicParsing="false" text="Manufacturer">
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton fx:id="customerRadioButton" layoutX="138.0" layoutY="452.0" mnemonicParsing="false" text="Customer">
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton fx:id="employeeRadioButton" layoutX="29.0" layoutY="452.0" mnemonicParsing="false" text="Employee" />
+      <Label fx:id="verifyPasswordLabel" layoutX="206.0" layoutY="415.0" text="Label" />
+      <PasswordField fx:id="verifyPasswordField" layoutX="206.0" layoutY="389.0" />
+      <Label layoutX="11.0" layoutY="355.0" text="Your password must have atleast 1 upper/lower case letter and 1 digit" />
    </children>
 </AnchorPane>

@@ -60,7 +60,6 @@ public class LogInScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        logic.print();
     }
 
     @FXML
@@ -68,8 +67,8 @@ public class LogInScreenController implements Initializable {
     }
 
     @FXML
-    private void LoginOnAction(ActionEvent event) { // not working atm
-
+    private void LoginOnAction(ActionEvent event) { 
+        
     }
 
     @FXML

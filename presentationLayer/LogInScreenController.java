@@ -18,7 +18,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import logicLayer.Authenticate; // Fix this when adding three layer architecture
 import Interfaces.All.iAuthenticate;
 import javafx.scene.Parent;
 import logicLayer.User;
@@ -51,9 +50,9 @@ public class LogInScreenController implements Initializable {
         this.logic = logic;
     }
 
-    public Ilogic getLogic() { //Method that return logic variable value
-        return logic;
-    }
+//    public Ilogic getLogic() { //Method that return logic variable value
+//        return logic;
+//    }
 
     /*
      * Initializes the controller class.
@@ -67,17 +66,33 @@ public class LogInScreenController implements Initializable {
     }
 
     @FXML
-    private void LoginOnAction(ActionEvent event) { 
-        getUserEmail();
+    private void LoginOnAction(ActionEvent event) {
+        try {
+            if (logic.passwordCheck(PasswordField.getText())) {
+                if (emailField.getText().equalsIgnoreCase("admin") && PasswordField.getText().equalsIgnoreCase("admin")) {//Needs email and password from database
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("CasePortalView.fxml"));
+                    loader.setController(new CasePortalViewController(logic));
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+                    Stage stage = (Stage) LoginButton.getScene().getWindow();
+                    stage.setTitle("Sensum Udred");
+                    stage.setResizable(false);
+                    stage.setScene(scene);
+//                logic.writeToSystemlog(userNameField.getText() + " Logged in"); // writes to systemlog
+                }
+            }
+            setEmail();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void RegisterOnAction(ActionEvent event) {
     }
 
-    
-    private String getUserEmail(){
+    private void setEmail() {
         System.out.println("Email used to login; " + emailField.getText());
-        return logic.getUserEmail(emailField.getText());
+        logic.setEmail(emailField.getText());
     }
 }

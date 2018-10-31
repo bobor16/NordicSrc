@@ -7,6 +7,7 @@ package logicLayer;
 
 import Interfaces.Idata.Idata;
 import Interfaces.Ilogic.Ilogic;
+import java.util.List;
 
 /**
  *
@@ -32,38 +33,73 @@ public class LogicFacade implements Interfaces.Ilogic.Ilogic {
     }
 
     @Override
+    public List<SystemLog> getSystemLog() {
+        return data.getSystemLog();
+    }
+
+    @Override
+    public void setSystemLog(String systemLogText) {
+        data.setSystemLog(systemLogText);
+    }
+
+    @Override
+    public void clearSystemLog() {
+        data.clearSystemLog();
+    }
+
+    @Override
+    public String getEmail() {
+        return data.getEmail();
+    }
+
+    @Override
+    public String getFirstName() {
+        return data.getFirstName();
+    }
+
+    @Override
+    public void setFirstName(String firstName) {
+        data.setFirstName(firstName);
+    }
+
+    @Override
+    public String getLastName() {
+        return data.getLastName();
+    }
+
+    @Override
+    public void setLastName(String lastName) {
+        data.setLastName(lastName);
+    }
+
+    @Override
+    public String getPassword() {
+        return data.getPassword();
+    }
+
+    @Override
+    public void setPassword(String password) {
+        data.setPassword(password);
+    }
+
+    @Override
+    public String getType() {
+        return data.getType();
+    }
+
+    @Override
+    public void setType(String type) {
+        data.setType(type);
+    }
+
+    @Override
+    public void setEmail(String email) {
+        data.setEmail(email);
+    }
+
     public Boolean passwordCheck(String password) {
         return passwordChecker.checkPassword(password);
     }
 
-    @Override
-    public void signIn(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void signOut(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean isUserLoggedIn() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void loginMethod() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setUserEnteredEmail(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    @Override
-    public String getUserEmail(String userEmail){
-        System.out.println("userEmail in logic " + userEmail);
-       return data.getUserEmail(userEmail);
-    }
 
 }

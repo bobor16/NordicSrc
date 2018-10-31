@@ -13,15 +13,19 @@ public class SystemLog {
     
     private String logText;
     
-    public SystemLog(String logText){
+    public SystemLog(){
         
     }
     
-    public String geLogText(){
+    public String getSystemLog(){
         return logText;
     }
     
-    public void setLogText(String logText){
+    public void setSystemLog(String logText){
         
+    }
+    
+    public void clearSystemLog(){
+        this.logText = "";
     }
 }

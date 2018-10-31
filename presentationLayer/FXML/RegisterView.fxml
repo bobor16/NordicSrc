@@ -11,11 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< Updated upstream
-<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
-=======
 <AnchorPane id="AnchorPane" prefHeight="627.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
->>>>>>> Stashed changes
    <children>
       <Label layoutX="14.0" layoutY="35.0" text="First Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="80.0" />
       <TextField fx:id="firstNameField" layoutX="130.0" layoutY="31.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="75.0" />
@@ -45,33 +41,13 @@
          </children>
       </VBox>
       <VBox layoutX="85.0" layoutY="417.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="465.0" />
-<<<<<<< Updated upstream
-      <HBox layoutX="41.0" layoutY="546.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="395.0">
-         <children>
-            <RadioButton mnemonicParsing="false" text="Employee" />
-            <RadioButton mnemonicParsing="false" text="Customer">
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-            </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Manufacturer">
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-            </RadioButton>
-         </children>
-      </HBox>
-      <Label layoutX="36.0" layoutY="511.0" text="Company Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="450.0" />
-      <TextField layoutX="161.0" layoutY="521.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="445.0" />
-      <TextField layoutX="161.0" layoutY="549.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="490.0" />
-      <Label layoutX="34.0" layoutY="555.0" text="CVR" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="495.0" />
-=======
+      <HBox layoutX="41.0" layoutY="546.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="395.0" />
+      <Label layoutX="36.0" layoutY="511.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="450.0" />
       <HBox layoutX="41.0" layoutY="546.0" AnchorPane.topAnchor="395.0" />
       <Label layoutX="34.0" layoutY="508.0" text="Company Name" AnchorPane.topAnchor="508.0" />
       <TextField fx:id="companyNameField" layoutX="206.0" layoutY="504.0" AnchorPane.topAnchor="504.0" />
       <TextField fx:id="CVRField" layoutX="206.0" layoutY="550.0" AnchorPane.topAnchor="550.0" />
       <Label layoutX="31.0" layoutY="554.0" prefHeight="18.0" prefWidth="28.0" text="CVR" AnchorPane.topAnchor="554.0" />
->>>>>>> Stashed changes
       <Pane prefHeight="40.0" style="-fx-background-color: #3399CC;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="139.0" layoutY="7.0" text="Register User">

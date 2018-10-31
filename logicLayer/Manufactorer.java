@@ -9,6 +9,10 @@ package logicLayer;
  *
  * @author mehgn
  */
-public class Admin {
+public class Manufactorer extends User{
+
+    public Manufactorer(String name, String password, String type, String email) {
+        super(name, password, "Manufactorer", email);
+    }
     
 }

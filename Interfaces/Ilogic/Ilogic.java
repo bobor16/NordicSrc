@@ -5,6 +5,7 @@
  */
 package Interfaces.Ilogic;
 
+import Interfaces.All.ISystemLog;
 import Interfaces.All.IUser;
 import Interfaces.All.iAuthenticate;
 import Interfaces.Idata.Idata;
@@ -13,8 +14,9 @@ import Interfaces.Idata.Idata;
  *
  * @author mehgn
  */
-public interface Ilogic extends iAuthenticate, IUser {
+public interface Ilogic extends iAuthenticate, IUser, ISystemLog {
 
     public void injectData(Idata data);
+    public Boolean passwordCheck(String password);
 
 }

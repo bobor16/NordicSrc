@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logicLayer;
+package Interfaces.All;
 
 /**
  *
  * @author mehgn
  */
-public class Admin {
-    
+public interface ICostumer {
+     public String getEmail();
 }

@@ -9,6 +9,6 @@ package logicLayer;
  *
  * @author mehgn
  */
-public class Admin {
+public class Costumer {
     
 }

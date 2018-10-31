@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--<?import com.gluonhq.charm.glisten.mvc.View?>-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.CasePortalViewController">
+   <children>
+      <MenuBar style="-fx-background-color: #3399CC;">
+        <menus>
+          <Menu mnemonicParsing="false" text="Options">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Profile" />
+                  <MenuItem mnemonicParsing="false" text="Settings" />
+                  <MenuItem mnemonicParsing="false" text="Logout" />
+               </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #3399CC;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="Home">
+               <content>
+                  <SplitPane dividerPositions="0.5, 0.5">
+                     <items>
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0">
+                           <children>
+                              <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <PasswordField fx:id="SearchField" onAction="#SearchOnAction" promptText="Search" />
+                                          <Pane minWidth="-Infinity" prefWidth="5.0" />
+                                          <Button fx:id="SearchButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#SearchOnAction" text="Search" />
+                                       </children>
+                                    </HBox>
+                                    <Pane prefHeight="5.0" />
+                                    <ListView fx:id="AcceptedCasesListView" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
+                                    <Button fx:id="ShowCaseButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ShowCaseOnAction" prefHeight="25.0" prefWidth="190.0" text="Show Case">
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" />
+                        <AnchorPane>
+                           <children>
+                              <ImageView fitHeight="94.0" fitWidth="190.0" layoutX="40.0" layoutY="80.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <image>
+                                    <Image url="@../assets/NordicSrcLogo.PNG" />
+                                 </image>
+                              </ImageView>
+                              <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0">
+                                 <children>
+                                    <Button fx:id="loadScene1" mnemonicParsing="false" onAction="#loadSceneOnAction" prefWidth="190.0" text="Upload Image">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefWidth="190.0" text="Add Info">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefWidth="190.0" text="?">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefWidth="190.0" text="?">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Pane minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Pane>
+                                    <VBox />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+               </content>
+            </Tab>
+            <Tab fx:id="NewCasesListView" text="Bids">
+               <content>
+                  <SplitPane dividerPositions="0.5, 0.5" prefHeight="200.0" prefWidth="200.0">
+                     <items>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <PasswordField fx:id="SearchField" onAction="#SearchOnAction" promptText="Search" />
+                                          <Pane minWidth="-Infinity" prefWidth="5.0" />
+                                          <Button fx:id="SearchButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#SearchOnAction" text="Search" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <Pane prefHeight="5.0" />
+                                    <ListView fx:id="CaseListView11" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
+                                    <Button maxWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Show Case">
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0">
+                           <children>
+                              <VBox layoutX="79.0" layoutY="178.0" spacing="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0">
+                                 <children>
+                                    <HBox layoutX="10.0" layoutY="10.0">
+                                       <children>
+                                          <Label text="Product Title" />
+                                          <Pane prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                          <Label text="Label" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="65.0">
+                                       <children>
+                                          <Label text="Prefered Delevery Date" />
+                                          <Pane prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                          <Label text="Label" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="93.0">
+                                       <children>
+                                          <Label text="Product Quantity" />
+                                          <Pane prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                          <Label text="Label" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="120.0">
+                                       <children>
+                                          <Label text="Product Quantity" />
+                                          <Pane prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                          <Label text="Label" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <HBox layoutX="187.0" layoutY="120.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                 <children>
+                                    <Label text="CaseID" />
+                                    <Pane maxWidth="-Infinity" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                    <Label text="Label" />
+                                    <Pane maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS" />
+                                    <Label text="Date Added" />
+                                    <Pane maxWidth="-Infinity" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                    <Label text="Label" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane>
+                           <children>
+                              <ImageView fitHeight="94.0" fitWidth="190.0" layoutX="40.0" layoutY="80.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <image>
+                                    <Image url="@../assets/NordicSrcLogo.PNG" />
+                                 </image>
+                              </ImageView>
+                              <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0">
+                                 <children>
+                                    <Button fx:id="AttachedFilesButton" mnemonicParsing="false" onAction="#OpenAttachedFilesOnAction" prefWidth="190.0" text="Attached Files">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Button fx:id="PlaceBidButton" mnemonicParsing="false" onAction="#PlaceBidOnAction" prefWidth="190.0" text="Place Bid">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Pane minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Pane>
+                                    <VBox />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</VBox>

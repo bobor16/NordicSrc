@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 
-public class CasePortalViewController implements Initializable {
+public class CasePortalViewController extends SuperController implements Initializable {
 
     @FXML
     private ListView<?> CaseListView;
@@ -29,8 +29,10 @@ public class CasePortalViewController implements Initializable {
     private AnchorPane rootPane;
     @FXML
     private Button loadScene;
-    
-    private Ilogic logic;
+
+    public CasePortalViewController(Ilogic logic) {
+        super(logic);
+    }
     /*
      * Initializes the controller class.
      */
@@ -39,9 +41,6 @@ public class CasePortalViewController implements Initializable {
         // TODO
     }
     
-    public CasePortalViewController(Ilogic logic){
-        this.logic = logic;
-    }
 
     @FXML
     private void loadSceneOnAction(ActionEvent event) throws IOException {

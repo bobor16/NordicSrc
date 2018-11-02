@@ -27,9 +27,8 @@ import logicLayer.User;
  *
  * @author rasmu
  */
-public class LogInScreenController implements Initializable {
+public class LogInScreenController extends SuperController implements Initializable {
 
-    private Ilogic logic;
     static Scene scene;
     private Parent root;
 
@@ -40,14 +39,16 @@ public class LogInScreenController implements Initializable {
     @FXML
     private Button LoginButton;
     @FXML
-    private Button RegisterButton;
+    private Button registerButton;
     @FXML
     private Label passwordMsgLabel;
     @FXML
     private Label ResetPasword;
+    
+    ApplicationStateHandler stateHandler = new ApplicationStateHandler();
 
     public LogInScreenController(Ilogic logic) {
-        this.logic = logic;
+        super(logic);
     }
 
 //    public Ilogic getLogic() { //Method that return logic variable value
@@ -67,31 +68,21 @@ public class LogInScreenController implements Initializable {
 
     @FXML
     private void LoginOnAction(ActionEvent event) {
-//        logic.setType("Manufactorer");
-//        if(logic.getType().equals("Manufactorer")){
-        try {
-            if (!logic.passwordCheck(PasswordField.getText())) {
-                if (emailField.getText().equalsIgnoreCase("admin") && PasswordField.getText().equalsIgnoreCase("admin")) {//Needs email and password from database
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("ManufactorerPortalView.fxml"));
-                        loader.setController(new ManufacturerPortalView(logic));
-                    Parent root = loader.load();
-                    Scene scene = new Scene(root);
-                    Stage stage = (Stage) LoginButton.getScene().getWindow();
-                    stage.setTitle("NordicSrc");
-                    stage.setResizable(false);
-                    stage.setScene(scene);
-//                logic.writeToSystemlog(userNameField.getText() + " Logged in"); // writes to systemlog
-                }
-            }
-            setEmail();
-        } catch (Exception e) {
-            e.printStackTrace();
-//        }
-        }
+
+        //Login as admin
+            if(PasswordField.getText().equalsIgnoreCase("Admin") && emailField.getText().equalsIgnoreCase("Admin"))  stateHandler.setAdminPortalView(LoginButton);
+
+        //Login as manufactorer
+            if(PasswordField.getText().equalsIgnoreCase("manufactorer") && emailField.getText().equalsIgnoreCase("manufactorer"))stateHandler.setManufactorerPortalView(LoginButton);
+            
+        //Logic as Costumer
+            if(PasswordField.getText().equalsIgnoreCase("costumor") && emailField.getText().equalsIgnoreCase("costumor"))stateHandler.customerPortalView(LoginButton);
     }
 
     @FXML
-    private void RegisterOnAction(ActionEvent event) {
+    private void registerOnAction(ActionEvent event) {
+        //Registrer button
+            stateHandler.setRegisterPortalView(registerButton);
     }
 
     private void setEmail() {

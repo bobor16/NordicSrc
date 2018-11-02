@@ -41,8 +41,30 @@
          </children>
       </VBox>
       <VBox layoutX="85.0" layoutY="417.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="465.0" />
+<<<<<<< HEAD
       <HBox layoutX="41.0" layoutY="546.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="395.0" />
       <Label layoutX="36.0" layoutY="511.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="450.0" />
+=======
+      <HBox layoutX="41.0" layoutY="546.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="395.0">
+         <children>
+            <RadioButton mnemonicParsing="false" text="Employee" />
+            <RadioButton mnemonicParsing="false" text="Customer">
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Manufacturer">
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </RadioButton>
+         </children>
+      </HBox>
+      <Label layoutX="36.0" layoutY="511.0" text="Company Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="450.0" />
+      <TextField layoutX="161.0" layoutY="521.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="445.0" />
+      <TextField layoutX="161.0" layoutY="549.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="490.0" />
+      <Label layoutX="34.0" layoutY="555.0" text="CVR" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="495.0" />
+>>>>>>> master
       <HBox layoutX="41.0" layoutY="546.0" AnchorPane.topAnchor="395.0" />
       <Label layoutX="34.0" layoutY="508.0" text="Company Name" AnchorPane.topAnchor="508.0" />
       <TextField fx:id="companyNameField" layoutX="206.0" layoutY="504.0" AnchorPane.topAnchor="504.0" />

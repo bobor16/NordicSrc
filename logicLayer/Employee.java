@@ -9,6 +9,10 @@ package logicLayer;
  *
  * @author mehgn
  */
-public class Employee {
+public class Employee extends User{
+
+    public Employee(String name, String password, String type, String email) {
+        super(name, password, "Employee", email);
+    }
     
 }

@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.CasePortalViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar style="-fx-background-color: #3399CC;">
         <menus>
@@ -47,13 +47,13 @@
                                        <children>
                                           <PasswordField fx:id="SearchField" onAction="#SearchOnAction" promptText="Search" />
                                           <Pane minWidth="-Infinity" prefWidth="5.0" />
-                                          <Button fx:id="SearchButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#SearchOnAction" text="Search" />
+                                          <Button fx:id="SearchButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchOnAction" text="Search" />
                                        </children>
                                     </HBox>
                                     <Pane prefHeight="5.0" />
                                     <ListView fx:id="AcceptedCasesListView" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
                                     <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
-                                    <Button fx:id="ShowCaseButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ShowCaseOnAction" prefHeight="25.0" prefWidth="190.0" text="Show Case">
+                                    <Button fx:id="ShowCaseButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showCaseOnAction" prefHeight="25.0" prefWidth="190.0" text="Show Case">
                                        <padding>
                                           <Insets left="5.0" right="5.0" />
                                        </padding>

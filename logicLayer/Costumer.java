@@ -9,6 +9,11 @@ package logicLayer;
  *
  * @author mehgn
  */
-public class Costumer {
+public class Costumer extends User{
+
+    public Costumer(String name, String password, String type, String email) {
+        super(name, password, "Customer", email);
+    }
+    
     
 }

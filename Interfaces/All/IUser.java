@@ -10,6 +10,24 @@ package Interfaces.All;
  * @author mehgn
  */
 public interface IUser {
-    
-    public String getUserEmail(String userEmail);
+
+    public String getFirstName();
+
+    public void setFirstName(String firstName);
+
+    public String getLastName();
+
+    public void setLastName(String lastName);
+
+    public String getPassword();
+
+    public void setPassword(String password);
+
+    public String getType();
+
+    public void setType(String type);
+
+    public String getEmail();
+
+    public void setEmail(String email);
 }

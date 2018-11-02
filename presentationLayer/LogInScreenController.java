@@ -67,15 +67,17 @@ public class LogInScreenController implements Initializable {
 
     @FXML
     private void LoginOnAction(ActionEvent event) {
+//        logic.setType("Manufactorer");
+//        if(logic.getType().equals("Manufactorer")){
         try {
-            if (logic.passwordCheck(PasswordField.getText())) {
+            if (!logic.passwordCheck(PasswordField.getText())) {
                 if (emailField.getText().equalsIgnoreCase("admin") && PasswordField.getText().equalsIgnoreCase("admin")) {//Needs email and password from database
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("CasePortalView.fxml"));
-                    loader.setController(new CasePortalViewController(logic));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("ManufactorerPortalView.fxml"));
+                        loader.setController(new ManufacturerPortalView(logic));
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
                     Stage stage = (Stage) LoginButton.getScene().getWindow();
-                    stage.setTitle("Sensum Udred");
+                    stage.setTitle("NordicSrc");
                     stage.setResizable(false);
                     stage.setScene(scene);
 //                logic.writeToSystemlog(userNameField.getText() + " Logged in"); // writes to systemlog
@@ -84,6 +86,7 @@ public class LogInScreenController implements Initializable {
             setEmail();
         } catch (Exception e) {
             e.printStackTrace();
+//        }
         }
     }
 

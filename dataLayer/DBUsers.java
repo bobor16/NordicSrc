@@ -37,4 +37,49 @@ public class DBUsers extends DBconnect implements IUser {
     }
 
 //   
+
+    @Override
+    public String getFirstName() {
+        return null;
+    }
+
+    @Override
+    public void setFirstName(String firstName) {
+    }
+
+    @Override
+    public String getLastName() {
+        return null;
+    }
+
+    @Override
+    public void setLastName(String lastName) {
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public void setPassword(String password) {
+    }
+
+    @Override
+    public String getType() {
+        return null;
+    }
+
+    @Override
+    public void setType(String type) {
+    }
+
+    @Override
+    public String getEmail() {
+        return null;
+    }
+
+    @Override
+    public void setEmail(String email) {
+    }
 }

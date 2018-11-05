@@ -1,39 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dataLayer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+//import javax.swing.JOptionPane;
 
 /**
  *
- * @author mehgn
+ * @author Borgar Bordoy
  */
 public class DBconnect {
-//    private final String url = "jdbc:mysql://" + "5.9.118.242" + ":" + "3306" + "/" + "hartmann?autoReconnect=true&useSSL=false";
-    private final String url = "";
-    public static final String DATABASE = "";
-    private static final String USERNAME = "";
-    private static final String PASSWORD = "";
-    public Connection connection = null;
 
-    private static final String IP = "";
-    private static final int PORT = 0000;
+    Connection connection;
+    String url = "jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk:5432/si3_2018_group_4_db";
+    String user = "si3_2018_group_4";
+    String password = "auto92-modal";
 
-    
-    /*
-    Connects to the database with the specified url and gains acces with the USERNAME and PASSWORD variables.
-    */
-    public void dbConnect() {
+    public Connection dbConnection() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            String url = "jdbc:mysql://" + IP + ":" + PORT + "/" + DATABASE + "?serverTimezone=UTC&useSSL=false";
-            this.connection = (Connection) DriverManager.getConnection(url, USERNAME, PASSWORD);
-        } catch (Exception e) {
-            e.printStackTrace();
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            e.getMessage();
         }
+        try {
+            DriverManager.getConnection(url, user, password);
+//                JOptionPane.showMessageDialog(null, "Connected");
+            System.out.println("Connected");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
+//                JOptionPane.showMessageDialog(null, "Failed to connect");
+            System.out.println("Failed to connect");
+        }
+
+        return connection;
     }
 }

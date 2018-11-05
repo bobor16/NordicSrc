@@ -68,7 +68,8 @@ public class LogInScreenController extends SuperController implements Initializa
 
     @FXML
     private void LoginOnAction(ActionEvent event) {
-
+        
+        
         //Login as admin
             if(PasswordField.getText().equalsIgnoreCase("Admin") && emailField.getText().equalsIgnoreCase("Admin"))  stateHandler.setAdminPortalView(LoginButton);
 
@@ -76,7 +77,7 @@ public class LogInScreenController extends SuperController implements Initializa
             if(PasswordField.getText().equalsIgnoreCase("manufactorer") && emailField.getText().equalsIgnoreCase("manufactorer"))stateHandler.setManufactorerPortalView(LoginButton);
             
         //Logic as Costumer
-            if(PasswordField.getText().equalsIgnoreCase("costumor") && emailField.getText().equalsIgnoreCase("costumor"))stateHandler.customerPortalView(LoginButton);
+            if(PasswordField.getText().equalsIgnoreCase("customer") && emailField.getText().equalsIgnoreCase("customer"))stateHandler.customerPortalView(LoginButton);
     }
 
     @FXML

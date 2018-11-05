@@ -22,13 +22,13 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <MenuBar style="-fx-background-color: #3399CC;">
+      <MenuBar fx:id="menubar" style="-fx-background-color: #3399CC;">
         <menus>
           <Menu mnemonicParsing="false" text="Options">
                <items>
                   <MenuItem mnemonicParsing="false" text="Profile" />
                   <MenuItem mnemonicParsing="false" text="Settings" />
-                  <MenuItem mnemonicParsing="false" text="Logout" />
+                  <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
                </items>
           </Menu>
         </menus>

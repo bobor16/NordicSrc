@@ -87,10 +87,6 @@ public class AdminPortalViewController extends SuperController implements Initia
 
     }
 
-    public void PlaceBidOnAction(ActionEvent event) throws IOException {
-
-    }
-
     @FXML
     public void SearchOnAction(ActionEvent event) throws IOException {
 

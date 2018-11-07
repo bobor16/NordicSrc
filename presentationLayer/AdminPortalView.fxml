@@ -20,7 +20,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="922.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="926.0">
          <children>
             <MenuBar fx:id="menubar" style="-fx-background-color: #3399CC;">
                <menus>
@@ -332,6 +332,6 @@
             </TabPane>
          </children>
       </VBox>
-      <Button fx:id="logOutButton" layoutX="870.0" layoutY="9.0" mnemonicParsing="false" onAction="#logOutButtonMethod" style="-fx-background-color: #3399CC;" text="Log Out" />
+      <Button fx:id="logOutButton" layoutX="852.0" mnemonicParsing="false" onAction="#logOutButtonMethod" style="-fx-background-color: #3399CC;" text="Log Out" />
    </children>
 </AnchorPane>

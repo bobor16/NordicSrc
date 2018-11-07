@@ -20,7 +20,7 @@ public class ApplicationStateHandler {
         //Login as manufactorer
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ManufactorerPortalView.fxml"));
-            loader.setController(new ManufacturerPortalView(logic));
+            loader.setController(new ManufactorerPortalViewController(logic));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) button.getScene().getWindow();

@@ -19,115 +19,119 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <MenuBar style="-fx-background-color: #3399CC;">
-         <menus>
-            <Menu mnemonicParsing="false" text="Options">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Profile" />
-                  <MenuItem mnemonicParsing="false" text="Settings" />
-                  <MenuItem mnemonicParsing="false" text="Logout" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE">
-         <tabs>
-            <Tab text="Home">
-               <content>
-                  <SplitPane dividerPositions="0.5, 0.5" prefHeight="200.0" prefWidth="200.0">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+         <children>
+            <MenuBar style="-fx-background-color: #3399CC;">
+               <menus>
+                  <Menu mnemonicParsing="false" text="Options">
                      <items>
-                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0">
-                           <children>
-                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                        <MenuItem mnemonicParsing="false" text="Profile" />
+                        <MenuItem mnemonicParsing="false" text="Settings" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Home">
+                     <content>
+                        <SplitPane dividerPositions="0.5, 0.5" prefHeight="200.0" prefWidth="200.0">
+                           <items>
+                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0">
                                  <children>
-                                    <HBox>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <PasswordField promptText="Search" />
-                                          <Pane minWidth="-Infinity" prefWidth="5.0" />
-                                          <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Search" />
-                                       </children>
-                                    </HBox>
-                                    <Pane prefHeight="5.0" />
-                                    <ListView fx:id="CaseListView1" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
-                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
-                                    <Button maxWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Show Case">
-                                       <padding>
-                                          <Insets left="5.0" right="5.0" />
-                                       </padding>
-                                    </Button>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0">
-                           <children>
-                              <ScrollPane layoutX="-219.0" layoutY="352.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane>
-                           <children>
-                              <ImageView fitHeight="94.0" fitWidth="190.0" layoutX="40.0" layoutY="80.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                                 <image>
-                                    <Image url="@../assets/NordicSrcLogo.PNG" />
-                                 </image>
-                              </ImageView>
-                              <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0">
-                                 <children>
-                                    <Button fx:id="loadScene1" mnemonicParsing="false" onAction="#loadSceneOnAction" prefWidth="190.0" text="?">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                    <Button mnemonicParsing="false" prefWidth="190.0" text="?">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                    <Button mnemonicParsing="false" prefWidth="190.0" text="?">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                    <Button mnemonicParsing="false" prefWidth="190.0" text="?">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                    <Pane minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
-                                       <padding>
-                                          <Insets top="5.0" />
-                                       </padding>
-                                    </Pane>
-                                    <VBox>
-                                       <children>
-                                          <Button mnemonicParsing="false" prefWidth="190.0" text="?">
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button mnemonicParsing="false" prefWidth="190.0" text="?">
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button mnemonicParsing="false" prefWidth="190.0" text="?">
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
+                                          <HBox>
+                                             <children>
+                                                <PasswordField promptText="Search" />
+                                                <Pane minWidth="-Infinity" prefWidth="5.0" />
+                                                <Button fx:id="searchButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchMethod" text="Search" />
+                                             </children>
+                                          </HBox>
+                                          <Pane prefHeight="5.0" />
+                                          <ListView fx:id="CaseListView1" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
+                                          <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
+                                          <Button fx:id="showCaseButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showCaseMethod" prefHeight="25.0" prefWidth="190.0" text="Show Case">
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
                                           </Button>
                                        </children>
                                     </VBox>
                                  </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                     </items>
-                  </SplitPane>
-               </content>
-            </Tab>
-         </tabs>
-      </TabPane>
+                              </AnchorPane>
+                              <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0">
+                                 <children>
+                                    <ScrollPane layoutX="-219.0" layoutY="352.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane>
+                                 <children>
+                                    <ImageView fitHeight="94.0" fitWidth="190.0" layoutX="40.0" layoutY="80.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                       <image>
+                                          <Image url="@../assets/NordicSrcLogo.PNG" />
+                                       </image>
+                                    </ImageView>
+                                    <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0">
+                                       <children>
+                                          <Button fx:id="createNewOrderButton" mnemonicParsing="false" onAction="#createNewOrderMethod" prefWidth="190.0" text="Create New Order">
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                          <Button mnemonicParsing="false" prefWidth="190.0" text="?">
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                          <Button mnemonicParsing="false" prefWidth="190.0" text="?">
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                          <Button mnemonicParsing="false" prefWidth="190.0" text="?">
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                          <Pane minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </Pane>
+                                          <VBox>
+                                             <children>
+                                                <Button mnemonicParsing="false" prefWidth="190.0" text="?">
+                                                   <VBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" prefWidth="190.0" text="?">
+                                                   <VBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" prefWidth="190.0" text="?">
+                                                   <VBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </items>
+                        </SplitPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+      <Button fx:id="logOutButton" layoutX="836.0" layoutY="-1.0" mnemonicParsing="false" onAction="#logOutButtonMethod" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #3399CC;" text="Log Out" />
    </children>
-</VBox>
+</AnchorPane>

@@ -53,9 +53,6 @@ public class ManufactorerPortalViewController extends SuperController implements
     
     ApplicationStateHandler applicationStateHandler = new ApplicationStateHandler();
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

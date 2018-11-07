@@ -14,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
 
@@ -25,8 +24,6 @@ import javafx.scene.control.Tab;
  */
 public class AdminPortalViewController extends SuperController implements Initializable {
 
-    @FXML
-    private MenuBar menubar;
     @FXML
     private PasswordField SearchField;
     @FXML

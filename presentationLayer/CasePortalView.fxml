@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar style="-fx-background-color: #3399CC;">
         <menus>
@@ -79,7 +79,7 @@
                <children>
                   <ImageView fitHeight="94.0" fitWidth="190.0" layoutX="40.0" layoutY="80.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <image>
-                        <Image url="@../assets/NordicSrcLogo.PNG" />
+                        <Image url="@assets/NordicSrcLogo.PNG" />
                      </image>
                   </ImageView>
                   <PasswordField layoutX="26.0" layoutY="120.0" prefWidth="190.0" promptText="Search" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="110.0" />

@@ -8,8 +8,10 @@ package presentationLayer;
 import Interfaces.Ilogic.Ilogic;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
@@ -21,6 +23,9 @@ import javafx.scene.control.TextField;
  * @author mehgn
  */
 public class RegisterViewController extends SuperController implements Initializable {
+
+    @FXML
+    private Button cancelButton;
 
     public RegisterViewController(Ilogic logic) {
         super(logic);
@@ -57,7 +62,8 @@ public class RegisterViewController extends SuperController implements Initializ
     @FXML
     private PasswordField verifyPasswordField;
     
-
+    ApplicationStateHandler applicationStateHandler = new ApplicationStateHandler();
+    
     /**
      * Initializes the controller class.
      */
@@ -65,6 +71,11 @@ public class RegisterViewController extends SuperController implements Initializ
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void cancelButtonMethod(ActionEvent event) {
+        applicationStateHandler.setLogInScreen(cancelButton);
+    }
 
     
     

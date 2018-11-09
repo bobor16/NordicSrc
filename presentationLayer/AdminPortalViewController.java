@@ -55,18 +55,18 @@ public class AdminPortalViewController extends SuperController implements Initia
     @FXML
     private Button logOutButton;
 
-    
     public AdminPortalViewController(Ilogic logic) {
         super(logic);
     }
-    
+
     ApplicationStateHandler appliCationStateHandler = new ApplicationStateHandler();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    } 
-    
+    }
+
+    @FXML
     public void showCaseOnAction(ActionEvent event) throws IOException {
 
     }
@@ -76,10 +76,22 @@ public class AdminPortalViewController extends SuperController implements Initia
 
     }
 
+    @FXML
+    public void adminSettingsOnAction(ActionEvent event) throws IOException {
+
+    }
+
+    @FXML
     public void loadSceneOnAction(ActionEvent event) throws IOException {
 
     }
 
+    @FXML
+    public void adminProfileOnAction(ActionEvent event) throws IOException {
+
+    }
+
+    @FXML
     public void OpenAttachedFilesOnAction(ActionEvent event) throws IOException {
 
     }
@@ -89,13 +101,14 @@ public class AdminPortalViewController extends SuperController implements Initia
 
     }
 
+    @FXML
     public void logout(ActionEvent event) throws IOException {
-      
+
     }
 
     @FXML
     private void logOutButtonMethod(ActionEvent event) {
         appliCationStateHandler.setLogInScreen(logOutButton);
     }
-    
+
 }

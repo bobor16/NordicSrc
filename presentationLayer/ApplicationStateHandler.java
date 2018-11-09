@@ -1,15 +1,11 @@
 package presentationLayer;
 
 import Interfaces.Ilogic.Ilogic;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Root;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
-import logicLayer.Admin;
 
 public class ApplicationStateHandler {
 

@@ -58,7 +58,6 @@ public class LogicFacade implements Interfaces.Ilogic.Ilogic {
     public String getFirstName() {
         return data.getFirstName();
     }
-
     @Override
     public void setFirstName(String firstName) {
         data.setFirstName(firstName);

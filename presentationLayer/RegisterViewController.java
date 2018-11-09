@@ -78,5 +78,11 @@ public class RegisterViewController extends SuperController implements Initializ
     }
 
     
+    @FXML
+    private void registerMethod(ActionEvent event) {
+    }
+
+    
+    
     
 }

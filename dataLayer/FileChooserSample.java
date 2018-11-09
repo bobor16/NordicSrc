@@ -23,12 +23,7 @@ public final class FileChooserSample {
 
     private Desktop desktop = Desktop.getDesktop();
 
-    public void start(final Stage stage, Button button) {
-        stage.setTitle("File Chooser Sample");
-
-        final FileChooser fileChooser = new FileChooser();
-
-    }
+    final FileChooser fileChooser = new FileChooser();
 
     private static void configureFileChooser(final FileChooser fileChooser) {
         fileChooser.setTitle("View Pictures");

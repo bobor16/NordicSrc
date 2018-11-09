@@ -1,4 +1,3 @@
-
 package presentationLayer;
 
 import Interfaces.Ilogic.Ilogic;
@@ -10,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-
 
 public class CustomerPortalViewController extends SuperController implements Initializable {
 
@@ -27,7 +25,6 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     ApplicationStateHandler stateHandler = new ApplicationStateHandler();
 
-        
     public CustomerPortalViewController(Ilogic logic) {
         super(logic);
     }
@@ -35,14 +32,14 @@ public class CustomerPortalViewController extends SuperController implements Ini
     /**
      * Initializes the controller class.
      */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    public void loadSceneOnAction(ActionEvent event) throws IOException{
-        
+    }
+
+    @FXML
+    public void loadSceneOnAction(ActionEvent event) throws IOException {
+
     }
 
     @FXML
@@ -58,8 +55,17 @@ public class CustomerPortalViewController extends SuperController implements Ini
     }
 
     @FXML
+
+    private void customerSettingsOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void customerProfileOnAction(ActionEvent event) {
+    }
+
+    @FXML
     private void logOutButtonMethod(ActionEvent event) {
         stateHandler.setLogInScreen(logOutButton);
     }
-    
+
 }

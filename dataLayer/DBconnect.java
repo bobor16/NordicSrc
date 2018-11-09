@@ -21,25 +21,25 @@ public class DBconnect {
     String user = "si3_2018_group_4";
     String password = "auto92-modal";
 
-//    public Connection dbConnection() {
-//        try {
-//            Class.forName("org.postgresql.Driver");
-//        } catch (ClassNotFoundException e) {
-//            e.getMessage();
-//        }
-//        try {
-//            DriverManager.getConnection(url, user, password);
-////                JOptionPane.showMessageDialog(null, "Connected");
-//            System.out.println("Successfully connected to the server!");
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
-////                JOptionPane.showMessageDialog(null, "Failed to connect");
-//            System.out.println("Failed to connect to server");
-//        }
-//
-//        return connection;
-//    }
+    public Connection dbConnection() {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            e.getMessage();
+        }
+        try {
+            DriverManager.getConnection(url, user, password);
+//                JOptionPane.showMessageDialog(null, "Connected");
+            System.out.println("Successfully connected to the server!");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
+//                JOptionPane.showMessageDialog(null, "Failed to connect");
+            System.out.println("Failed to connect to server");
+        }
+
+        return connection;
+    }
 
     public ArrayList<String> sendQuery(String query) {
         ArrayList<String> result = new ArrayList<>();

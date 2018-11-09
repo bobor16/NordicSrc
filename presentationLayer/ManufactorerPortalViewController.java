@@ -76,6 +76,7 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     @FXML
     private void OpenAttachedFilesOnAction(ActionEvent event) {
+        applicationStateHandler.setPickAFile(AttachedFilesButton);
     }
 
     @FXML

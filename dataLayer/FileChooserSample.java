@@ -1,5 +1,6 @@
 package dataLayer;
 
+import Interfaces.All.IFileChooser;
 import java.awt.BorderLayout;
 import java.awt.Desktop;
 import java.io.File;
@@ -19,32 +20,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public final class FileChooserSample {
+public final class FileChooserSample implements IFileChooser{
 
-    private Desktop desktop = Desktop.getDesktop();
 
-    final FileChooser fileChooser = new FileChooser();
-
-    private static void configureFileChooser(final FileChooser fileChooser) {
-        fileChooser.setTitle("View Pictures");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("PNG", "*.png"),
-                new FileChooser.ExtensionFilter("PDF", "*.pdf")
-        );
-    }
-
-    private void openFile(File file) {
-        try {
-            System.out.println(file.getAbsolutePath());
-            desktop.open(file);
-        } catch (IOException ex) {
-            Logger.getLogger(FileChooserSample.class.getName()).log(
-                    Level.SEVERE, null, ex
-            );
-        }
-    }
 
 }

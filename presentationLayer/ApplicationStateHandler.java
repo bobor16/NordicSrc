@@ -14,6 +14,7 @@ import logicLayer.Admin;
 public class ApplicationStateHandler {
 
     private Ilogic logic;
+    private Stage returnStage;
 
 
     public void setManufactorerPortalView(Button button) {
@@ -105,5 +106,28 @@ public class ApplicationStateHandler {
 //        }
         }
     }
+        
+        public void setPickAFile(Button button){
+        //Login as manufactorer
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("pickAFile.fxml"));
+            loader.setController(new PickAFileController(logic));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) button.getScene().getWindow();
+            returnStage = stage;
+            stage.setTitle("NordicSrc");
+            stage.setResizable(false);
+            stage.setScene(scene);
+//                logic.writeToSystemlog(userNameField.getText() + " Logged in"); // writes to systemlog
+        } catch (Exception e) {
+            e.printStackTrace();
+//        }
+        }
+    }
+        
+        public Stage getStage(){
+            return returnStage;
+        }
 
 }

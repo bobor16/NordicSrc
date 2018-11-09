@@ -77,7 +77,7 @@ public class ManufacturerPortalView extends SuperController implements Initializ
 
     @FXML
     public void logout(ActionEvent event) throws IOException {
-//        statehandler.setLogInScreen();
+        statehandler.setLogInScreen(logout);
     }
 
 }

@@ -18,6 +18,18 @@
       <TextField fx:id="firstNameField" layoutX="130.0" layoutY="31.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="75.0" />
       <Label layoutX="43.0" layoutY="69.0" text="Last Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="125.0" />
       <TextField fx:id="lastNameField" layoutX="187.0" layoutY="74.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="120.0" />
+      <VBox layoutX="53.0" layoutY="453.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="165.0">
+         <children>
+            <TextField fx:id="emailField" />
+            <Label fx:id="emailLabel" text="Label" />
+         </children>
+      </VBox>
+      <VBox layoutX="176.0" layoutY="210.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="220.0">
+         <children>
+            <TextField fx:id="verifyEmailField" />
+            <Label fx:id="verifyEmailLabel" text="Label" />
+         </children>
+      </VBox>
       <Label layoutX="31.0" layoutY="167.0" text="Email" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="170.0" />
       <Label layoutX="18.0" layoutY="222.0" text="Verify Email" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="225.0" />
       <Label layoutX="38.0" layoutY="282.0" text="Password" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="280.0" />
@@ -29,16 +41,10 @@
             <Label fx:id="passwordLabel" text="Label" />
          </children>
       </VBox>
-      <VBox layoutX="53.0" layoutY="453.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="165.0">
+      <VBox layoutX="207.0" layoutY="389.0">
          <children>
-            <TextField fx:id="emailField" />
-            <Label fx:id="emailLabel" text="Label" />
-         </children>
-      </VBox>
-      <VBox layoutX="176.0" layoutY="210.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="220.0">
-         <children>
-            <TextField fx:id="verifyEmailField" />
-            <Label fx:id="verifyEmailLabel" text="Label" />
+            <PasswordField fx:id="verifyPasswordField" />
+            <Label fx:id="verifyPasswordLabel" text="Label" />
          </children>
       </VBox>
       <VBox layoutX="85.0" layoutY="417.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="465.0" />
@@ -60,20 +66,19 @@
          </children>
       </Pane>
       <Label layoutX="11.0" layoutY="330.0" prefHeight="18.0" prefWidth="291.0" text="Your password must be between 6 and 32 characters" />
-      <RadioButton fx:id="manufacturerRadioButton" layoutX="248.0" layoutY="452.0" mnemonicParsing="false" text="Manufacturer">
-         <padding>
-            <Insets left="15.0" />
-         </padding>
-      </RadioButton>
+      <RadioButton fx:id="employeeRadioButton" layoutX="29.0" layoutY="452.0" mnemonicParsing="false" text="Employee" />
       <RadioButton fx:id="customerRadioButton" layoutX="138.0" layoutY="452.0" mnemonicParsing="false" text="Customer">
          <padding>
             <Insets left="15.0" />
          </padding>
       </RadioButton>
-      <RadioButton fx:id="employeeRadioButton" layoutX="29.0" layoutY="452.0" mnemonicParsing="false" text="Employee" />
-      <Label fx:id="verifyPasswordLabel" layoutX="206.0" layoutY="415.0" text="Label" />
-      <PasswordField fx:id="verifyPasswordField" layoutX="206.0" layoutY="389.0" />
+      <RadioButton fx:id="manufacturerRadioButton" layoutX="248.0" layoutY="452.0" mnemonicParsing="false" text="Manufacturer">
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </RadioButton>
       <Label layoutX="11.0" layoutY="355.0" text="Your password must have atleast 1 upper/lower case letter and 1 digit" />
-      <Button layoutX="55.0" layoutY="586.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Register" />
+      <Button fx:id="registerButton" layoutX="55.0" layoutY="586.0" mnemonicParsing="false" onAction="#registerMethod" prefHeight="26.0" prefWidth="74.0" text="Register" />
+      <Button fx:id="cancelButton" layoutX="255.0" layoutY="587.0" mnemonicParsing="false" onAction="#cancelButtonMethod" text="Cancel" />
    </children>
 </AnchorPane>

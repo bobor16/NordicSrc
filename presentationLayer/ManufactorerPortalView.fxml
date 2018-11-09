@@ -75,7 +75,7 @@
                               </ImageView>
                               <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0">
                                  <children>
-                                    <Button fx:id="loadScene1" mnemonicParsing="false" onAction="#loadSceneOnAction" prefWidth="190.0" text="Upload Image">
+                                    <Button fx:id="pdfButton" mnemonicParsing="false" onAction="#uploadPDF" prefWidth="190.0" text="Upload pdf">
                                        <VBox.margin>
                                           <Insets top="5.0" />
                                        </VBox.margin>

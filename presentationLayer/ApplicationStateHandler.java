@@ -28,7 +28,7 @@ public class ApplicationStateHandler {
             stage.setResizable(false);
             stage.setScene(scene);
 //                logic.writeToSystemlog(userNameField.getText() + " Logged in"); // writes to systemlog
-        } catch (Exception e) {
+        } catch (Exception e) { 
             e.printStackTrace();
 //        }
         }

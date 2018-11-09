@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -22,12 +23,17 @@ public class ManufacturerPortalView extends SuperController implements Initializ
 
     @FXML
     private Label CaseIDLabel;
+    
 
     @FXML
     private MenuBar menubar;
 
     @FXML
     private MenuItem logout;
+    
+    @FXML
+    private Button pdfButton;
+    
 
     private ApplicationStateHandler statehandler;
 
@@ -50,7 +56,7 @@ public class ManufacturerPortalView extends SuperController implements Initializ
     }
 
     @FXML
-    public void loadSceneOnAction(ActionEvent event) throws IOException {
+    public void uploadPDF(ActionEvent event) throws IOException {
 
     }
 
@@ -61,7 +67,7 @@ public class ManufacturerPortalView extends SuperController implements Initializ
 
     @FXML
     public void PlaceBidOnAction(ActionEvent event) throws IOException {
-
+        
     }
 
     @FXML
@@ -71,7 +77,7 @@ public class ManufacturerPortalView extends SuperController implements Initializ
 
     @FXML
     public void logout(ActionEvent event) throws IOException {
-        statehandler.setLogInScreen(logout);
+//        statehandler.setLogInScreen();
     }
 
 }

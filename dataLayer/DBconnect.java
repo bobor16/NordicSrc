@@ -1,11 +1,7 @@
 package dataLayer;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,25 +21,25 @@ public class DBconnect {
     String user = "si3_2018_group_4";
     String password = "auto92-modal";
 
-    public Connection dbConnection() {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            e.getMessage();
-        }
-        try {
-            DriverManager.getConnection(url, user, password);
-//                JOptionPane.showMessageDialog(null, "Connected");
-            System.out.println("Successfully connected to the server!");
-
-        } catch (SQLException ex) {
-            Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
-//                JOptionPane.showMessageDialog(null, "Failed to connect");
-            System.out.println("Failed to connect to server");
-        }
-
-        return connection;
-    }
+//    public Connection dbConnection() {
+//        try {
+//            Class.forName("org.postgresql.Driver");
+//        } catch (ClassNotFoundException e) {
+//            e.getMessage();
+//        }
+//        try {
+//            DriverManager.getConnection(url, user, password);
+////                JOptionPane.showMessageDialog(null, "Connected");
+//            System.out.println("Successfully connected to the server!");
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
+////                JOptionPane.showMessageDialog(null, "Failed to connect");
+//            System.out.println("Failed to connect to server");
+//        }
+//
+//        return connection;
+//    }
 
     public ArrayList<String> sendQuery(String query) {
         ArrayList<String> result = new ArrayList<>();
@@ -59,44 +55,61 @@ public class DBconnect {
             while (rs.next()) {
                 int i = 1;
                 while (i < rs.getMetaData().getColumnCount()) {
+                    //System.out.print(rs.getString(i) + " ");
                     result.add(rs.getString(i));
                     i++;
                 }
+                //System.out.println(rs.getString(i) + " ");
                 result.add(rs.getString(i));
             }
             System.out.println(result);
-
+            //return result;
         } catch (Exception e) {
             System.out.println(e);
         }
         return result;
     }
 
-    public void insertImage() {
-        File img = new File("C:\\Users\\borga\\Documents\\NetBeansProjects\\NordicSrc/klarborg-nisser-Martin-80-cm-designet-af-etly-klarborg.jpg");
-        String query = "INSERT INTO productspecification(psid, image) VALUES(?,?)";
-        try (Connection con = DriverManager.getConnection(url, user, password);
-                PreparedStatement pst = con.prepareStatement(query)) {
-
-            try (FileInputStream fin = new FileInputStream(img)) {
-                pst.setInt(1, 1);
-                pst.setBinaryStream(2, fin, (int) img.length());
-                pst.executeUpdate();
-            } catch (IOException ex) {
-                Logger.getLogger(DBconnect.class.getName()).log(
-                        Level.SEVERE, ex.getMessage(), ex);
-            }
-
-        } catch (SQLException ex) {
-
-            Logger lgr = Logger.getLogger(DBconnect.class.getName());
-            lgr.log(Level.SEVERE, ex.getMessage(), ex);
-        }
-    }
+//    public static void viewTable() throws SQLException {
+//        try {
+//            Class.forName("org.postgresql.Driver");
+//        } catch (ClassNotFoundException ex) {
+//            System.out.println(ex);
+//        }
+//        String query = "SELECT email, password, password, type, vertified, cvr FROM users";
+//        Statement stmt = null;
+//
+//        try {
+//            stmt = connection.createStatement();
+//            ResultSet rs = stmt.executeQuery(query);
+//            while (rs.next()) {
+//                String name = rs.getString("name");
+//                String email = rs.getString("email");
+//                String password = rs.getString("password");
+//                String type = rs.getString("type");
+//                boolean vertified = rs.getBoolean("vertified");
+//                int cvr = rs.getInt("cvr");
+//
+//                System.out.println("Name: " + name
+//                        + "email: " + email
+//                        + "password: " + password
+//                        + "type: " + type
+//                        + "vertified: " + vertified
+//                        + "cvr: " + cvr);
+//
+//            }
+//        } catch (SQLException e) {
+//            System.out.println(e);
+//        } finally {
+//            if (stmt != null) {
+//                stmt.close();
+//            }
+//        }
+//    }
 
     public static void main(String[] args) throws SQLException {
         DBconnect db = new DBconnect();
-        db.sendQuery("SELECT * FROM users");
-        db.insertImage();
+        db.sendQuery("SELECT email, password FROM users");
+//        db.viewTable();
     }
 }

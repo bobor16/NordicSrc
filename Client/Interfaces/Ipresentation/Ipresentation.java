@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces.Ipresentation;
+package Client.Interfaces.Ipresentation;
 
-import Interfaces.Ilogic.Ilogic;
+import Server.Interfaces.Ilogic.Ilogic;
+
 
 /**
  *

@@ -1,6 +1,6 @@
-package presentationLayer;
+package Client.presentationLayer;
 
-import Interfaces.Ilogic.Ilogic;
+import Server.Interfaces.Ilogic.Ilogic;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

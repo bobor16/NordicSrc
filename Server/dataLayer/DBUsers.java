@@ -1,11 +1,10 @@
-package dataLayer;
+package Server.dataLayer;
 
-import Interfaces.All.IUser;
+import Server.Interfaces.All.IUser;
 import dataLayer.DBconnect;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import logicLayer.User;
 
 /*
 	Run with:

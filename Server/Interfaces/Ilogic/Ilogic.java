@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces.Ilogic;
+package Server.Interfaces.Ilogic;
 
-import Interfaces.All.ISystemLog;
-import Interfaces.All.IUser;
-import Interfaces.All.iAuthenticate;
-import Interfaces.Idata.Idata;
+import Server.Interfaces.All.IFileChooser;
+import Server.Interfaces.All.IUser;
+import Server.Interfaces.All.ISystemLog;
+import Server.Interfaces.All.iAuthenticate;
+import Server.Interfaces.Idata.Idata;
 
 /**
  *
  * @author mehgn
  */
-public interface Ilogic extends iAuthenticate, IUser, ISystemLog {
+public interface Ilogic extends iAuthenticate, IUser, ISystemLog, IFileChooser {
 
     public void injectData(Idata data);
     public Boolean passwordCheck(String password);

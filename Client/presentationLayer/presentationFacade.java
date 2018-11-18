@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package presentationLayer;
+package Client.presentationLayer;
 
-import Interfaces.Ilogic.Ilogic;
+import Server.Interfaces.Ilogic.Ilogic;
+import Client.Interfaces.Ipresentation.Ipresentation;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,7 @@ import javafx.stage.Stage;
  *
  * @author mehgn
  */
-public class presentationFacade extends Application implements Interfaces.Ipresentation.Ipresentation{
+public class presentationFacade extends Application implements Ipresentation{
 
     private static Ilogic logic;
     private static presentationFacade ui;

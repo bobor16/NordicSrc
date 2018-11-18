@@ -1,6 +1,6 @@
-package presentationLayer;
+package Client.presentationLayer;
 
-import Interfaces.Ilogic.Ilogic;
+import Server.Interfaces.Ilogic.Ilogic;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,9 +18,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import Interfaces.All.iAuthenticate;
 import javafx.scene.Parent;
-import logicLayer.User;
 
 /**
  * FXML Controller class
@@ -44,6 +42,8 @@ public class LogInScreenController extends SuperController implements Initializa
     private Label passwordMsgLabel;
     @FXML
     private Label ResetPasword;
+    
+    private Ilogic logic;
     
     ApplicationStateHandler stateHandler = new ApplicationStateHandler();
 

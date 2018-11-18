@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces.All;
+package Server.LogicLayer;
 
 /**
  *
  * @author mehgn
  */
-public interface ICostumer {
-     public String getEmail();
+public class Admin extends User{
+    
+    public Admin(String name, String password, String type, String email) {
+        super(name, password, "Admin", email);
+    }
 }

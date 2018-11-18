@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package presentationLayer;
+package Client.presentationLayer;
 
-import Interfaces.Ilogic.Ilogic;
-import dataLayer.FileChooserSample;
+import Server.Interfaces.Ilogic.Ilogic;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -87,9 +86,9 @@ public class PickAFileController extends SuperController implements Initializabl
         try {
             dekstop.open(file);
         } catch (IOException ex) {
-            Logger.getLogger(FileChooserSample.class.getName()).log(
-                Level.SEVERE, null, ex
-            );
+//            Logger.getLogger(FileChooserSample.class.getName()).log(
+//                Level.SEVERE, null, ex
+//            );
         }
     }
 }

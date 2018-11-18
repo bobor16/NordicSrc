@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logicLayer;
+package Server.LogicLayer;
 
 /**
  *
- * @author Martin Sorensen
+ * @author mehgn
  */
 public class PasswordValidation {
-    
-    
+     
     
     /*
     Checks where the @param password only have chars matching the allowedCharacters array.

@@ -3,10 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logicLayer;
+package Server.LogicLayer;
 
-import Interfaces.Idata.Idata;
-import Interfaces.Ilogic.Ilogic;
+/**
+ *
+ * @author mehgn
+ */
+import Server.Interfaces.Ilogic.Ilogic;
+import Server.Interfaces.Idata.Idata;
 import java.io.File;
 import java.util.List;
 import javafx.stage.FileChooser;
@@ -15,7 +19,7 @@ import javafx.stage.FileChooser;
  *
  * @author mehgn
  */
-public class LogicFacade implements Interfaces.Ilogic.Ilogic {
+public class LogicFacade implements Server.Interfaces.Ilogic.Ilogic {
 
     private static Idata data;
     private static Ilogic logic;
@@ -101,6 +105,4 @@ public class LogicFacade implements Interfaces.Ilogic.Ilogic {
     public Boolean passwordCheck(String password) {
         return passwordChecker.checkPassword(password);
     }
-
-
 }

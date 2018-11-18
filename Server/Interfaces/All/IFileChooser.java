@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logicLayer;
+package Server.Interfaces.All;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.stage.FileChooser;
 
 /**
  *
  * @author mehgn
  */
-public class Admin extends User{
-    
-    public Admin(String name, String password, String type, String email) {
-        super(name, password, "Admin", email);
-    }
-    
+public interface IFileChooser {
 }

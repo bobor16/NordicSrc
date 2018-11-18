@@ -3,21 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dataLayer;
+package Server.dataLayer;
 
+import Server.Interfaces.All.ISystemLog;
 import java.util.ArrayList;
 import java.util.List;
-import logicLayer.SystemLog;
 
 /**
  *
  * @author mehgn
  */
-public class DBSystemLog implements Interfaces.All.ISystemLog {
+public class DBSystemLog implements ISystemLog {
     
-    SystemLog tempSystemlog;
     @Override
-    public List<SystemLog> getSystemLog() {
+    public List getSystemLog() {
         List systemLog = new ArrayList();
         try {
 //            dbConnect();
@@ -53,7 +52,6 @@ public class DBSystemLog implements Interfaces.All.ISystemLog {
 
     @Override
     public void clearSystemLog() {
-        tempSystemlog.clearSystemLog();
     }
     
     

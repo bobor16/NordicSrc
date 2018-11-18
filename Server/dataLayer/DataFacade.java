@@ -3,18 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dataLayer;
-
-import Interfaces.Idata.Idata;
-import Interfaces.Ilogic.Ilogic;
-import java.util.List;
-import logicLayer.SystemLog;
+package Server.dataLayer;
 
 /**
  *
  * @author mehgn
  */
-public class DataFacade implements Interfaces.Idata.Idata {
+import Server.Interfaces.Ilogic.Ilogic;
+import Server.LogicLayer.SystemLog;
+import Server.Interfaces.Idata.Idata;
+import java.util.List;
+
+/**
+ *
+ * @author mehgn
+ */
+public class DataFacade implements Idata {
 
     private static Idata data;
     private static Ilogic logic;
@@ -99,7 +103,5 @@ public class DataFacade implements Interfaces.Idata.Idata {
     public void setEmail(String email) {
         DBUsers.setEmail(email);
     }
-
-    
-
 }
+

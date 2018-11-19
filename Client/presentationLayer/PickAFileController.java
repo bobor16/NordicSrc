@@ -35,7 +35,7 @@ public class PickAFileController extends SuperController implements Initializabl
     private TextField filePathField;
     @FXML
     private Button okButton;
-    
+    @FXML
     private Button Backbutton;
     
     ApplicationStateHandler applicationHandler = new ApplicationStateHandler();
@@ -72,10 +72,11 @@ public class PickAFileController extends SuperController implements Initializabl
     }
     
     @FXML
-    public void back(ActionEvent event) throws IOException {
+    public void back(ActionEvent event)  {
         applicationHandler.setManufactorerPortalView(Backbutton);
     }
-    // xd
+    
+    
     private static void configureFileChooser(final FileChooser fileChooser) {      
             fileChooser.setTitle("View Pictures");
             fileChooser.setInitialDirectory(

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Client.presentationLayer;
+package presentationLayer;
 
-import Server.Interfaces.Ilogic.Ilogic;
+import Interfaces.Ilogic.Ilogic;
+import dataLayer.FileChooserSample;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -75,7 +76,7 @@ public class PickAFileController extends SuperController implements Initializabl
     public void back(ActionEvent event) throws IOException {
         applicationHandler.setManufactorerPortalView(Backbutton);
     }
-    // xd
+    
     private static void configureFileChooser(final FileChooser fileChooser) {      
             fileChooser.setTitle("View Pictures");
             fileChooser.setInitialDirectory(
@@ -93,9 +94,9 @@ public class PickAFileController extends SuperController implements Initializabl
         try {
             dekstop.open(file);
         } catch (IOException ex) {
-//            Logger.getLogger(FileChooserSample.class.getName()).log(
-//                Level.SEVERE, null, ex
-//            );
+            Logger.getLogger(FileChooserSample.class.getName()).log(
+                Level.SEVERE, null, ex
+            );
         }
     }
 }

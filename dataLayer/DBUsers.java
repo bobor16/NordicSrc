@@ -2,9 +2,6 @@ package dataLayer;
 
 import Interfaces.All.IUser;
 import Server.dataLayer.DBconnect;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /*
 	Run with:

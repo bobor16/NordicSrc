@@ -5,11 +5,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="130.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File Path" />
       <Button fx:id="choseFileButton" layoutX="130.0" layoutY="270.0" mnemonicParsing="false" onAction="#choseFile" text="Chose PDF" />
-      <Button fx:id="okButton" layoutX="393.0" layoutY="270.0" mnemonicParsing="false" onAction="#ok" prefHeight="26.0" prefWidth="74.0" text="Ok" />
+      <Button fx:id="okButton" layoutX="242.0" layoutY="270.0" mnemonicParsing="false" onAction="#ok" prefHeight="26.0" prefWidth="74.0" text="Ok" />
       <TextField fx:id="filePathField" layoutX="76.0" layoutY="87.0" prefHeight="26.0" prefWidth="432.0" />
+      <Button fx:id="Backbutton" layoutX="342.0" layoutY="270.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </AnchorPane>

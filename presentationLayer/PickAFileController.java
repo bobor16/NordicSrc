@@ -37,6 +37,8 @@ public class PickAFileController extends SuperController implements Initializabl
     @FXML
     private Button okButton;
     
+    private Button Backbutton;
+    
     ApplicationStateHandler applicationHandler = new ApplicationStateHandler();
 
     final FileChooser fileChooser = new FileChooser();
@@ -68,6 +70,11 @@ public class PickAFileController extends SuperController implements Initializabl
 
     @FXML
     public void ok(ActionEvent event) throws IOException {
+    }
+    
+    @FXML
+    public void back(ActionEvent event) throws IOException {
+        applicationHandler.setManufactorerPortalView(Backbutton);
     }
     
     private static void configureFileChooser(final FileChooser fileChooser) {      

@@ -1,7 +1,7 @@
 package Server.dataLayer;
 
 import Server.Interfaces.All.IUser;
-import dataLayer.DBconnect;
+import Server.dataLayer.DBconnect;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

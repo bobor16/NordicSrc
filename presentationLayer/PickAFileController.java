@@ -5,8 +5,10 @@
  */
 package presentationLayer;
 
-import Interfaces.Ilogic.Ilogic;
-import dataLayer.FileChooserSample;
+import Client.presentationLayer.ApplicationStateHandler;
+import Client.presentationLayer.SuperController;
+import Server.Interfaces.Ilogic.Ilogic;
+//import Server.dataLayer.FileChooserSample;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -90,13 +92,13 @@ public class PickAFileController extends SuperController implements Initializabl
     }
     
     
-    private void openFile(File file) {
-        try {
-            dekstop.open(file);
-        } catch (IOException ex) {
-            Logger.getLogger(FileChooserSample.class.getName()).log(
-                Level.SEVERE, null, ex
-            );
-        }
-    }
+//    private void openFile(File file) {
+//        try {
+//            dekstop.open(file);
+//        } catch (IOException ex) {
+//            Logger.getLogger(FileChooserSample.class.getName()).log(
+//                Level.SEVERE, null, ex
+//            );
+//        }
+//    }
 }

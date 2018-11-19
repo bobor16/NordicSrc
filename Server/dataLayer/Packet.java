@@ -1,17 +1,19 @@
-public class Packet implements java.io.Serializable{
+package Server.dataLayer;
+public class Packet implements java.io.Serializable {
+
     private int id;
     private Object object;
 
-    public Packet(int id, Object object){
+    public Packet(int id, Object object) {
         this.id = id;
         this.object = object;
     }
 
-    public int getId(){
+    public int getId() {
         return this.id;
     }
 
-    public Object getObject(){
+    public Object getObject() {
         return this.object;
     }
 }

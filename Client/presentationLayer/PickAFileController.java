@@ -75,7 +75,7 @@ public class PickAFileController extends SuperController implements Initializabl
     public void back(ActionEvent event) throws IOException {
         applicationHandler.setManufactorerPortalView(Backbutton);
     }
-    
+    // xd
     private static void configureFileChooser(final FileChooser fileChooser) {      
             fileChooser.setTitle("View Pictures");
             fileChooser.setInitialDirectory(

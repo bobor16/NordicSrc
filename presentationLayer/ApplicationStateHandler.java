@@ -1,6 +1,6 @@
-package Client.presentationLayer;
+package presentationLayer;
 
-import Server.Interfaces.Ilogic.Ilogic;
+import Interfaces.Ilogic.Ilogic;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

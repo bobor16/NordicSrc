@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Client.presentationLayer;
+package presentationLayer;
 
-import Server.Interfaces.Ilogic.Ilogic;
+import Interfaces.Ilogic.Ilogic;
 
 
 /**

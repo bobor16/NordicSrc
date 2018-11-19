@@ -1,24 +1,20 @@
-package Client.presentationLayer;
+package presentationLayer;
 
-import Server.Interfaces.Ilogic.Ilogic;
+import Interfaces.Ilogic.Ilogic;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import javafx.scene.Parent;
+import static sun.net.www.protocol.http.AuthCacheValue.Type.Server;
 
 /**
  * FXML Controller class

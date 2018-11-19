@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Client.presentationLayer;
+package presentationLayer;
 
-import Server.Interfaces.Ilogic.Ilogic;
-import Client.Interfaces.Ipresentation.Ipresentation;
+import Interfaces.Ilogic.Ilogic;
+import Interfaces.Ipresentation.Ipresentation;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;

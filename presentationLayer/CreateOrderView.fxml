@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="627.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="14.0" layoutY="35.0" text="Title" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="80.0" />
+      <TextField fx:id="firstNameField" layoutX="130.0" layoutY="31.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="75.0" />
+      <Label layoutX="43.0" layoutY="69.0" text="Description" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="125.0" />
+      <TextField fx:id="lastNameField" layoutX="187.0" layoutY="74.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="120.0" />
+      <VBox layoutX="53.0" layoutY="453.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="165.0">
+         <children>
+            <TextField fx:id="emailField" />
+         </children>
+      </VBox>
+      <VBox layoutX="176.0" layoutY="210.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="220.0">
+         <children>
+            <TextField fx:id="verifyEmailField" />
+         </children>
+      </VBox>
+      <Label layoutX="31.0" layoutY="167.0" text="Deadline" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="170.0" />
+      <Label layoutX="18.0" layoutY="222.0" text="Maxprice" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="225.0" />
+      <Label layoutX="38.0" layoutY="282.0" text="Amount" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="280.0" />
+      <VBox layoutX="216.0" layoutY="392.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="330.0" />
+      <VBox layoutX="100.0" layoutY="465.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="275.0">
+         <children>
+            <PasswordField fx:id="passwordField" />
+         </children>
+      </VBox>
+      <VBox layoutX="207.0" layoutY="389.0" />
+      <VBox layoutX="85.0" layoutY="417.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="465.0" />
+      <HBox layoutX="41.0" layoutY="546.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="395.0" />
+      <Label layoutX="36.0" layoutY="511.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="450.0" />
+      <HBox layoutX="41.0" layoutY="546.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="395.0" />
+      <HBox layoutX="41.0" layoutY="546.0" AnchorPane.topAnchor="395.0" />
+      <Pane prefHeight="40.0" style="-fx-background-color: #3399CC;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="139.0" layoutY="7.0" text="Create order">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="placeOrderButton" layoutX="55.0" layoutY="586.0" mnemonicParsing="false" onAction="#PlaceOrderMethod" prefHeight="31.0" prefWidth="106.0" text="Place order" />
+      <Button fx:id="cancelButton" layoutX="255.0" layoutY="587.0" mnemonicParsing="false" onAction="#cancelButtonMethod" text="Cancel" />
+      <PasswordField fx:id="passwordField1" layoutX="35.0" layoutY="353.0" prefHeight="133.0" prefWidth="320.0" />
+      <Label layoutX="35.0" layoutY="328.0" text="Detailed description" />
+   </children>
+</AnchorPane>

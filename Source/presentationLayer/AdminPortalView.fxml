@@ -15,15 +15,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane prefHeight="25.0" style="-fx-background-color: #3399CC;">
                <children>
-                  <Button fx:id="adminProfileButton" mnemonicParsing="false" onAction="#adminProfileOnAction" style="-fx-background-color: #3399CC;" text="Profile" />
                   <Button fx:id="adminSettingsButton" layoutX="50.0" mnemonicParsing="false" onAction="#adminSettingsOnAction" style="-fx-background-color: #3399CC;" text="Settings" />
-                  <Button fx:id="logOutButton" layoutX="853.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logOutButtonMethod" prefHeight="25.0" style="-fx-background-color: #3399CC;" text="Log Out" />
+                  <Button fx:id="logOutButton" layoutX="841.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logOutButtonMethod" style="-fx-background-color: #3399CC;" text="Log out" />
                </children>
             </Pane>
             <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #3399CC;" tabClosingPolicy="UNAVAILABLE">

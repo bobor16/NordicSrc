@@ -22,77 +22,86 @@ public class DataFacade implements Idata {
 
     private static Idata data;
     private static Ilogic logic;
+    DBUsers DBUsers;
+    DBSystemLog DBSystemlog;
+
+    public DataFacade() {
+        DBUsers = new DBUsers();
+        DBSystemlog = new DBSystemLog();
+    }
+
+    public static Idata getInstance() {
+        return data;
+    }
 
     @Override
     public void injectLogic(Ilogic logic) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.logic = logic;
     }
 
     @Override
-    public String getFirstName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setFirstName(String firstName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getLastName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setLastName(String lastName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getPassword() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setPassword(String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setType(String type) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getEmail() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List getSystemLog() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<SystemLog> getSystemLog() {
+        return DBSystemlog.getSystemLog();
     }
 
     @Override
     public void setSystemLog(String systemLogText) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DBSystemlog.setSystemLog(systemLogText);
     }
 
     @Override
     public void clearSystemLog() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DBSystemlog.clearSystemLog();
     }
 
+    @Override
+    public String getEmail() {
+        return DBUsers.getEmail();
+    }
 
+    @Override
+    public String getFirstName() {
+        return DBUsers.getFirstName();
+    }
+
+    @Override
+    public void setFirstName(String firstName) {
+        DBUsers.setFirstName(firstName);
+    }
+
+    @Override
+    public String getLastName() {
+        return DBUsers.getLastName();
+    }
+
+    @Override
+    public void setLastName(String lastName) {
+        DBUsers.setLastName(lastName);
+    }
+
+    @Override
+    public String getPassword() {
+        return DBUsers.getPassword();
+    }
+
+    @Override
+    public void setPassword(String password) {
+        DBUsers.setPassword(password);
+    }
+
+    @Override
+    public String getType() {
+        return DBUsers.getType();
+    }
+
+    @Override
+    public void setType(String type) {
+        DBUsers.setType(type);
+    }
+
+    @Override
+    public void setEmail(String email) {
+        DBUsers.setEmail(email);
+    }
 }
 

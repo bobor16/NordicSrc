@@ -122,15 +122,10 @@ public class ApplicationStateHandler {
         }
     }
         
-        public Stage getStage(){
-            return returnStage;
-        }
-        
-               public void setCreateOrderView(Button button){
-        //Change to create order window
+        public void setUserProfile(Button button){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateOrderView.fxml"));
-           // loader.setController(new CreateOrderViewController(logic));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserProfileView.fxml"));
+            loader.setController(new UserProfileViewController(logic));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) button.getScene().getWindow();
@@ -145,5 +140,10 @@ public class ApplicationStateHandler {
         }
     }
         
+        
+        
+        public Stage getStage(){
+            return returnStage;
+        }
 
 }

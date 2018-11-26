@@ -52,6 +52,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     @FXML
     private void createNewOrderMethod(ActionEvent event) {
+        stateHandler.setCreateOrderView(searchButton);
     }
 
     @FXML

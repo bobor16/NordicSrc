@@ -10,7 +10,7 @@ package dataLayer;
  * @author mehgn
  */
 import Interfaces.Ilogic.Ilogic;
-import Server.LogicLayer.SystemLog;
+import LogicLayer.SystemLog;
 import Interfaces.Idata.Idata;
 import java.util.List;
 

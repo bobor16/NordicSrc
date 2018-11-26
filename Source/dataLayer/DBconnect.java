@@ -1,4 +1,4 @@
-package Server.dataLayer;
+package dataLayer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 //import javax.swing.JOptionPane;
 
 /**

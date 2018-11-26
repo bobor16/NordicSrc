@@ -1,7 +1,7 @@
 package dataLayer;
 
 import Interfaces.All.IUser;
-import Server.dataLayer.DBconnect;
+import dataLayer.DBconnect;
 
 /*
 	Run with:

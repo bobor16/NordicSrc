@@ -25,7 +25,7 @@
                <children>
                   <Button fx:id="profileButton" mnemonicParsing="false" onAction="#profileButtonMethod" style="-fx-background-color: #3399CC;" text="Profile" />
                   <Button fx:id="settingsButton" layoutX="50.0" mnemonicParsing="false" onAction="#settingsButtonMethod" style="-fx-background-color: #3399CC;" text="Settings" />
-                  <Button fx:id="logOutButton" layoutX="853.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logOutButtonMethod" prefHeight="25.0" style="-fx-background-color: #3399CC;" text="Log Out" />
+                  <Button fx:id="logOutButton" layoutX="845.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logOutButtonMethod" style="-fx-background-color: #3399CC;" text="Log Out" />
                </children>
             </Pane>
             <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #3399CC;" tabClosingPolicy="UNAVAILABLE">

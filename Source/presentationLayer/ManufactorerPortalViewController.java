@@ -25,8 +25,6 @@ import javafx.scene.control.Tab;
 public class ManufactorerPortalViewController extends SuperController implements Initializable {
 
     @FXML
-    private MenuBar menubar;
-    @FXML
     private PasswordField SearchField;
     @FXML
     private Button SearchButton;
@@ -46,6 +44,10 @@ public class ManufactorerPortalViewController extends SuperController implements
     private Button PlaceBidButton;
     @FXML
     private Button logOutButton;
+    @FXML
+    private Button profileButton;
+    @FXML
+    private Button settingsButton;
 
     public ManufactorerPortalViewController(Ilogic logic) {
         super(logic);
@@ -86,6 +88,15 @@ public class ManufactorerPortalViewController extends SuperController implements
     @FXML
     private void logOutButtonMethod(ActionEvent event) {
         applicationStateHandler.setLogInScreen(logOutButton);
+    }
+
+    @FXML
+    private void profileButtonMethod(ActionEvent event) {
+        applicationStateHandler.setUserProfile(profileButton);
+    }
+
+    @FXML
+    private void settingsButtonMethod(ActionEvent event) {
     }
     
 }

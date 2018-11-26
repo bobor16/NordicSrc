@@ -12,7 +12,7 @@ package dataLayer;
 import Interfaces.Ilogic.Ilogic;
 import logicLayer.SystemLog;
 import Interfaces.Idata.Idata;
-import LogicLayer.SystemLog;
+import logicLayer.SystemLog;
 import java.util.List;
 
 /**

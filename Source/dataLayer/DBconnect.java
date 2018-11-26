@@ -1,4 +1,4 @@
-package Server.dataLayer;
+package dataLayer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

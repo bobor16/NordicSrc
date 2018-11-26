@@ -5,6 +5,7 @@
  */
 package presentationLayer;
 
+import Interfaces.Ilogic.Ilogic;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,7 +20,7 @@ import javafx.scene.control.TextField;
  *
  * @author marti
  */
-public class CreateOrderViewController implements Initializable { // Todo: extends SuperController
+public class CreateOrderViewController extends SuperController implements Initializable { // Todo: extends SuperController
 
     @FXML
     private TextField firstNameField;
@@ -39,6 +40,10 @@ public class CreateOrderViewController implements Initializable { // Todo: exten
     private PasswordField passwordField1;
     
      ApplicationStateHandler applicationStateHandler = new ApplicationStateHandler();
+
+    CreateOrderViewController(Ilogic logic) {
+        super(logic);
+    }
 
     /**
      * Initializes the controller class.

@@ -11,6 +11,7 @@ package dataLayer;
  */
 import Interfaces.Ilogic.Ilogic;
 import Interfaces.Idata.Idata;
+import LogicLayer.SystemLog;
 import java.util.List;
 
 /**

@@ -145,5 +145,25 @@ public class ApplicationStateHandler {
         public Stage getStage(){
             return returnStage;
         }
+        
+               public void setCreateOrderView(Button button){
+        //Change to create order window
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateOrderView.fxml"));
+           // loader.setController(new CreateOrderViewController(logic));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) button.getScene().getWindow();
+            returnStage = stage;
+            stage.setTitle("NordicSrc");
+            stage.setResizable(false);
+            stage.setScene(scene);
+//                logic.writeToSystemlog(userNameField.getText() + " Logged in"); // writes to systemlog
+        } catch (Exception e) {
+            e.printStackTrace();
+//        }
+        }
+    }
+        
 
 }

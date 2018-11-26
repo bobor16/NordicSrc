@@ -149,8 +149,8 @@ public class ApplicationStateHandler {
                public void setCreateOrderView(Button button){
         //Change to create order window
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserProfileView.fxml"));
-            loader.setController(new UserProfileViewController(logic));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateOrderView.fxml"));
+            loader.setController(new CreateOrderViewController(logic));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) button.getScene().getWindow();
@@ -164,11 +164,5 @@ public class ApplicationStateHandler {
 //        }
         }
     }
-        
-        
-        
-        public Stage getStage(){
-            return returnStage;
-        }
 
 }

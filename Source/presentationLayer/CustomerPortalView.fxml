@@ -15,13 +15,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane prefHeight="25.0" style="-fx-background-color: #3399CC;">
                <children>
-                  <Button fx:id="customerProfileButton" mnemonicParsing="false" onAction="#customerProfileOnAction" style="-fx-background-color: #3399CC;" text="Profile" />
+                  <Button fx:id="profileButton" mnemonicParsing="false" onAction="#profileButtonMethod" style="-fx-background-color: #3399CC;" text="Profile" />
                   <Button fx:id="customerSettingsButton" layoutX="50.0" mnemonicParsing="false" onAction="#customerSettingsOnAction" style="-fx-background-color: #3399CC;" text="Settings" />
                   <Button fx:id="logOutButton" layoutX="853.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logOutButtonMethod" prefHeight="25.0" style="-fx-background-color: #3399CC;" text="Log Out" />
                </children>

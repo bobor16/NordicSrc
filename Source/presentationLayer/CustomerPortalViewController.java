@@ -24,6 +24,10 @@ public class CustomerPortalViewController extends SuperController implements Ini
     private Button logOutButton;
 
     ApplicationStateHandler stateHandler = new ApplicationStateHandler();
+    @FXML
+    private Button profileButton;
+    @FXML
+    private Button customerSettingsButton;
 
     public CustomerPortalViewController(Ilogic logic) {
         super(logic);
@@ -37,7 +41,6 @@ public class CustomerPortalViewController extends SuperController implements Ini
         // TODO
     }
 
-    @FXML
     public void loadSceneOnAction(ActionEvent event) throws IOException {
 
     }
@@ -60,13 +63,15 @@ public class CustomerPortalViewController extends SuperController implements Ini
     private void customerSettingsOnAction(ActionEvent event) {
     }
 
-    @FXML
-    private void customerProfileOnAction(ActionEvent event) {
-    }
 
     @FXML
     private void logOutButtonMethod(ActionEvent event) {
         stateHandler.setLogInScreen(logOutButton);
+    }
+
+    @FXML
+    private void profileButtonMethod(ActionEvent event) {
+        stateHandler.setUserProfile(profileButton);
     }
 
 }

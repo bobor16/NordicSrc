@@ -6,6 +6,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -66,13 +67,16 @@
          </children>
       </Pane>
       <Label layoutX="11.0" layoutY="330.0" prefHeight="18.0" prefWidth="291.0" text="Your password must be between 6 and 32 characters" />
-      <RadioButton fx:id="employeeRadioButton" layoutX="29.0" layoutY="452.0" mnemonicParsing="false" text="Employee" />
-      <RadioButton fx:id="customerRadioButton" layoutX="138.0" layoutY="452.0" mnemonicParsing="false" text="Customer">
+      <RadioButton fx:id="employeeRadioButton" layoutX="29.0" layoutY="452.0" mnemonicParsing="false" text="Employee" userData="employee">
+         <toggleGroup>
+            <ToggleGroup fx:id="registrationType" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="customerRadioButton" layoutX="138.0" layoutY="452.0" mnemonicParsing="false" text="Customer" toggleGroup="$registrationType" userData="customer">
          <padding>
             <Insets left="15.0" />
          </padding>
       </RadioButton>
-      <RadioButton fx:id="manufacturerRadioButton" layoutX="248.0" layoutY="452.0" mnemonicParsing="false" text="Manufacturer">
+      <RadioButton fx:id="manufacturerRadioButton" layoutX="248.0" layoutY="452.0" mnemonicParsing="false" text="Manufacturer" toggleGroup="$registrationType" userData="manufacturer">
          <padding>
             <Insets left="15.0" />
          </padding>

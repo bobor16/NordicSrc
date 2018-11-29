@@ -7,15 +7,17 @@ package presentationLayer;
 
 import Interfaces.Ilogic.Ilogic;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import dataLayer.ClientController;
+import dataLayer.Packet;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 /**
  * FXML Controller class
@@ -62,7 +64,12 @@ public class RegisterViewController extends SuperController implements Initializ
     @FXML
     private PasswordField verifyPasswordField;
 
-    ApplicationStateHandler applicationStateHandler = new ApplicationStateHandler();
+    private final ToggleGroup group = new ToggleGroup();
+    
+    private ApplicationStateHandler applicationStateHandler = new ApplicationStateHandler();
+
+    private HashMap<String, String> registerForm = new HashMap<>();
+
 
     /**
      * Initializes the controller class.
@@ -70,6 +77,16 @@ public class RegisterViewController extends SuperController implements Initializ
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        manufacturerRadioButton.setToggleGroup(group);
+        customerRadioButton.setToggleGroup(group);
+        employeeRadioButton.setToggleGroup(group);
+        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
+            public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
+                if (group.getSelectedToggle() != null) {
+                    registerForm.put("type", group.getSelectedToggle().getUserData().toString());
+                }
+            }
+        });
     }
 
     @FXML
@@ -79,17 +96,30 @@ public class RegisterViewController extends SuperController implements Initializ
 
     @FXML
     private void registerMethod(ActionEvent event) {
-
-        if (manufacturerRadioButton.isSelected()) {
-            logic.addUserToDataBase(firstNameField.getText(), lastNameField.getText(), passwordField.getText(), "Manufactorer", emailField.getText());
+        registerForm.put("name", firstNameField.getText() + " " + lastNameField.getText());
+        registerForm.put("email", emailField.getText());
+        registerForm.put("password", passwordField.getText());
+        registerForm.put("cname", companyNameField.getText());
+        registerForm.put("cvr", CVRField.getText());
+        Packet p = new Packet(2, registerForm);
+        ClientController cc = new ClientController();
+        cc.sendPackage(p);
+        p = cc.receivePackage();
+        if (p.getId() == 2){
+            switch ((String)p.getObject()){
+                case "success":
+                    applicationStateHandler.setLogInScreen(cancelButton/*???*/);
+                    break;
+                case "user exists":
+                    System.out.println("email exists already");
+                    break;
+                default:
+                    System.out.println("Registration failed");
+                    break;
+            }
+        } else {
+            System.out.println("Wrong packet received? ID: " + p.getId());
         }
-        if (customerRadioButton.isSelected()) {
-            logic.addUserToDataBase(firstNameField.getText(), lastNameField.getText(), passwordField.getText(), "Costumer", emailField.getText());
-        }
-        if (employeeRadioButton.isSelected()) {
-            logic.addUserToDataBase(firstNameField.getText(), lastNameField.getText(), passwordField.getText(), "Employee", emailField.getText());
-        }
-
     }
 
 }

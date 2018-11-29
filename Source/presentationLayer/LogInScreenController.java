@@ -4,6 +4,9 @@ import Interfaces.Ilogic.Ilogic;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import dataLayer.ClientController;
+import dataLayer.Packet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -64,16 +67,41 @@ public class LogInScreenController extends SuperController implements Initializa
 
     @FXML
     private void LoginOnAction(ActionEvent event) {
-        
-        
-        //Login as admin
+        ClientController cc = new ClientController();
+        String UP = emailField.getText() + " " + PasswordField.getText();
+        Packet p = new Packet(1, UP.toLowerCase());
+        cc.sendPackage(p);
+        p = cc.receivePackage();
+        if (p.getId() == 1){
+            switch ((String)p.getObject()) {
+                case "admin":
+                    stateHandler.setAdminPortalView(LoginButton);
+                    break;
+
+                case "manufacturer":
+                    stateHandler.setManufactorerPortalView(LoginButton);
+                    break;
+
+                case "customer":
+                    stateHandler.customerPortalView(LoginButton);
+                    break;
+
+                case "invalid":
+                    System.out.println("Wrong login");
+                    break;
+                default:
+                    System.out.println("Something went wrong, I received: " + p.getObject());
+                    break;
+            }
+        }
+      /*  //Login as admin
             if(PasswordField.getText().equalsIgnoreCase("Admin") && emailField.getText().equalsIgnoreCase("Admin"))  stateHandler.setAdminPortalView(LoginButton);
 
         //Login as manufactorer
             if(PasswordField.getText().equalsIgnoreCase("manufactorer") && emailField.getText().equalsIgnoreCase("manufactorer"))stateHandler.setManufactorerPortalView(LoginButton);
-            
+
         //Logic as Costumer
-            if(PasswordField.getText().equalsIgnoreCase("customer") && emailField.getText().equalsIgnoreCase("customer"))stateHandler.customerPortalView(LoginButton);
+            if(PasswordField.getText().equalsIgnoreCase("customer") && emailField.getText().equalsIgnoreCase("customer"))stateHandler.customerPortalView(LoginButton);*/
     }
 
     @FXML

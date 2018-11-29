@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logicLayer;
+package LogicLayer;
 
 /**
  *
@@ -11,7 +11,10 @@ package logicLayer;
  */
 import Interfaces.Ilogic.Ilogic;
 import Interfaces.Idata.Idata;
+import dataLayer.DBCase;
+import dataLayer.DBUsers;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,56 +55,30 @@ public class LogicFacade implements Interfaces.Ilogic.Ilogic {
         data.clearSystemLog();
     }
 
-    @Override
-    public String getEmail() {
-        return data.getEmail();
-    }
-
-    @Override
-    public String getFirstName() {
-        return data.getFirstName();
-    }
-    @Override
-    public void setFirstName(String firstName) {
-        data.setFirstName(firstName);
-    }
-
-    @Override
-    public String getLastName() {
-        return data.getLastName();
-    }
-
-    @Override
-    public void setLastName(String lastName) {
-        data.setLastName(lastName);
-    }
-
-    @Override
-    public String getPassword() {
-        return data.getPassword();
-    }
-
-    @Override
-    public void setPassword(String password) {
-        data.setPassword(password);
-    }
-
-    @Override
-    public String getType() {
-        return data.getType();
-    }
-
-    @Override
-    public void setType(String type) {
-        data.setType(type);
-    }
-
-    @Override
-    public void setEmail(String email) {
-        data.setEmail(email);
-    }
-
     public Boolean passwordCheck(String password) {
         return passwordChecker.checkPassword(password);
     }
+
+    @Override
+    public void addCaseToList(Case aCase) {
+    }
+
+    @Override
+    public ArrayList<Case> getCaseList() {
+        return data.getCaseList();
+    }
+    
+    public static void main(String[] args) {
+        LogicFacade s = new LogicFacade();
+        for(int i = 0; i < s.getCaseList().size(); i++){
+            s.getCaseList().get(i).getCaseName();
+        }
+    }
+
+    @Override
+    public void addUserToDataBase(String firstName, String lastName, String password, String type, String email) {
+        data.addUserToDataBase(firstName, lastName, password, type, email);
+    }
+
+    
 }

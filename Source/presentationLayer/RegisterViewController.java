@@ -61,28 +61,35 @@ public class RegisterViewController extends SuperController implements Initializ
     private Label verifyPasswordLabel;
     @FXML
     private PasswordField verifyPasswordField;
-    
+
     ApplicationStateHandler applicationStateHandler = new ApplicationStateHandler();
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void cancelButtonMethod(ActionEvent event) {
         applicationStateHandler.setLogInScreen(cancelButton);
     }
 
-    
     @FXML
     private void registerMethod(ActionEvent event) {
+
+        if (manufacturerRadioButton.isSelected()) {
+            logic.addUserToDataBase(firstNameField.getText(), lastNameField.getText(), passwordField.getText(), "Manufactorer", emailField.getText());
+        }
+        if (customerRadioButton.isSelected()) {
+            logic.addUserToDataBase(firstNameField.getText(), lastNameField.getText(), passwordField.getText(), "Costumer", emailField.getText());
+        }
+        if (employeeRadioButton.isSelected()) {
+            logic.addUserToDataBase(firstNameField.getText(), lastNameField.getText(), passwordField.getText(), "Employee", emailField.getText());
+        }
+
     }
 
-    
-    
-    
 }

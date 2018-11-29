@@ -10,9 +10,11 @@ package dataLayer;
  * @author mehgn
  */
 import Interfaces.Ilogic.Ilogic;
-import logicLayer.SystemLog;
 import Interfaces.Idata.Idata;
-import logicLayer.SystemLog;
+import LogicLayer.Case;
+import LogicLayer.LogicFacade;
+import LogicLayer.SystemLog;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,12 +25,14 @@ public class DataFacade implements Idata {
 
     private static Idata data;
     private static Ilogic logic;
-    DBUsers DBUsers;
-    DBSystemLog DBSystemlog;
+    private DBUsers DBUsers;
+    private DBSystemLog DBSystemlog;
+    private DBCase DBCase;
 
     public DataFacade() {
         DBUsers = new DBUsers();
         DBSystemlog = new DBSystemLog();
+        DBCase = new DBCase();
     }
 
     public static Idata getInstance() {
@@ -56,53 +60,13 @@ public class DataFacade implements Idata {
     }
 
     @Override
-    public String getEmail() {
-        return DBUsers.getEmail();
+    public ArrayList<Case> getCaseList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String getFirstName() {
-        return DBUsers.getFirstName();
-    }
-
-    @Override
-    public void setFirstName(String firstName) {
-        DBUsers.setFirstName(firstName);
-    }
-
-    @Override
-    public String getLastName() {
-        return DBUsers.getLastName();
-    }
-
-    @Override
-    public void setLastName(String lastName) {
-        DBUsers.setLastName(lastName);
-    }
-
-    @Override
-    public String getPassword() {
-        return DBUsers.getPassword();
-    }
-
-    @Override
-    public void setPassword(String password) {
-        DBUsers.setPassword(password);
-    }
-
-    @Override
-    public String getType() {
-        return DBUsers.getType();
-    }
-
-    @Override
-    public void setType(String type) {
-        DBUsers.setType(type);
-    }
-
-    @Override
-    public void setEmail(String email) {
-        DBUsers.setEmail(email);
+    public void addUserToDataBase(String firstName, String lastName, String password, String type, String email) {
+        DBUsers.addUserToDataBase(firstName, lastName, password, type, email);
     }
 }
 

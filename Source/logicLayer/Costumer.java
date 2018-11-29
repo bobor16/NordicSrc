@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logicLayer;
+package LogicLayer;
 
 /**
  *
@@ -11,7 +11,8 @@ package logicLayer;
  */
 public class Costumer extends User{
 
-    public Costumer(String name, String password, String type, String email) {
-        super(name, password, "Customer", email);
-}
+    public Costumer(String firstName, String lastName, String password, String type, String email) {
+        super(firstName, lastName, password, type, email);
+    }
+
 }

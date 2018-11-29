@@ -6,37 +6,50 @@
 package dataLayer;
 
 import Interfaces.All.ISystemLog;
+import LogicLayer.SystemLog;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
  *
  * @author mehgn
  */
-public class DBSystemLog implements ISystemLog {
+public class DBSystemLog extends DBconnect implements ISystemLog {
     
+      /*
+    Initialize a SystemLog object with Strings whom gets their values from the SQL database in the SystemLog table
+    returns a List with a SystemLog.
+     */
     @Override
-    public List getSystemLog() {
-        List systemLog = new ArrayList();
+    public List<SystemLog> getSystemLog() {
+         List systemLog = new ArrayList<>();
+        SystemLog tempSystemLog = null;
+        String log;
         try {
-//            dbConnect();
-//            Connection db = connection;
-//
-//            Statement st = db.createStatement();
-//            ResultSet rs = st.executeQuery("SELECT * FROM SystemLog");
-//            while (rs.next()) {
-//
-//                try {
-//                    tempSystemLog.setSystemLog(rs.getString(1));
-//                    tempSystemLog = new SystemLog(log);
-//                    systemLog.add(tempSystemLog);
-//                } catch (Exception e) {
-//                    System.out.println(e);
-//                }
-//            }
-//            rs.close();
-//            st.close();
-    
+
+            dbConnection();
+            Connection db = connection;
+
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM SystemLog");
+            while (rs.next()) {
+
+                try {
+                    log = rs.getString(1);
+                    tempSystemLog = new SystemLog();
+                    tempSystemLog.setSystemLog(log);
+                    systemLog.add(tempSystemLog);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+            rs.close();
+            st.close();
+
         } catch (Exception e) {
             System.out.println(e);
         } finally {
@@ -46,12 +59,22 @@ public class DBSystemLog implements ISystemLog {
 
     @Override
     public void setSystemLog(String systemLogText) {
-//        SystemLog tempSystemLog = new SystemLog();
-        System.out.println("SystemLog has been set to " + systemLogText);
+         Date date = new Date();
+        try {
+            dbConnection();
+            Connection db = connection;
+
+            Statement st = db.createStatement();
+            st.executeUpdate("insert into SystemLog(SystemLog) Values('" + date.toString() + " - " + systemLogText + "');");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     @Override
     public void clearSystemLog() {
+        
     }
     
     

@@ -6,16 +6,21 @@
 package presentationLayer;
 
 import Interfaces.Ilogic.Ilogic;
+import LogicLayer.Case;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
+import javafx.scene.control.cell.ComboBoxListCell;
 
 /**
  * FXML Controller class
@@ -24,6 +29,8 @@ import javafx.scene.control.Tab;
  */
 public class ManufactorerPortalViewController extends SuperController implements Initializable {
 
+    @FXML
+    private MenuBar menubar;
     @FXML
     private PasswordField SearchField;
     @FXML
@@ -37,28 +44,24 @@ public class ManufactorerPortalViewController extends SuperController implements
     @FXML
     private Tab NewCasesListView;
     @FXML
-    private ListView<?> CaseListView11;
+    private ListView<Case> CaseListView;
     @FXML
     private Button AttachedFilesButton;
     @FXML
     private Button PlaceBidButton;
     @FXML
     private Button logOutButton;
-    @FXML
-    private Button profileButton;
-    @FXML
-    private Button settingsButton;
 
     public ManufactorerPortalViewController(Ilogic logic) {
         super(logic);
     }
-    
+
     ApplicationStateHandler applicationStateHandler = new ApplicationStateHandler();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        populateObservableCaseListView();
+    }
 
     @FXML
     private void searchOnAction(ActionEvent event) {
@@ -83,6 +86,7 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     @FXML
     private void PlaceBidOnAction(ActionEvent event) {
+        applicationStateHandler.setPlaceBidView(PlaceBidButton);
     }
 
     @FXML
@@ -90,13 +94,12 @@ public class ManufactorerPortalViewController extends SuperController implements
         applicationStateHandler.setLogInScreen(logOutButton);
     }
 
-    @FXML
-    private void profileButtonMethod(ActionEvent event) {
-        applicationStateHandler.setUserProfile(profileButton);
+    private void showCases() {
     }
 
-    @FXML
-    private void settingsButtonMethod(ActionEvent event) {
+    public void populateObservableCaseListView() {
+//        ObservableList<Case> oberservableCaseList = FXCollections.observableArrayList(logic.getCaseList());
+//        CaseListView.setItems(oberservableCaseList);
+//        CaseListView.setCellFactory(ComboBoxListCell.forListView(oberservableCaseList));
     }
-    
 }

@@ -1,4 +1,5 @@
 package dataLayer;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -19,8 +20,8 @@ public class ClientController {
             }
         }
     }
-
 //tek-studsrv0c.stud-srv.sdu.dk
+
     private void connectToServer() throws IOException {
         socket = new Socket("127.0.0.1", 1337);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());

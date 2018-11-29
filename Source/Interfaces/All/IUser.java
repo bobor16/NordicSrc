@@ -5,29 +5,13 @@
  */
 package Interfaces.All;
 
+import LogicLayer.User;
+
 /**
  *
  * @author mehgn
  */
 public interface IUser {
 
-    public String getFirstName();
-
-    public void setFirstName(String firstName);
-
-    public String getLastName();
-
-    public void setLastName(String lastName);
-
-    public String getPassword();
-
-    public void setPassword(String password);
-
-    public String getType();
-
-    public void setType(String type);
-
-    public String getEmail();
-
-    public void setEmail(String email);
+   public void addUserToDataBase(String firstName, String lastName, String password, String type, String email);
 }

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -66,30 +66,7 @@
                                           <Image url="@assets/NordicSrcLogo.PNG" />
                                        </image>
                                     </ImageView>
-                                    <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0">
-                                       <children>
-                                          <Button fx:id="loadScene1" mnemonicParsing="false" prefWidth="190.0" text="?">
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button mnemonicParsing="false" prefWidth="190.0" text="?">
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button mnemonicParsing="false" prefWidth="190.0" text="?">
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button mnemonicParsing="false" prefWidth="190.0" text="?">
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                       </children>
-                                    </VBox>
+                                    <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0" />
                                  </children>
                               </AnchorPane>
                            </items>
@@ -288,7 +265,8 @@
                                     </ImageView>
                                     <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0">
                                        <children>
-                                          <Button fx:id="AttachedFilesButton1" mnemonicParsing="false" prefWidth="190.0" text="Edit User">
+                                          <Button fx:id="createUserButton" layoutX="10.0" layoutY="15.0" mnemonicParsing="false" prefWidth="190.0" text="Create User" />
+                                          <Button fx:id="editUserButton" mnemonicParsing="false" prefWidth="190.0" text="Edit User">
                                              <VBox.margin>
                                                 <Insets top="5.0" />
                                              </VBox.margin>
@@ -298,7 +276,7 @@
                                                 <Insets top="5.0" />
                                              </padding>
                                              <children>
-                                                <Button fx:id="AttachedFilesButton11" layoutY="8.0" mnemonicParsing="false" prefWidth="190.0" text="Delete User" />
+                                                <Button fx:id="deleteUserButton" layoutY="8.0" mnemonicParsing="false" prefWidth="190.0" text="Delete User" />
                                              </children>
                                           </Pane>
                                           <VBox />

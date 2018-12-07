@@ -5,7 +5,7 @@
  */
 package presentationLayer;
 
-import Interfaces.Ilogic.Ilogic;
+import interfaces.iLogic.Ilogic;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;

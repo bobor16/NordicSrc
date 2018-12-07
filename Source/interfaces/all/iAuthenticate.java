@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces.All;
+package interfaces.all;
 
 /**
  *
  * @author mehgn
  */
-public interface IManufactorer extends IUser{
+public interface iAuthenticate {
     
 }

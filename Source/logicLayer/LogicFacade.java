@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LogicLayer;
+package logicLayer;
 
 /**
  *
  * @author mehgn
  */
-import Interfaces.Ilogic.Ilogic;
-import Interfaces.Idata.Idata;
-import dataLayer.DBCase;
-import dataLayer.DBUsers;
-import java.io.File;
+import interfaces.iLogic.Ilogic;
+import interfaces.iData.Idata;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +19,7 @@ import java.util.List;
  *
  * @author mehgn
  */
-public class LogicFacade implements Interfaces.Ilogic.Ilogic {
+public class LogicFacade implements interfaces.iLogic.Ilogic {
 
     private static Idata data;
     private static Ilogic logic;
@@ -40,21 +38,6 @@ public class LogicFacade implements Interfaces.Ilogic.Ilogic {
         return logic;
     }
 
-    @Override
-    public List<SystemLog> getSystemLog() {
-        return data.getSystemLog();
-    }
-
-    @Override
-    public void setSystemLog(String systemLogText) {
-        data.setSystemLog(systemLogText);
-    }
-
-    @Override
-    public void clearSystemLog() {
-        data.clearSystemLog();
-    }
-
     public Boolean passwordCheck(String password) {
         return passwordChecker.checkPassword(password);
     }
@@ -70,15 +53,8 @@ public class LogicFacade implements Interfaces.Ilogic.Ilogic {
     
     public static void main(String[] args) {
         LogicFacade s = new LogicFacade();
-        for(int i = 0; i < s.getCaseList().size(); i++){
+        for (int i = 0; i < s.getCaseList().size(); i++) {
             s.getCaseList().get(i).getCaseName();
         }
     }
-
-    @Override
-    public void addUserToDataBase(String firstName, String lastName, String password, String type, String email) {
-        data.addUserToDataBase(firstName, lastName, password, type, email);
-    }
-
-    
 }

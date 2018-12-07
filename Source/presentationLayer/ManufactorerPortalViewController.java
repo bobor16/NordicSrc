@@ -5,8 +5,8 @@
  */
 package presentationLayer;
 
-import Interfaces.Ilogic.Ilogic;
-import LogicLayer.Case;
+import interfaces.iLogic.Ilogic;
+import logicLayer.Case;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;

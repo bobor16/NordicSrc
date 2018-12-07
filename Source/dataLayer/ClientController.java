@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 
 public class ClientController {
 
@@ -51,10 +54,39 @@ public class ClientController {
     public Packet receivePackage() {
         try {
             return (Packet) objectInputStream.readObject();
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String login(String UP){
+        Packet p = new Packet(1, UP.toLowerCase());
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 1){
+            return (String) p.getObject();
+        }
+        return "-1";
+    }
+
+    public String register(HashMap registerForm){
+        Packet p = new Packet(2, registerForm);
+        sendPackage(p);
+        p = receivePackage();
+
+        if (p.getId() == 2){
+            return (String) p.getObject();
+        }
+        return "-1";
+    }
+
+    public ArrayList<ArrayList> getSystemLog() {
+        Packet p = new Packet(3, null);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 3){
+            return (ArrayList<ArrayList>) p.getObject();
         }
         return null;
     }

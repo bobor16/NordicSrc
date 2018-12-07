@@ -1,6 +1,6 @@
 package presentationLayer;
 
-import Interfaces.Ilogic.Ilogic;
+import interfaces.iLogic.Ilogic;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -69,30 +69,25 @@ public class LogInScreenController extends SuperController implements Initializa
     private void LoginOnAction(ActionEvent event) {
         ClientController cc = new ClientController();
         String UP = emailField.getText() + " " + PasswordField.getText();
-        Packet p = new Packet(1, UP.toLowerCase());
-        cc.sendPackage(p);
-        p = cc.receivePackage();
-        if (p.getId() == 1){
-            switch ((String)p.getObject()) {
-                case "admin":
-                    stateHandler.setAdminPortalView(LoginButton);
-                    break;
-
-                case "manufacturer":
-                    stateHandler.setManufactorerPortalView(LoginButton);
-                    break;
-
-                case "customer":
-                    stateHandler.customerPortalView(LoginButton);
-                    break;
-
-                case "invalid":
-                    System.out.println("Wrong login");
-                    break;
-                default:
-                    System.out.println("Something went wrong, I received: " + p.getObject());
-                    break;
-            }
+        switch (cc.login(UP)) {
+            case "admin":
+                stateHandler.setAdminPortalView(LoginButton);
+                break;
+            case "manufacturer":
+                stateHandler.setManufactorerPortalView(LoginButton);
+                break;
+            case "customer":
+                stateHandler.customerPortalView(LoginButton);
+                break;
+            case "invalid":
+                System.out.println("Wrong login");
+                break;
+            case "not verified":
+                System.out.println("User not verified");
+                break;
+            default:
+                System.out.println("Something went wrong");
+                break;
         }
       /*  //Login as admin
             if(PasswordField.getText().equalsIgnoreCase("Admin") && emailField.getText().equalsIgnoreCase("Admin"))  stateHandler.setAdminPortalView(LoginButton);

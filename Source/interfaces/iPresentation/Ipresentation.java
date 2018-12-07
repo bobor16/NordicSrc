@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces.All;
+package interfaces.iPresentation;
 
-import LogicLayer.User;
+import interfaces.iLogic.Ilogic;
+
 
 /**
  *
  * @author mehgn
  */
-public interface IUser {
+public interface Ipresentation {
 
-   public void addUserToDataBase(String firstName, String lastName, String password, String type, String email);
+    void injectLogic(Ilogic logic);
+
+    void startApplication(String[] args);
 }

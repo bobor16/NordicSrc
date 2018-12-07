@@ -1,11 +1,11 @@
 package Starter;
 
-import Interfaces.Idata.Idata;
-import Interfaces.Ipresentation.Ipresentation;
+import interfaces.iData.Idata;
+import interfaces.iPresentation.Ipresentation;
 import dataLayer.ClientController;
 import presentationLayer.presentationFacade;
-import Interfaces.Ilogic.Ilogic;
-import LogicLayer.LogicFacade;
+import interfaces.iLogic.Ilogic;
+import logicLayer.LogicFacade;
 import dataLayer.DataFacade;
 
 public class Starter {

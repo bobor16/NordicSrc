@@ -5,7 +5,7 @@
  */
 package presentationLayer;
 
-import Interfaces.Ilogic.Ilogic;
+import interfaces.iLogic.Ilogic;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -101,25 +101,18 @@ public class RegisterViewController extends SuperController implements Initializ
         registerForm.put("password", passwordField.getText());
         registerForm.put("cname", companyNameField.getText());
         registerForm.put("cvr", CVRField.getText());
-        Packet p = new Packet(2, registerForm);
         ClientController cc = new ClientController();
-        cc.sendPackage(p);
-        p = cc.receivePackage();
-        if (p.getId() == 2){
-            switch ((String)p.getObject()){
-                case "success":
-                    applicationStateHandler.setLogInScreen(cancelButton/*???*/);
-                    break;
-                case "user exists":
-                    System.out.println("email exists already");
-                    break;
-                default:
-                    System.out.println("Registration failed");
-                    break;
+        switch (cc.register(registerForm)){
+            case "success":
+                applicationStateHandler.setLogInScreen(cancelButton/*???*/);
+                break;
+            case "user exists":
+                System.out.println("email exists already");
+                break;
+            default:
+                System.out.println("Registration failed");
+                break;
             }
-        } else {
-            System.out.println("Wrong packet received? ID: " + p.getId());
-        }
     }
 
 }

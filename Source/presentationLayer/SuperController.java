@@ -5,7 +5,7 @@
  */
 package presentationLayer;
 
-import Interfaces.Ilogic.Ilogic;
+import interfaces.iLogic.Ilogic;
 
 
 /**

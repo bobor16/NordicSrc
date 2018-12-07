@@ -1,4 +1,4 @@
-package Starter;
+package starter;
 
 import interfaces.iData.Idata;
 import interfaces.iPresentation.Ipresentation;

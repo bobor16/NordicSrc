@@ -33,8 +33,6 @@ public class AdminPortalViewController extends SuperController implements Initia
     @FXML
     private Button ShowCaseButton;
     @FXML
-    private Button loadScene1;
-    @FXML
     private Tab NewCasesListView;
     @FXML
     private ListView<?> CaseListView11;
@@ -49,11 +47,19 @@ public class AdminPortalViewController extends SuperController implements Initia
     @FXML
     private ListView<?> CaseListView111;
     @FXML
-    private Button AttachedFilesButton1;
-    @FXML
-    private Button AttachedFilesButton11;
-    @FXML
     private Button logOutButton;
+    @FXML
+    private Button adminProfileButton;
+    @FXML
+    private Button adminSettingsButton;
+    @FXML
+    private Button showUserButton;
+    @FXML
+    private Button createUserButton;
+    @FXML
+    private Button editUserButton;
+    @FXML
+    private Button deleteUserButton;
 
     public AdminPortalViewController(Ilogic logic) {
         super(logic);
@@ -66,7 +72,6 @@ public class AdminPortalViewController extends SuperController implements Initia
         // TODO
     }
 
-    @FXML
     public void showCaseOnAction(ActionEvent event) throws IOException {
 
     }
@@ -81,7 +86,6 @@ public class AdminPortalViewController extends SuperController implements Initia
 
     }
 
-    @FXML
     public void loadSceneOnAction(ActionEvent event) throws IOException {
 
     }
@@ -91,7 +95,6 @@ public class AdminPortalViewController extends SuperController implements Initia
 
     }
 
-    @FXML
     public void OpenAttachedFilesOnAction(ActionEvent event) throws IOException {
 
     }
@@ -101,7 +104,6 @@ public class AdminPortalViewController extends SuperController implements Initia
 
     }
 
-    @FXML
     public void logout(ActionEvent event) throws IOException {
 
     }
@@ -109,6 +111,10 @@ public class AdminPortalViewController extends SuperController implements Initia
     @FXML
     private void logOutButtonMethod(ActionEvent event) {
         appliCationStateHandler.setLogInScreen(logOutButton);
+    }
+
+    @FXML
+    private void showUserOnAction(ActionEvent event) {
     }
 
 }

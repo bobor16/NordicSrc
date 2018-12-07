@@ -5,7 +5,7 @@
  */
 package presentationLayer;
 
-import Interfaces.Ilogic.Ilogic;
+import interfaces.iLogic.Ilogic;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

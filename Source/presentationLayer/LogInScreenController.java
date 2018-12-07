@@ -85,6 +85,10 @@ public class LogInScreenController extends SuperController implements Initializa
                 case "customer":
                     stateHandler.customerPortalView(LoginButton);
                     break;
+                    
+                case "employee":
+                    stateHandler.setEmployeeView(LoginButton);
+                    break;
 
                 case "invalid":
                     System.out.println("Wrong login");

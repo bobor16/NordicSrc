@@ -32,7 +32,7 @@ public class ApplicationStateHandler {
     }
 
     public void setAdminPortalView(Button button) {
-        //Login as manufactorer
+        //Login as Admin
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminPortalView.fxml"));
             loader.setController(new AdminPortalViewController(logic));
@@ -50,7 +50,7 @@ public class ApplicationStateHandler {
     }
 
     public void setRegisterPortalView(Button button) {
-        //Login as manufactorer
+        //RegisterView
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterView.fxml"));
             loader.setController(new RegisterViewController(logic));
@@ -68,7 +68,7 @@ public class ApplicationStateHandler {
     }
 
     public void customerPortalView(Button button) {
-        //Login as manufactorer
+        //Login as customer
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerPortalView.fxml"));
             loader.setController(new CustomerPortalViewController(logic));
@@ -86,7 +86,7 @@ public class ApplicationStateHandler {
     }
 
         public void setLogInScreen(Button button){
-        //Login as manufactorer
+        //Logout button
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
             loader.setController(new LogInScreenController(logic));
@@ -104,7 +104,7 @@ public class ApplicationStateHandler {
     }
         
         public void setPickAFile(Button button){
-        //Login as manufactorer
+        //Pick a file view
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("pickAFile.fxml"));
             loader.setController(new PickAFileController(logic));
@@ -135,6 +135,24 @@ public class ApplicationStateHandler {
             stage.setScene(scene);
 //                logic.writeToSystemlog(userNameField.getText() + " Logged in"); // writes to systemlog
         } catch (Exception e) { 
+            e.printStackTrace();
+//        }
+        }
+        }
+        
+        public void setEmployeeView(Button button){
+        //Login as an Employee
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Employee.fxml"));
+            loader.setController(new EmployeeController(logic));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) button.getScene().getWindow();
+            stage.setTitle("NordicSrc");
+            stage.setResizable(false);
+            stage.setScene(scene);
+//                logic.writeToSystemlog(userNameField.getText() + " Logged in"); // writes to systemlog
+        } catch (Exception e) {
             e.printStackTrace();
 //        }
         }

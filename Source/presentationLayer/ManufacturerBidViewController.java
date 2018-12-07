@@ -23,7 +23,7 @@ public class ManufacturerBidViewController extends SuperController implements In
         super(logic);
     }
 
-    /**
+    /*
      * Initializes the controller class.
      */
     @Override

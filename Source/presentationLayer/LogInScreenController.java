@@ -89,9 +89,11 @@ public class LogInScreenController extends SuperController implements Initializa
                 case "employee":
                     stateHandler.setEmployeeView(LoginButton);
                     break;
-
                 case "invalid":
                     System.out.println("Wrong login");
+                    break;
+                case "not verified":
+                    System.out.println("User not verified");
                     break;
                 default:
                     System.out.println("Something went wrong, I received: " + p.getObject());

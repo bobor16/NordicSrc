@@ -11,11 +11,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -60,6 +63,8 @@ public class AdminPortalViewController extends SuperController implements Initia
     private Button editUserButton;
     @FXML
     private Button deleteUserButton;
+    @FXML
+    private AnchorPane userProfilePane;
 
     public AdminPortalViewController(Ilogic logic) {
         super(logic);
@@ -115,6 +120,11 @@ public class AdminPortalViewController extends SuperController implements Initia
 
     @FXML
     private void showUserOnAction(ActionEvent event) {
+        try {
+            userProfilePane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("UserProfileView.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

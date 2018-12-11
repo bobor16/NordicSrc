@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import logicLayer.User;
 
 public class ClientController {
 
@@ -90,6 +91,31 @@ public class ClientController {
         }
         return null;
     }
+    
+    public ArrayList<String> displayUsers() {
+        Packet p = new Packet(4, null);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 4){
+            return (ArrayList<String>) p.getObject();
+        }
+        return null;
+    }
+    
+    public void deleteUser(String email) {
+       Packet p = new Packet(5, email.toLowerCase());
+       sendPackage(p);
+        if (p.getId() == 5){
+            System.out.println("User deleted");
+        }
+         System.out.println("Whoops something went wrong");
+    }
+   
+    public static void main(String[] args) {
+        ClientController CC = new ClientController();
+        System.out.println(CC.displayUsers());
+    }
+    
     public String getPassword(String email){
         String message = email;
         Packet p = new Packet(5, message);

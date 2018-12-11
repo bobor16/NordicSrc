@@ -165,7 +165,7 @@ public class ApplicationStateHandler {
     public void setPasswordView(Button button) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/ForgotPasswordFXML.fxml"));
-            loader.setController(new ForgotPasswordController(logic));
+            loader.setController(new ForgotPasswordFXMLController(logic));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setResizable(false);

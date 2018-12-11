@@ -16,16 +16,26 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>
             <Pane prefHeight="25.0" style="-fx-background-color: #3399CC;">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #3399CC;" text="Profile" />
-                  <Button layoutX="50.0" mnemonicParsing="false" style="-fx-background-color: #3399CC;" text="Settings" />
-                  <Button fx:id="logOutButton" layoutX="853.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logOutButtonMethod" prefHeight="25.0" style="-fx-background-color: #3399CC;" text="Log Out" />
+                  <Button fx:id="logOutButton" layoutX="853.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logOutButtonMethod" prefHeight="25.0" style="-fx-background-color: #3399CC;" text="Log Out">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Label layoutY="4.0" text="Manufactorer Portal">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #3399CC;" tabClosingPolicy="UNAVAILABLE">
@@ -40,7 +50,7 @@
                                        <children>
                                           <HBox>
                                              <children>
-                                                <PasswordField fx:id="SearchField" onAction="#searchOnAction" promptText="Search" />
+                                                <PasswordField fx:id="SearchField" onAction="#searchOnAction" prefWidth="133.77" promptText="Search" />
                                                 <Pane minWidth="-Infinity" prefWidth="5.0" />
                                                 <Button fx:id="SearchButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchOnAction" text="Search" />
                                              </children>
@@ -89,6 +99,11 @@
                                        </padding>
                                     </Pane>
                                     <VBox />
+                                    <ImageView fitHeight="94.0" fitWidth="190.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                       <image>
+                                          <Image url="@assets/NordicSrcLogo.PNG" />
+                                       </image>
+                                    </ImageView>
                                  </children>
                               </AnchorPane>
                            </items>

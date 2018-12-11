@@ -128,4 +128,13 @@ public class LogInScreenController extends SuperController implements Initializa
         //Registrer button
         stateHandler.setRegisterPortalView(registerButton);
     }
+    @FXML
+    private void forgotPwdOnAction(ActionEvent event) {
+        stateHandler.setPasswordView(forgotPwdButton);
+    }
+    
+    @FXML
+    private void okButtonOnAction(ActionEvent event) {
+        
+    }
 }

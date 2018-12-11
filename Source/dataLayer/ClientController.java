@@ -111,17 +111,12 @@ public class ClientController {
          System.out.println("Whoops something went wrong");
     }
    
-    public static void main(String[] args) {
-        ClientController CC = new ClientController();
-        System.out.println(CC.displayUsers());
-    }
-    
     public String getPassword(String email){
         String message = email;
-        Packet p = new Packet(5, message);
+        Packet p = new Packet(6, message);
         sendPackage(p);
         p = receivePackage();
-        if (p.getId() == 5) {
+        if (p.getId() == 6) {
             String password = (String) p.getObject();
             System.out.println(password);
             return password;

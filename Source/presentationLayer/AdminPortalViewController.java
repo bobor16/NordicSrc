@@ -86,7 +86,7 @@ public class AdminPortalViewController extends SuperController implements Initia
     @Override
     public void initialize(URL url, ResourceBundle rb) {
                 userColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-                displayUsersInTable();
+                //displayUsersInTable();
 
     }
 

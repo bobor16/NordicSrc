@@ -9,6 +9,8 @@ package logicLayer;
  *
  * @author mehgn
  */
+import dataLayer.ClientController;
+import dataLayer.Packet;
 import interfaces.iLogic.Ilogic;
 import interfaces.iData.Idata;
 
@@ -50,11 +52,32 @@ public class LogicFacade implements interfaces.iLogic.Ilogic {
     public ArrayList<Case> getCaseList() {
         return data.getCaseList();
     }
-    
+
     public static void main(String[] args) {
         LogicFacade s = new LogicFacade();
-        for (int i = 0; i < s.getCaseList().size(); i++) {
-            s.getCaseList().get(i).getCaseName();
-        }
+//        for (int i = 0; i < s.getCaseList().size(); i++) {
+//            s.getCaseList().get(i).getCaseName();
+//        }
+        System.out.println(s.displayUsers());
+
     }
+
+    //ER NULL!?!?!?!
+    @Override
+    public ArrayList<User> displayUsers() {
+        return data.displayUsers();
+    }
+
+    @Override
+    public void deleteUser(String email) {
+        data.deleteUser(email);
+    }
+    
+    
+    
+    
+    
+     
+     
 }
+

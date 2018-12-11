@@ -9,7 +9,9 @@ import interfaces.all.ICase;
 import interfaces.all.IFileChooser;
 import interfaces.all.iAuthenticate;
 import interfaces.iData.Idata;
+import java.util.ArrayList;
 import logicLayer.Case;
+import logicLayer.User;
 
 /**
  *
@@ -20,5 +22,7 @@ public interface Ilogic extends iAuthenticate, IFileChooser, ICase {
     public void injectData(Idata data);
     public Boolean passwordCheck(String password);
     public void addCaseToList(Case aCase);
+    public void deleteUser(String email);
+    public ArrayList<User> displayUsers();
 
 }

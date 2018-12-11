@@ -91,6 +91,7 @@ public class ClientController {
         }
         return null;
     }
+<<<<<<< HEAD
     
     public ArrayList<String> displayUsers() {
         Packet p = new Packet(4, null);
@@ -114,6 +115,18 @@ public class ClientController {
     public static void main(String[] args) {
         ClientController CC = new ClientController();
         System.out.println(CC.displayUsers());
+=======
+    public String getPassword(String email){
+        String message = email;
+        Packet p = new Packet(5, message);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 5) {
+            String password = (String) p.getObject();
+            System.out.println(password);
+            return password;
+        } return "Wrong Package";
+>>>>>>> master
     }
 
 }

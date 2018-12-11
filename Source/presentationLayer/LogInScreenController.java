@@ -17,7 +17,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.Parent;
-import static sun.net.www.protocol.http.AuthCacheValue.Type.Server;
+import javafx.scene.paint.Color;
 
 /**
  * FXML Controller class
@@ -41,9 +41,15 @@ public class LogInScreenController extends SuperController implements Initializa
     private Label passwordMsgLabel;
     @FXML
     private Label ResetPasword;
-    
+    @FXML
+    private Button forgotPwdButton;
+    @FXML
+    private Label infoLabel;
+    @FXML
+    private Button okButton;
+
     private Ilogic logic;
-    
+
     ApplicationStateHandler stateHandler = new ApplicationStateHandler();
 
     public LogInScreenController(Ilogic logic) {
@@ -65,6 +71,14 @@ public class LogInScreenController extends SuperController implements Initializa
     private void pressEnter(KeyEvent event) throws IOException {
     }
 
+    private void loginError() {
+        System.out.println("Wrong login");
+        infoLabel.setText("Inncorrect username/password, try again!");
+        infoLabel.setTextFill(Color.rgb(210, 39, 30));
+        emailField.setText("");
+        PasswordField.setText("");
+    }
+
     @FXML
     private void LoginOnAction(ActionEvent event) {
         ClientController cc = new ClientController();
@@ -72,8 +86,8 @@ public class LogInScreenController extends SuperController implements Initializa
         Packet p = new Packet(1, UP.toLowerCase());
         cc.sendPackage(p);
         p = cc.receivePackage();
-        if (p.getId() == 1){
-            switch ((String)p.getObject()) {
+        if (p.getId() == 1) {
+            switch ((String) p.getObject()) {
                 case "admin":
                     stateHandler.setAdminPortalView(LoginButton);
                     break;
@@ -85,12 +99,11 @@ public class LogInScreenController extends SuperController implements Initializa
                 case "customer":
                     stateHandler.customerPortalView(LoginButton);
                     break;
-                    
                 case "employee":
                     stateHandler.setEmployeeView(LoginButton);
                     break;
                 case "invalid":
-                    System.out.println("Wrong login");
+                    loginError();
                     break;
                 case "not verified":
                     System.out.println("User not verified");
@@ -100,7 +113,7 @@ public class LogInScreenController extends SuperController implements Initializa
                     break;
             }
         }
-      /*  //Login as admin
+        /*Login as admin
             if(PasswordField.getText().equalsIgnoreCase("Admin") && emailField.getText().equalsIgnoreCase("Admin"))  stateHandler.setAdminPortalView(LoginButton);
 
         //Login as manufactorer
@@ -113,11 +126,21 @@ public class LogInScreenController extends SuperController implements Initializa
     @FXML
     private void registerOnAction(ActionEvent event) {
         //Registrer button
-            stateHandler.setRegisterPortalView(registerButton);
+        stateHandler.setRegisterPortalView(registerButton);
     }
 
     private void setEmail() {
         System.out.println("Email used to login; " + emailField.getText());
 //        logic.setEmail(emailField.getText());
+    }
+
+    @FXML
+    private void forgotPwdOnAction(ActionEvent event) {
+        stateHandler.setPasswordView(forgotPwdButton);
+    }
+
+    @FXML
+    private void okButtonOnAction(ActionEvent event) {
+
     }
 }

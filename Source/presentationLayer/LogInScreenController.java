@@ -113,7 +113,7 @@ public class LogInScreenController extends SuperController implements Initializa
                     break;
             }
         }
-        /*  //Login as admin
+        /*Login as admin
             if(PasswordField.getText().equalsIgnoreCase("Admin") && emailField.getText().equalsIgnoreCase("Admin"))  stateHandler.setAdminPortalView(LoginButton);
 
         //Login as manufactorer
@@ -127,20 +127,5 @@ public class LogInScreenController extends SuperController implements Initializa
     private void registerOnAction(ActionEvent event) {
         //Registrer button
         stateHandler.setRegisterPortalView(registerButton);
-    }
-
-    private void setEmail() {
-        System.out.println("Email used to login; " + emailField.getText());
-//        logic.setEmail(emailField.getText());
-    }
-
-    @FXML
-    private void forgotPwdOnAction(ActionEvent event) {
-        stateHandler.setPasswordView(forgotPwdButton);
-    }
-
-    @FXML
-    private void okButtonOnAction(ActionEvent event) {
-
     }
 }

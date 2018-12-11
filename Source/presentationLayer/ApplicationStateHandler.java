@@ -16,7 +16,7 @@ public class ApplicationStateHandler {
     public void setManufactorerPortalView(Button button) {
         //Login as manufactorer
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ManufactorerPortalView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/ManufactorerPortalView.fxml"));
             loader.setController(new ManufactorerPortalViewController(logic));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -34,7 +34,7 @@ public class ApplicationStateHandler {
     public void setAdminPortalView(Button button) {
         //Login as Admin
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminPortalView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/AdminPortalView.fxml"));
             loader.setController(new AdminPortalViewController(logic));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -52,7 +52,7 @@ public class ApplicationStateHandler {
     public void setRegisterPortalView(Button button) {
         //RegisterView
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/RegisterView.fxml"));
             loader.setController(new RegisterViewController(logic));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -70,7 +70,7 @@ public class ApplicationStateHandler {
     public void customerPortalView(Button button) {
         //Login as customer
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerPortalView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/CustomerPortalView.fxml"));
             loader.setController(new CustomerPortalViewController(logic));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -88,7 +88,7 @@ public class ApplicationStateHandler {
     public void setLogInScreen(Button button) {
         //Logout button
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/LogInScreen.fxml"));
             loader.setController(new LogInScreenController(logic));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -106,7 +106,7 @@ public class ApplicationStateHandler {
     public void setPickAFile(Button button) {
         //Pick a file view
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("pickAFile.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/pickAFile.fxml"));
             loader.setController(new PickAFileController(logic));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -125,7 +125,7 @@ public class ApplicationStateHandler {
     public void setPlaceBidView(Button button) {
         //Login as manufactorer
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ManufactorerPortalView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/ManufactorerPortalView.fxml"));
             loader.setController(new ManufacturerBidViewController(logic));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -143,7 +143,7 @@ public class ApplicationStateHandler {
     public void setEmployeeView(Button button) {
         //Login as an Employee
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Employee.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/Employee.fxml"));
             loader.setController(new EmployeeController(logic));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -164,8 +164,8 @@ public class ApplicationStateHandler {
 
     public void setPasswordView(Button button) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ForgotPasswordFXML.fxml"));
-            loader.setController(new ForgotPasswordFXMLController(logic));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/ForgotPasswordFXML.fxml"));
+            loader.setController(new ForgotPasswordController(logic));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setResizable(false);

@@ -26,7 +26,7 @@ import logicLayer.User;
  *
  * @author Borgar Bordoy
  */
-public class ForgotPasswordFXMLController extends SuperController implements Initializable {
+public class ForgotPasswordController extends SuperController implements Initializable {
 
     @FXML
     private TextField emailField;
@@ -47,7 +47,7 @@ public class ForgotPasswordFXMLController extends SuperController implements Ini
 
     ApplicationStateHandler stateHandler = new ApplicationStateHandler();
 
-    public ForgotPasswordFXMLController(Ilogic logic) {
+    public ForgotPasswordController(Ilogic logic) {
         super(logic);
     }
 

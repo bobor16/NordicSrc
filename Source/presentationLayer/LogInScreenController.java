@@ -113,7 +113,7 @@ public class LogInScreenController extends SuperController implements Initializa
                     break;
             }
         }
-        /*  //Login as admin
+        /*Login as admin
             if(PasswordField.getText().equalsIgnoreCase("Admin") && emailField.getText().equalsIgnoreCase("Admin"))  stateHandler.setAdminPortalView(LoginButton);
 
         //Login as manufactorer

@@ -5,10 +5,15 @@
  */
 package presentationLayer;
 
+import dataLayer.ClientController;
+import dataLayer.Packet;
 import interfaces.iLogic.Ilogic;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +23,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import logicLayer.User;
 
 /**
  * FXML Controller class
@@ -44,11 +53,13 @@ public class AdminPortalViewController extends SuperController implements Initia
     @FXML
     private Tab NewCasesListView1;
     @FXML
-    private PasswordField SearchField1;
+    private PasswordField searchUser;
     @FXML
     private Button SearchButton1;
     @FXML
-    private ListView<?> CaseListView111;
+    private TableView<User> userTable;
+    @FXML
+    private TableColumn<User, String> userColumn;
     @FXML
     private Button logOutButton;
     @FXML
@@ -74,7 +85,9 @@ public class AdminPortalViewController extends SuperController implements Initia
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+                userColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+                displayUsersInTable();
+
     }
 
     public void showCaseOnAction(ActionEvent event) throws IOException {
@@ -127,4 +140,43 @@ public class AdminPortalViewController extends SuperController implements Initia
         }
     }
 
+    @FXML
+    public void registerMethod(ActionEvent event) throws IOException {
+
+    }
+     @FXML
+    public void cancelButtonMethod(ActionEvent event) throws IOException {
+
+    }
+    
+      private ObservableList<User> getUsers() {
+        ObservableList<User> usersObservableList = FXCollections.observableArrayList(displayUsers());
+        return usersObservableList;
+    }
+    
+    private void displayUsersInTable() {
+        userTable.getColumns().clear();
+        userTable.setItems(getUsers());
+        userTable.getColumns().addAll(userColumn);
+        userTable.getSortOrder().add(userColumn);
+    }
+    
+    @FXML
+    public void deleteUser(ActionEvent event) throws IOException {
+        String email = userTable.getSelectionModel().getSelectedItem().getEmail();
+        logic.deleteUser(email);
+        displayUsersInTable();
+    }
+    
+   
+    //skal rykkes ned i datafacade
+     public ArrayList<User> displayUsers() {
+        ClientController cc = new ClientController();
+        ArrayList<User> userEmailList = new ArrayList<>();
+        for(int i = 0; i < cc.displayUsers().size(); i++){
+            userEmailList.add(new User(cc.displayUsers().get(i)));
+        }
+        return userEmailList;
+    }
+    
 }

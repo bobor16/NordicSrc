@@ -45,7 +45,7 @@ public class presentationFacade extends Application implements Ipresentation{
     
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/LogInScreen.fxml"));
         loader.setController(new LogInScreenController(logic));
         Parent root = loader.load();
         Scene scene = new Scene(root);

@@ -128,19 +128,4 @@ public class LogInScreenController extends SuperController implements Initializa
         //Registrer button
         stateHandler.setRegisterPortalView(registerButton);
     }
-
-    private void setEmail() {
-        System.out.println("Email used to login; " + emailField.getText());
-//        logic.setEmail(emailField.getText());
-    }
-
-    @FXML
-    private void forgotPwdOnAction(ActionEvent event) {
-        stateHandler.setPasswordView(forgotPwdButton);
-    }
-
-    @FXML
-    private void okButtonOnAction(ActionEvent event) {
-
-    }
 }

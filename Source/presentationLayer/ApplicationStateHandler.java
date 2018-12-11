@@ -5,13 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ApplicationStateHandler {
 
     private Ilogic logic;
     private Stage returnStage;
-
 
     public void setManufactorerPortalView(Button button) {
         //Login as manufactorer
@@ -25,7 +25,7 @@ public class ApplicationStateHandler {
             stage.setResizable(false);
             stage.setScene(scene);
 //                logic.writeToSystemlog(userNameField.getText() + " Logged in"); // writes to systemlog
-        } catch (Exception e) { 
+        } catch (Exception e) {
             e.printStackTrace();
 //        }
         }
@@ -85,7 +85,7 @@ public class ApplicationStateHandler {
         }
     }
 
-        public void setLogInScreen(Button button){
+    public void setLogInScreen(Button button) {
         //Logout button
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
@@ -102,8 +102,8 @@ public class ApplicationStateHandler {
 //        }
         }
     }
-        
-        public void setPickAFile(Button button){
+
+    public void setPickAFile(Button button) {
         //Pick a file view
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("pickAFile.fxml"));
@@ -121,8 +121,8 @@ public class ApplicationStateHandler {
 //        }
         }
     }
-        
-        public void setPlaceBidView(Button button) {
+
+    public void setPlaceBidView(Button button) {
         //Login as manufactorer
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ManufactorerPortalView.fxml"));
@@ -134,13 +134,13 @@ public class ApplicationStateHandler {
             stage.setResizable(false);
             stage.setScene(scene);
 //                logic.writeToSystemlog(userNameField.getText() + " Logged in"); // writes to systemlog
-        } catch (Exception e) { 
+        } catch (Exception e) {
             e.printStackTrace();
 //        }
         }
-        }
-        
-        public void setEmployeeView(Button button){
+    }
+
+    public void setEmployeeView(Button button) {
         //Login as an Employee
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Employee.fxml"));
@@ -157,9 +157,25 @@ public class ApplicationStateHandler {
 //        }
         }
     }
-        
-        public Stage getStage(){
-            return returnStage;
+
+    public Stage getStage() {
+        return returnStage;
+    }
+
+    public void setPasswordView(Button button) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ForgotPasswordFXML.fxml"));
+            loader.setController(new ForgotPasswordFXMLController(logic));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(button.getScene().getWindow());
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
+    }
 }

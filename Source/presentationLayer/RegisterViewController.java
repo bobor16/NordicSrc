@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import logicLayer.PasswordValidation;
 
 /**
  * FXML Controller class
@@ -77,6 +78,7 @@ public class RegisterViewController extends SuperController implements Initializ
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        PasswordValidation validation = new PasswordValidation();
         manufacturerRadioButton.setToggleGroup(group);
         customerRadioButton.setToggleGroup(group);
         employeeRadioButton.setToggleGroup(group);

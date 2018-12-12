@@ -181,7 +181,7 @@ public class ApplicationStateHandler {
     public void setCreateUserView(Button button) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/createUser.fxml"));
-            loader.setController(new EmployeeController(logic));
+            //loader.setController(new (logic));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) button.getScene().getWindow();

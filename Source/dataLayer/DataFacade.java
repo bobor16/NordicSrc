@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import logicLayer.User;
+import logicLayer.order;
 
 /**
  *
@@ -61,9 +62,10 @@ public class DataFacade implements Idata {
         ClientController cc = new ClientController();
         cc.deleteUser(email);
     }
- 
-  
 
-    
-
+    @Override
+    public ArrayList<order> getOrderListPending() {
+        ClientController cc = new ClientController();
+        return cc.getOrderListPending();
+    }
 }

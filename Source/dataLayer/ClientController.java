@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import logicLayer.User;
+import logicLayer.order;
 
 public class ClientController {
 
@@ -122,5 +123,13 @@ public class ClientController {
             return password;
         } return "Wrong Package";
     }
-
+    public ArrayList<order> getOrderListPending() {
+        Packet p = new Packet(7, null);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 7){
+            return (ArrayList<order>) p.getObject();
+        }
+        return null;
+    }
 }

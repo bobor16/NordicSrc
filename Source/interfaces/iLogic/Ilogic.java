@@ -12,6 +12,7 @@ import interfaces.iData.Idata;
 import java.util.ArrayList;
 import logicLayer.Case;
 import logicLayer.User;
+import logicLayer.order;
 
 /**
  *
@@ -24,5 +25,5 @@ public interface Ilogic extends iAuthenticate, IFileChooser, ICase {
     public void addCaseToList(Case aCase);
     public void deleteUser(String email);
     public ArrayList<User> displayUsers();
-
+    public ArrayList<order> getOrderListPending();
 }

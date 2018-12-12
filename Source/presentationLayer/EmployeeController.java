@@ -5,64 +5,125 @@
  */
 package presentationLayer;
 
+import dataLayer.ClientController;
 import interfaces.iLogic.Ilogic;
-import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import logicLayer.order;
 
 /**
  * FXML Controller class
  *
- * @author rasmu
+ * @author mehgn
  */
 public class EmployeeController extends SuperController implements Initializable {
 
     @FXML
-    private Button adminProfileButton;
-    @FXML
-    private Button adminSettingsButton;
-    @FXML
     private Button logOutButton;
     @FXML
-    private PasswordField SearchField;
+    private Button pendingOrderSearchButton;
     @FXML
-    private Button SearchButton;
+    private Button showPendingOrderButton;
     @FXML
-    private ListView<?> CaseListView11;
+    private TableView<order> tableviewPendingOrders;
     @FXML
-    private Button approveCaseButton;
+    private TableColumn<order, String> tableviewPendingOrdersColumn;
     @FXML
-    private Button delcineCaseButton;
+    private Label pendingOrderTitle;
+    @FXML
+    private Label pendingOrderAmount;
+    @FXML
+    private Label pendingOrderPricePer;
+    @FXML
+    private Label pendingOrderPriceTotal;
+    @FXML
+    private Label pendingOrderCompletionDate;
+    @FXML
+    private Label pendingOrderDevliviryDate;
+    @FXML
+    private Label pendingOrderDeadline;
+    @FXML
+    private TextArea pendingOrderBriefDesc;
+    @FXML
+    private Button pendingOrderShowImagesButton;
+    @FXML
+    private Button AcceptButton;
+    @FXML
+    private Button RejectButton;
+    @FXML
+    private Label OrderIDLabel1;
+    @FXML
+    private PasswordField searchAcceptedOrder;
+    @FXML
+    private Button searchAcceptedOrderButton;
+    @FXML
+    private Button showAcceptedOrderButton;
+    @FXML
+    private TableView<?> acceptedOrdersView;
+    @FXML
+    private TableColumn<?, ?> acceptedOrdersColumn;
+    @FXML
+    private AnchorPane LogisticsPortalView;
+    @FXML
+    private Label CompanyNameLabel;
+    @FXML
+    private Label DeliveryDateLabel;
+    @FXML
+    private Label ItemQuantityLabel;
+    @FXML
+    private Label OrderIdLabel;
+    @FXML
+    private Label OrderStateLabel;
+    @FXML
+    private Label acceptedOrderTitle;
+    @FXML
+    private Label acceptedOrderAmount;
+    @FXML
+    private Label pricePerAcceptedOrders;
+    @FXML
+    private Label priceTotalAcceptedOrder;
+    @FXML
+    private Label completionDateAcceptedOrder;
+    @FXML
+    private Label deliveryDateAcceptedOrder;
+    @FXML
+    private Label deadLineAcceptedOrder;
+    @FXML
+    private TextArea briefDescAcceptedOrders;
+    @FXML
+    private Button showImagesButtonAcceptedOrder;
+    @FXML
+    private Label OrderIDLabel12;
+    @FXML
+    private Label manuFactorerLabel;
+    @FXML
+    private Label pendingOrderCostumer;
 
     public EmployeeController(Ilogic logic) {
         super(logic);
     }
-    
-    ApplicationStateHandler appliCationStateHandler = new ApplicationStateHandler();
 
-    
-
-    /*
+    /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
-    @FXML
-    private void adminProfileOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void adminSettingsOnAction(ActionEvent event) {
+        tableviewPendingOrdersColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        displayPendingOrdersInTable();
     }
 
     @FXML
@@ -70,15 +131,47 @@ public class EmployeeController extends SuperController implements Initializable
     }
 
     @FXML
-    private void SearchOnAction(ActionEvent event) {
+    private void searchPending(ActionEvent event) {
     }
 
     @FXML
-    private void approveOnAction(ActionEvent event) {
+    private void showCaseMethod(ActionEvent event) {
     }
 
     @FXML
-    private void declineOnAction(ActionEvent event) {
+    private void showImagesPendingOrder(ActionEvent event) {
     }
-    
+
+    @FXML
+    private void AcceptOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void RejectOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void showImageAcceptedOrder(ActionEvent event) {
+    }
+
+    @FXML
+    private void searchMethod(ActionEvent event) {
+    }
+
+    public ArrayList<order> getOrderListPending() {
+        ClientController cc = new ClientController();
+        return cc.getOrderListPending();
+    }
+
+    private ObservableList<order> getOrders() {
+        ObservableList<order> usersObservableList = FXCollections.observableArrayList(getOrderListPending());
+        return usersObservableList;
+    }
+
+    private void displayPendingOrdersInTable() {
+        tableviewPendingOrders.getColumns().clear();
+        tableviewPendingOrders.setItems(getOrders());
+        tableviewPendingOrders.getColumns().addAll(tableviewPendingOrdersColumn);
+        tableviewPendingOrders.getSortOrder().add(tableviewPendingOrdersColumn);
+    }
 }

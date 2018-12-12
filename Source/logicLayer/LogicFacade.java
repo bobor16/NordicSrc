@@ -58,11 +58,9 @@ public class LogicFacade implements interfaces.iLogic.Ilogic {
 //        for (int i = 0; i < s.getCaseList().size(); i++) {
 //            s.getCaseList().get(i).getCaseName();
 //        }
-        System.out.println(s.displayUsers());
-
     }
 
-    //ER NULL!?!?!?!
+    //ER NULL!?!?!?! D:
     @Override
     public ArrayList<User> displayUsers() {
         return data.displayUsers();
@@ -72,8 +70,11 @@ public class LogicFacade implements interfaces.iLogic.Ilogic {
     public void deleteUser(String email) {
         data.deleteUser(email);
     }
-    
-    
+
+    @Override
+    public ArrayList<order> getOrderListPending() {
+        return data.getOrderListPending();
+    }
     
     
     

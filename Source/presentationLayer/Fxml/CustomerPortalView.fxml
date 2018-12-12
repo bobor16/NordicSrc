@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -913,7 +913,7 @@
                                                             </GridPane>
                                                          </children>
                                                       </AnchorPane>
-                                                      <AnchorPane id="AnchorPane" prefHeight="637.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <AnchorPane id="AnchorPane" prefHeight="637.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <VBox layoutX="394.0" layoutY="333.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                                <children>
@@ -1028,6 +1028,117 @@
                                                                   </Label>
                                                                </children>
                                                             </Pane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane fx:id="LogisticsView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.4444444444445" prefWidth="531.1111111111111" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <VBox prefHeight="637.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <Pane prefHeight="25.0" style="-fx-background-color: #3399CC;">
+                                                                     <children>
+                                                                        <Label layoutX="216.0" layoutY="-2.0" text="Order Logistics">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="14.0" />
+                                                                           </font>
+                                                                           <padding>
+                                                                              <Insets bottom="5.0" top="5.0" />
+                                                                           </padding>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </Pane>
+                                                                  <HBox>
+                                                                     <children>
+                                                                        <Pane HBox.hgrow="ALWAYS" />
+                                                                        <Label fx:id="CompanyNameLabel1" text="Company Name">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="18.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Pane HBox.hgrow="ALWAYS" />
+                                                                     </children>
+                                                                     <VBox.margin>
+                                                                        <Insets top="5.0" />
+                                                                     </VBox.margin>
+                                                                  </HBox>
+                                                                  <HBox>
+                                                                     <children>
+                                                                        <Pane prefWidth="25.0" />
+                                                                        <Label text="Order Id:" />
+                                                                        <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
+                                                                        <Label fx:id="OrderIdLabel1" text="Label" />
+                                                                        <Pane layoutX="10.0" layoutY="10.0" prefWidth="25.0" />
+                                                                     </children>
+                                                                     <VBox.margin>
+                                                                        <Insets top="5.0" />
+                                                                     </VBox.margin>
+                                                                  </HBox>
+                                                                  <HBox layoutX="10.0" layoutY="67.0">
+                                                                     <children>
+                                                                        <Pane prefWidth="25.0" />
+                                                                        <Label text="Order Logistics Info:">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="14.0" />
+                                                                           </font>
+                                                                           <HBox.margin>
+                                                                              <Insets />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                     <VBox.margin>
+                                                                        <Insets top="30.0" />
+                                                                     </VBox.margin>
+                                                                  </HBox>
+                                                                  <HBox layoutX="10.0" layoutY="167.0">
+                                                                     <children>
+                                                                        <Pane prefWidth="25.0" />
+                                                                        <Label text="Delivery Date:" />
+                                                                        <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
+                                                                        <Label fx:id="DeliveryDateLabel1" text="Label" />
+                                                                        <Pane layoutX="10.0" layoutY="10.0" prefWidth="25.0" />
+                                                                     </children>
+                                                                     <VBox.margin>
+                                                                        <Insets top="5.0" />
+                                                                     </VBox.margin>
+                                                                  </HBox>
+                                                                  <HBox layoutX="10.0" layoutY="267.0">
+                                                                     <children>
+                                                                        <Pane prefWidth="25.0" />
+                                                                        <Label text="Item Quantity" />
+                                                                        <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
+                                                                        <Label fx:id="ItemQuantityLabel1" text="Label" />
+                                                                        <Pane layoutX="10.0" layoutY="10.0" prefWidth="25.0" />
+                                                                     </children>
+                                                                     <VBox.margin>
+                                                                        <Insets top="5.0" />
+                                                                     </VBox.margin>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="50.0" />
+                                                                  <HBox fx:id="OverdueLabel1">
+                                                                     <children>
+                                                                        <Pane prefWidth="25.0" />
+                                                                        <Label text="Delivery overdue by:" />
+                                                                        <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
+                                                                        <Label fx:id="OverdueDateLabel" text="Label" />
+                                                                        <Pane layoutX="10.0" layoutY="10.0" prefWidth="25.0" />
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane visible="false" VBox.vgrow="ALWAYS" />
+                                                                  <HBox layoutX="10.0" layoutY="367.0">
+                                                                     <children>
+                                                                        <Pane HBox.hgrow="ALWAYS" />
+                                                                        <Label text="Order State:">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
+                                                                        <Label fx:id="OrderStateLabel1" text="Label" />
+                                                                        <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Pane prefHeight="50.0" />
+                                                               </children>
+                                                            </VBox>
                                                          </children>
                                                       </AnchorPane>
                                                    </children>

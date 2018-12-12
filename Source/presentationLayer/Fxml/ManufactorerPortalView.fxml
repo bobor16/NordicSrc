@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>
@@ -747,7 +747,7 @@
                                                       </Pane>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane id="AnchorPane" fx:id="OfferView" prefHeight="647.0" prefWidth="510.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <AnchorPane id="AnchorPane" fx:id="OfferView" prefHeight="647.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <VBox layoutX="394.0" layoutY="333.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                          <children>
@@ -824,7 +824,7 @@
                                                             <VBox>
                                                                <children>
                                                                   <Label text="Brief Description" />
-                                                                  <TextArea fx:id="DescriptionTextArea" prefHeight="300.0">
+                                                                  <TextArea fx:id="DescriptionTextArea" prefHeight="290.0">
                                                                      <VBox.margin>
                                                                         <Insets top="5.0" />
                                                                      </VBox.margin>
@@ -860,11 +860,11 @@
                                                 </AnchorPane>
                                                 <AnchorPane fx:id="LogisticsView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="510.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
-                                                      <VBox prefHeight="637.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <VBox prefHeight="637.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <Pane prefHeight="25.0" style="-fx-background-color: #3399CC;">
                                                                <children>
-                                                                  <Label layoutX="201.0" layoutY="-2.0" text="Order Logistics">
+                                                                  <Label layoutX="216.0" layoutY="-2.0" text="Order Logistics">
                                                                      <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                      </font>
@@ -969,7 +969,7 @@
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane fx:id="EditLogisticsView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <AnchorPane fx:id="EditLogisticsView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="510.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <VBox prefHeight="637.0" prefWidth="500.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                          <children>

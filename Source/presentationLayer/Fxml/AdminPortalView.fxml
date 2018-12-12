@@ -23,7 +23,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -437,7 +437,7 @@
                                                 <Insets top="5.0" />
                                              </VBox.margin>
                                           </Button>
-                                          <Button fx:id="deleteUserButton" mnemonicParsing="false" prefWidth="190.0" text="Delete User">
+                                          <Button fx:id="deleteUserButton" mnemonicParsing="false" onAction="#deleteUserOnAction" prefWidth="190.0" text="Delete User">
                                              <VBox.margin>
                                                 <Insets top="5.0" />
                                              </VBox.margin>

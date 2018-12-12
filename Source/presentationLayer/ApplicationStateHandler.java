@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class ApplicationStateHandler {
 
-    private Ilogic logic;
+    private Ilogic logic = presentationFacade.getInstance().getLogic();
     private Stage returnStage;
 
     public void setManufactorerPortalView(Button button) {

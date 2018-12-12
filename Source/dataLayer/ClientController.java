@@ -28,7 +28,7 @@ public class ClientController {
 //tek-studsrv0c.stud-srv.sdu.dk
 
     private void connectToServer() throws IOException {
-        socket = new Socket("tek-studsrv0c.stud-srv.sdu.dk", 1337);
+        socket = new Socket("127.0.0.1", 1337);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectInputStream = new ObjectInputStream(socket.getInputStream());
         Packet p = null;
@@ -93,7 +93,7 @@ public class ClientController {
         return null;
     }
     
-    public ArrayList<String> displayUsers() {
+    public ArrayList<String> getEmails() {
         Packet p = new Packet(4, null);
         sendPackage(p);
         p = receivePackage();
@@ -132,4 +132,15 @@ public class ClientController {
         }
         return null;
     }
+
+    public User getUser(String email){
+        Packet p = new Packet(30, email);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 30){
+            return (User) p.getObject();
+        }
+        return null;
+    }
+
 }

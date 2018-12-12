@@ -12,11 +12,9 @@ package dataLayer;
 import interfaces.iLogic.Ilogic;
 import interfaces.iData.Idata;
 import logicLayer.Case;
-import logicLayer.LogicFacade;
-import logicLayer.SystemLog;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 import logicLayer.User;
 import logicLayer.order;
 
@@ -50,8 +48,8 @@ public class DataFacade implements Idata {
     public ArrayList<User> displayUsers() {
         ClientController cc = new ClientController();
         ArrayList<User> userEmailList = new ArrayList<>();
-        for(int i = 0; i < cc.displayUsers().size(); i++){
-            userEmailList.add(new User(cc.displayUsers().get(i)));
+        for(int i = 0; i < cc.getEmails().size(); i++){
+            userEmailList.add(new User(cc.getEmails().get(i)));
         }
         return userEmailList;
     }

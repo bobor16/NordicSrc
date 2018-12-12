@@ -533,7 +533,7 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="ApprovedOrders">
+                              <Tab text="Approved Orders">
                                  <content>
                                     <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                                        <children>
@@ -816,7 +816,7 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Accepted Orders">
+                              <Tab text="Accepted Offers">
                                  <content>
                                     <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                                        <children>
@@ -917,6 +917,16 @@
                                                          <children>
                                                             <VBox layoutX="394.0" layoutY="333.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                                <children>
+                                                                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="15.0">
+                                                                     <children>
+                                                                        <Label text="Order Id:" />
+                                                                        <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
+                                                                        <Label text="Label" />
+                                                                     </children>
+                                                                     <VBox.margin>
+                                                                        <Insets top="5.0" />
+                                                                     </VBox.margin>
+                                                                  </HBox>
                                                                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
                                                                      <children>
                                                                         <Label text="Title" />
@@ -1003,7 +1013,7 @@
                                                             </VBox>
                                                             <Pane prefHeight="25.0" style="-fx-background-color: #3399CC;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                <children>
-                                                                  <Label layoutX="186.0" layoutY="4.0" text="Order Id: ">
+                                                                  <Label layoutX="186.0" layoutY="4.0" text="Offer Id: ">
                                                                      <padding>
                                                                         <Insets left="10.0" />
                                                                      </padding>
@@ -1032,6 +1042,11 @@
                                                       <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0">
                                                          <children>
                                                             <Button fx:id="ShowLogisticsButton" mnemonicParsing="false" onAction="#ShowLogisticsOnAction" prefWidth="190.0" text="Show Logistics on Order">
+                                                               <VBox.margin>
+                                                                  <Insets top="5.0" />
+                                                               </VBox.margin>
+                                                            </Button>
+                                                            <Button mnemonicParsing="false" prefWidth="190.0" text="Show Order">
                                                                <VBox.margin>
                                                                   <Insets top="5.0" />
                                                                </VBox.margin>

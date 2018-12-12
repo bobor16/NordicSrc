@@ -266,7 +266,7 @@
                                                                   <Pane HBox.hgrow="ALWAYS" />
                                                                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="125.0" text="Place Bid" />
                                                                   <Pane HBox.hgrow="ALWAYS" />
-                                                                  <Button mnemonicParsing="false" prefWidth="125.0" text="Button" />
+                                                                  <Button mnemonicParsing="false" prefWidth="125.0" text="Cancel" />
                                                                   <Pane HBox.hgrow="ALWAYS" />
                                                                </children>
                                                             </HBox>
@@ -313,7 +313,7 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="Pending Orders">
+                        <Tab text="Pending Offers">
                            <content>
                               <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                                  <children>
@@ -630,7 +630,7 @@
                                           </AnchorPane>
                                           <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="500.0">
                                              <children>
-                                                <AnchorPane id="AnchorPane" prefHeight="637.0" prefWidth="500.0">
+                                                <AnchorPane id="AnchorPane" prefHeight="647.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <VBox layoutX="394.0" layoutY="333.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                          <children>
@@ -741,7 +741,7 @@
                                                       </Pane>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane id="AnchorPane" prefHeight="637.0" prefWidth="500.0">
+                                                <AnchorPane id="AnchorPane" prefHeight="647.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <VBox layoutX="394.0" layoutY="333.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                          <children>
@@ -852,65 +852,7 @@
                                                       </Pane>
                                                    </children>
                                                 </AnchorPane>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane maxWidth="190.0" prefWidth="190.0">
-                                             <children>
-                                                <ImageView fitHeight="94.0" fitWidth="190.0" layoutX="40.0" layoutY="80.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                                                   <image>
-                                                      <Image url="@assets/NordicSrcLogo.PNG" />
-                                                   </image>
-                                                </ImageView>
-                                                <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0">
-                                                   <children>
-                                                      <Button fx:id="ShowLogisticsButton" mnemonicParsing="false" onAction="#ShowLogisticsOnAction" prefWidth="190.0" text="Show Offer">
-                                                         <VBox.margin>
-                                                            <Insets top="5.0" />
-                                                         </VBox.margin>
-                                                      </Button>
-                                                      <VBox />
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </AnchorPane>
-                                       </items>
-                                    </SplitPane>
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </Tab>
-                        <Tab text="Logistics">
-                           <content>
-                              <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-                                 <children>
-                                    <SplitPane dividerPositions="0.5, 0.5" layoutX="257.0" layoutY="58.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <items>
-                                          <AnchorPane maxWidth="190.0" prefWidth="190.0">
-                                             <children>
-                                                <VBox minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                                                   <children>
-                                                      <HBox>
-                                                         <children>
-                                                            <PasswordField maxWidth="133.77" promptText="Search" />
-                                                            <Pane minWidth="-Infinity" prefWidth="5.0" />
-                                                            <Button fx:id="searchButton12" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchMethod" text="Search" />
-                                                         </children>
-                                                      </HBox>
-                                                      <Pane prefHeight="5.0" />
-                                                      <ListView fx:id="CaseListView112" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
-                                                      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
-                                                      <Button fx:id="showCaseButton12" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showCaseMethod" prefHeight="25.0" prefWidth="190.0" text="Show Order">
-                                                         <padding>
-                                                            <Insets left="5.0" right="5.0" />
-                                                         </padding>
-                                                      </Button>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="500.0">
-                                             <children>
-                                                <AnchorPane fx:id="LogisticsPortal" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <AnchorPane fx:id="LogisticsPortal1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="510.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <VBox prefHeight="637.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
@@ -929,7 +871,7 @@
                                                             <HBox>
                                                                <children>
                                                                   <Pane HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="CompanyNameLabel" text="Company Name">
+                                                                  <Label fx:id="CompanyNameLabel1" text="Company Name">
                                                                      <font>
                                                                         <Font name="System Bold" size="18.0" />
                                                                      </font>
@@ -945,7 +887,7 @@
                                                                   <Pane prefWidth="25.0" />
                                                                   <Label text="Order Id:" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="OrderIdLabel" text="Label" />
+                                                                  <Label fx:id="OrderIdLabel1" text="Label" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" prefWidth="25.0" />
                                                                </children>
                                                                <VBox.margin>
@@ -973,7 +915,7 @@
                                                                   <Pane prefWidth="25.0" />
                                                                   <Label text="Delivery Date:" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="DeliveryDateLabel" text="Label" />
+                                                                  <Label fx:id="DeliveryDateLabel1" text="Label" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" prefWidth="25.0" />
                                                                </children>
                                                                <VBox.margin>
@@ -985,7 +927,7 @@
                                                                   <Pane prefWidth="25.0" />
                                                                   <Label text="Item Quantity" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="ItemQuantityLabel" text="Label" />
+                                                                  <Label fx:id="ItemQuantityLabel1" text="Label" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" prefWidth="25.0" />
                                                                </children>
                                                                <VBox.margin>
@@ -993,12 +935,12 @@
                                                                </VBox.margin>
                                                             </HBox>
                                                             <Pane prefHeight="50.0" />
-                                                            <HBox fx:id="OverdueLabel">
+                                                            <HBox fx:id="OverdueLabel1">
                                                                <children>
                                                                   <Pane prefWidth="25.0" />
                                                                   <Label text="Delivery overdue by:" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="OverdueDateLabel" text="Label" />
+                                                                  <Label fx:id="OverdueDateLabel1" text="Label" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" prefWidth="25.0" />
                                                                </children>
                                                             </HBox>
@@ -1012,7 +954,7 @@
                                                                      </font>
                                                                   </Label>
                                                                   <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="OrderStateLabel" text="Label" />
+                                                                  <Label fx:id="OrderStateLabel1" text="Label" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
                                                                </children>
                                                             </HBox>
@@ -1021,14 +963,14 @@
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane fx:id="LogisticsPortalEdit" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="510.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <AnchorPane fx:id="LogisticsPortalEdit1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="510.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <VBox prefHeight="637.0" prefWidth="500.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                          <children>
                                                             <HBox>
                                                                <children>
                                                                   <Pane HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="CompanyNameLabel111" text="Company Name">
+                                                                  <Label fx:id="CompanyNameLabel1111" text="Company Name">
                                                                      <font>
                                                                         <Font name="System Bold" size="18.0" />
                                                                      </font>
@@ -1044,7 +986,7 @@
                                                                   <Pane prefWidth="25.0" />
                                                                   <Label text="Order Id:" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="OrderIdLabel" text="Label" />
+                                                                  <Label fx:id="OrderIdLabel1" text="Label" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" prefWidth="25.0" />
                                                                </children>
                                                                <VBox.margin>
@@ -1072,7 +1014,7 @@
                                                                   <Pane prefWidth="25.0" />
                                                                   <Label text="Delivery Date:" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="DeliveryDateLabel" text="Label" />
+                                                                  <Label fx:id="DeliveryDateLabel1" text="Label" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" prefWidth="25.0" />
                                                                </children>
                                                                <VBox.margin>
@@ -1084,7 +1026,7 @@
                                                                   <Pane prefWidth="25.0" />
                                                                   <Label text="Item Quantity" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="ItemQuantityLabel" text="Label" />
+                                                                  <Label fx:id="ItemQuantityLabel1" text="Label" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" prefWidth="25.0" />
                                                                </children>
                                                                <VBox.margin>
@@ -1097,7 +1039,7 @@
                                                                   <Pane prefWidth="25.0" />
                                                                   <Label text="Delivery overdue by:" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="OverdueDateTextField" />
+                                                                  <TextField fx:id="OverdueDateTextField1" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" prefWidth="25.0" />
                                                                </children>
                                                             </HBox>
@@ -1105,13 +1047,13 @@
                                                             <HBox layoutX="10.0" layoutY="367.0">
                                                                <children>
                                                                   <Pane HBox.hgrow="ALWAYS" />
-                                                                  <RadioButton fx:id="PreproductionRadioButton" mnemonicParsing="false" selected="true" text="Preproduction" />
+                                                                  <RadioButton fx:id="PreproductionRadioButton1" mnemonicParsing="false" selected="true" text="Preproduction" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                                                                  <RadioButton fx:id="PRoductionRadioButton" mnemonicParsing="false" text="Production" />
+                                                                  <RadioButton fx:id="PRoductionRadioButton1" mnemonicParsing="false" text="Production" />
                                                                   <Pane layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                                                                  <RadioButton fx:id="PackagingRadioButton" mnemonicParsing="false" text="Packaging" />
+                                                                  <RadioButton fx:id="PackagingRadioButton1" mnemonicParsing="false" text="Packaging" />
                                                                   <Pane layoutX="408.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                                                                  <RadioButton fx:id="DeliveryRadioButton" mnemonicParsing="false" text="Delivery" />
+                                                                  <RadioButton fx:id="DeliveryRadioButton1" mnemonicParsing="false" text="Delivery" />
                                                                   <Pane layoutX="457.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
                                                                </children>
                                                             </HBox>
@@ -1119,9 +1061,9 @@
                                                             <HBox>
                                                                <children>
                                                                   <Pane HBox.hgrow="ALWAYS" />
-                                                                  <Button fx:id="SaveButton" mnemonicParsing="false" onAction="#SaveOnAction" prefWidth="125.0" text="Save" />
+                                                                  <Button fx:id="SaveButton1" mnemonicParsing="false" onAction="#SaveOnAction" prefWidth="125.0" text="Save" />
                                                                   <Pane HBox.hgrow="ALWAYS" />
-                                                                  <Button fx:id="CancelButton" mnemonicParsing="false" onAction="#CancelOnAction" prefWidth="125.0" text="Cancel" />
+                                                                  <Button fx:id="CancelButton1" mnemonicParsing="false" onAction="#CancelOnAction" prefWidth="125.0" text="Cancel" />
                                                                   <Pane HBox.hgrow="ALWAYS" />
                                                                </children>
                                                             </HBox>
@@ -1152,14 +1094,23 @@
                                                 </ImageView>
                                                 <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0">
                                                    <children>
-                                                      <Button fx:id="ShowLogisticsButton1" mnemonicParsing="false" onAction="#ShowLogisticsOnAction" prefWidth="190.0" text="Show Logistics on Order">
+                                                      <Button fx:id="ShowLogisticsButton" mnemonicParsing="false" onAction="#ShowLogisticsOnAction" prefWidth="190.0" text="Show Offer">
                                                          <VBox.margin>
                                                             <Insets top="5.0" />
                                                          </VBox.margin>
                                                       </Button>
-                                                      <Pane prefHeight="20.0" />
                                                       <VBox />
-                                                      <Button fx:id="ShowLogisticsButton11" layoutX="10.0" layoutY="15.0" mnemonicParsing="false" onAction="#ShowLogisticsOnAction" prefWidth="190.0" text="Update Logistics" />
+                                                      <Pane prefHeight="20.0" />
+                                                      <Button fx:id="ShowLogisticsButton12" mnemonicParsing="false" onAction="#ShowLogisticsOnAction" prefWidth="190.0" text="Show Logistics on Order">
+                                                         <VBox.margin>
+                                                            <Insets top="5.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                      <Button fx:id="ShowLogisticsButton111" mnemonicParsing="false" onAction="#ShowLogisticsOnAction" prefWidth="190.0" text="Update Logistics">
+                                                         <VBox.margin>
+                                                            <Insets top="5.0" />
+                                                         </VBox.margin>
+                                                      </Button>
                                                    </children>
                                                 </VBox>
                                              </children>

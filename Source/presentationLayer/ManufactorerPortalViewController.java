@@ -5,97 +5,227 @@
  */
 package presentationLayer;
 
-import interfaces.iLogic.Ilogic;
-import logicLayer.Case;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.Tab;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import interfaces.iLogic.Ilogic;
+import logicLayer.User;
 
 /**
  * FXML Controller class
  *
- * @author Bruger
+ * @author rasmu
  */
-public class ManufactorerPortalViewController extends SuperController implements Initializable {
+public class ManufactorerPortalViewController implements Initializable {
 
     @FXML
-    private MenuBar menubar;
+    private Button logOutButton;
     @FXML
     private PasswordField SearchField;
     @FXML
-    private Button SearchButton;
+    private ListView<?> OrderListView;
     @FXML
-    private ListView<?> AcceptedCasesListView;
+    private Button ShowOrderButton;
     @FXML
-    private Button ShowCaseButton;
+    private Label TitelLabel;
     @FXML
-    private Button loadScene1;
+    private Label AmountLabel;
     @FXML
-    private Tab NewCasesListView;
+    private Label PricePerLabel;
     @FXML
-    private ListView<Case> CaseListView;
+    private Label PriceTotalLabel;
     @FXML
-    private Button AttachedFilesButton;
+    private Label CompletionDateLabel;
+    @FXML
+    private Label DeliveryDateLabel;
+    @FXML
+    private Label DeadlineLabel;
+    @FXML
+    private TextArea DescriptionTextArea;
+    @FXML
+    private Button ShowImagesButton;
+    @FXML
+    private Button ShowDocumentButton;
+    @FXML
+    private Label OrderIDLabel;
+    @FXML
+    private Label OfferIDLabel;
+    @FXML
+    private TextField AmountTextField;
+    @FXML
+    private TextField PricePerTextField;
+    @FXML
+    private TextField PriceTotalTextField;
+    @FXML
+    private TextField EstCompletionDateTextFiield;
+    @FXML
+    private TextField EstDeliveryDateTextField;
+    @FXML
+    private TextArea DescriptionField;
+    @FXML
+    private Button AddPictureButton;
+    @FXML
+    private Button AddDocumentOnAction;
     @FXML
     private Button PlaceBidButton;
     @FXML
-    private Button logOutButton;
+    private Button CancelButton;
+    @FXML
+    private Button SearchButton;
+    @FXML
+    private Button ViewImagesButton;
+    @FXML
+    private Button ViewDocumentButton;
+    @FXML
+    private Button ShowOfferButton;
+    @FXML
+    private Button EditOfferButton;
+    @FXML
+    private Button DeleteOfferButton;
+    @FXML
+    private ListView<?> CaseListView11;
+    @FXML
+    private AnchorPane OrderView;
+    @FXML
+    private Label OrderIDLabel112;
+    @FXML
+    private AnchorPane OfferView;
+    @FXML
+    private Label OfferIdLabel;
+    @FXML
+    private AnchorPane LogisticsView;
+    @FXML
+    private Label CompanyNameLabel1;
+    @FXML
+    private Label OrderIdLabel;
+    @FXML
+    private Label ItemQuantityLabel;
+    @FXML
+    private HBox OverdueLabel1;
+    @FXML
+    private Label OverdueDateLabel;
+    @FXML
+    private Label OrderStateLabel;
+    @FXML
+    private AnchorPane EditLogisticsView;
+    @FXML
+    private Label CompanyNameLabel1111;
+    @FXML
+    private TextField OverdueDateTextField;
+    @FXML
+    private RadioButton PreproductionRadioButton;
+    @FXML
+    private RadioButton PRoductionRadioButton;
+    @FXML
+    private RadioButton PackagingRadioButton;
+    @FXML
+    private RadioButton DeliveryRadioButton;
+    @FXML
+    private Button SaveButton;
+    @FXML
+    private Button ShowLogisticsButton;
+    @FXML
+    private Button UpdateLogisticsButton;
+    @FXML
+    private AnchorPane ShowOrderView;
+    @FXML
+    private AnchorPane PlaceOfferView;
 
-    public ManufactorerPortalViewController(Ilogic logic) {
-        super(logic);
+    ManufactorerPortalViewController(Ilogic logic) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    ApplicationStateHandler applicationStateHandler = new ApplicationStateHandler();
-
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        populateObservableCaseListView();
-    }
+        // TODO
+    }    
 
     @FXML
-    private void searchOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void showCaseOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void loadSceneOnAction(ActionEvent event) {
+    private void logOutButtonMethod(ActionEvent event) {
     }
 
     @FXML
     private void SearchOnAction(ActionEvent event) {
     }
 
+
     @FXML
-    private void OpenAttachedFilesOnAction(ActionEvent event) {
-        applicationStateHandler.setPickAFile(AttachedFilesButton);
+    private void showOrderOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void ShowImagesOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void ShowDocumentOnAction(ActionEvent event) {
+    }
+
+
+    @FXML
+    private void AddDocumentOnAction(ActionEvent event) {
     }
 
     @FXML
     private void PlaceBidOnAction(ActionEvent event) {
-        applicationStateHandler.setPlaceBidView(PlaceBidButton);
     }
 
     @FXML
-    private void logOutButtonMethod(ActionEvent event) {
-        applicationStateHandler.setLogInScreen(logOutButton);
+    private void CancelOnAction(ActionEvent event) {
     }
 
-    private void showCases() {
+    @FXML
+    private void ShowOrderOnAction(ActionEvent event) {
     }
 
-    public void populateObservableCaseListView() {
-//        ObservableList<Case> oberservableCaseList = FXCollections.observableArrayList(logic.getCaseList());
-//        CaseListView.setItems(oberservableCaseList);
-//        CaseListView.setCellFactory(ComboBoxListCell.forListView(oberservableCaseList));
+    @FXML
+    private void ViewImagesOnAction(ActionEvent event) {
     }
+
+    @FXML
+    private void ViewDocumentOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void ShowOfferOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void EditOfferOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void DeleteOfferOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void SaveOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void ShowLogisticsOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void UpdateLogisticsOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void AddPictureOnAction(ActionEvent event) {
+    }
+    
 }

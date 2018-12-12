@@ -55,16 +55,14 @@ public class DataFacade implements Idata {
         return userEmailList;
     }
     
-    public static void main(String[] args) {
-        DataFacade test = new DataFacade();
-              test.displayUsers();
-    }
 
     @Override
     public void deleteUser(String email) {
         ClientController cc = new ClientController();
         cc.deleteUser(email);
     }
+ 
+  
 
     
 

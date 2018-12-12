@@ -178,4 +178,22 @@ public class ApplicationStateHandler {
         }
 
     }
+    public void setCreateUserView(Button button) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/createUser.fxml"));
+            loader.setController(new EmployeeController(logic));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) button.getScene().getWindow();
+            stage.setTitle("NordicSrc");
+            stage.setResizable(false);
+            stage.setScene(scene);
+//                logic.writeToSystemlog(userNameField.getText() + " Logged in"); // writes to systemlog
+        } catch (Exception e) {
+            e.printStackTrace();
+//        }
+        }
+    }
+    
+    
 }

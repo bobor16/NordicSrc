@@ -459,7 +459,7 @@
                                     </ImageView>
                                     <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0">
                                        <children>
-                                          <Button fx:id="createUserButton" layoutX="10.0" layoutY="15.0" mnemonicParsing="false" prefWidth="190.0" text="Create User" />
+                                          <Button fx:id="createUserButton" layoutX="10.0" layoutY="15.0" mnemonicParsing="false" onAction="#createUser" prefWidth="190.0" text="Create User" />
                                           <Button fx:id="editUserButton" mnemonicParsing="false" prefWidth="190.0" text="Edit User">
                                              <VBox.margin>
                                                 <Insets top="5.0" />

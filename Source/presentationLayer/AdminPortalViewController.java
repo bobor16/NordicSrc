@@ -85,8 +85,8 @@ public class AdminPortalViewController extends SuperController implements Initia
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                userColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-                //displayUsersInTable();
+//                userColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+//                displayUsersInTable();
 
     }
 
@@ -149,6 +149,11 @@ public class AdminPortalViewController extends SuperController implements Initia
 
     }
     
+      @FXML
+    public void createUser(ActionEvent event) throws IOException {
+        appliCationStateHandler.setCreateUserView(createUserButton);
+    }
+    
       private ObservableList<User> getUsers() {
         ObservableList<User> usersObservableList = FXCollections.observableArrayList(displayUsers());
         return usersObservableList;
@@ -178,5 +183,4 @@ public class AdminPortalViewController extends SuperController implements Initia
         }
         return userEmailList;
     }
-    
 }

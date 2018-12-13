@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.PasswordField?>
@@ -9,7 +10,6 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
@@ -54,7 +54,7 @@
                            <items>
                               <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
                                  <children>
-                                    <TextArea layoutX="26.0" layoutY="29.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <ListView fx:id="logListView" layoutX="188.0" layoutY="100.0" prefHeight="600.0" prefWidth="708.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children></AnchorPane>
                               <AnchorPane maxHeight="-Infinity" maxWidth="200.0">
                                  <children>
@@ -201,7 +201,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <AnchorPane fx:id="userProfilePane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <AnchorPane fx:id="userProfilePane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <GridPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                              <columnConstraints>
@@ -272,7 +272,7 @@
                                                 <AnchorPane fx:id="UnvarifedAnchor" layoutX="160.0" layoutY="156.0" prefHeight="39.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <Pane prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #c96388;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                      <Label fx:id="VerifiedLabel1" alignment="CENTER" text="Unvarified" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <Label fx:id="VerifiedLabel1" alignment="CENTER" text="Unverified" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <font>
                                                             <Font name="System Bold" size="14.0" />
                                                          </font>
@@ -283,7 +283,7 @@
                                           </AnchorPane>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="600.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <AnchorPane fx:id="editUserPane" prefHeight="600.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <GridPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                              <columnConstraints>
@@ -305,14 +305,13 @@
                                              </rowConstraints>
                                              <children>
                                                 <Label GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label text="Contat Information" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                <Label text="Contat Information" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label text="Email" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
                                                 <Label text="Phone Number" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                <Label text="CVR Number" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label text="CVR Number" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                 <Pane style="-fx-background-color: #3399CC;" GridPane.columnSpan="2147483647">
                                                    <GridPane.margin>
                                                       <Insets />
@@ -329,21 +328,24 @@
                                                       <Insets bottom="5.0" top="5.0" />
                                                    </padding>
                                                 </Label>
-                                                <TextField fx:id="companyNameEdit" alignment="CENTER" promptText="Company Name" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-                                                <TextField fx:id="CVRNumberEdit" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                <TextField fx:id="userEmailEdit" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                                <TextField fx:id="companyNameEdit" alignment="CENTER" promptText="Company Name" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                                <TextField fx:id="CVRNumberEdit" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                                                 <TextField fx:id="phoneNumberEdit" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                                                <Label text="Verified" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <CheckBox fx:id="verifiedCheckBox" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                                <Label text="User" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="userEditMailLabel" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                              </children>
                                           </GridPane>
                                           <AnchorPane fx:id="UnvarifedAnchor1" prefHeight="39.0" prefWidth="500.0" AnchorPane.bottomAnchor="5.0">
                                              <children>
-                                                <Button fx:id="userEditSaveButton" mnemonicParsing="false" prefHeight="25.0" text="Save" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="270.0" />
+                                                <Button fx:id="userEditSaveButton" mnemonicParsing="false" onAction="#updateUserOnAction" prefHeight="25.0" text="Save" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="270.0" />
                                                 <Button fx:id="cancelButton" mnemonicParsing="false" prefHeight="25.0" text="Cancel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="130.0" />
                                              </children>
                                           </AnchorPane>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="600.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <AnchorPane fx:id="createUserPane" prefHeight="600.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <GridPane prefHeight="612.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columnConstraints>
@@ -431,8 +433,8 @@
                                     </ImageView>
                                     <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0">
                                        <children>
-                                          <Button fx:id="createUserButton" layoutX="10.0" layoutY="15.0" mnemonicParsing="false" prefWidth="190.0" text="Create User" />
-                                          <Button fx:id="editUserButton" mnemonicParsing="false" prefWidth="190.0" text="Edit User">
+                                          <Button fx:id="createUserButton" layoutX="10.0" layoutY="15.0" mnemonicParsing="false" onAction="#createUserPaneOnAction" prefWidth="190.0" text="Create User" />
+                                          <Button fx:id="editUserButton" mnemonicParsing="false" onAction="#editUserButtonAction" prefWidth="190.0" text="Edit User">
                                              <VBox.margin>
                                                 <Insets top="5.0" />
                                              </VBox.margin>

@@ -28,7 +28,7 @@ public class ClientController {
 //tek-studsrv0c.stud-srv.sdu.dk
 
     private void connectToServer() throws IOException {
-        socket = new Socket("127.0.0.1", 1337);
+        socket = new Socket("tek-studsrv0c.stud-srv.sdu.dk", 1337);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectInputStream = new ObjectInputStream(socket.getInputStream());
         Packet p = null;
@@ -82,16 +82,6 @@ public class ClientController {
         }
         return "-1";
     }
-
-    public ArrayList<ArrayList> getSystemLog() {
-        Packet p = new Packet(3, null);
-        sendPackage(p);
-        p = receivePackage();
-        if (p.getId() == 3){
-            return (ArrayList<ArrayList>) p.getObject();
-        }
-        return null;
-    }
     
     public ArrayList<String> getEmails() {
         Packet p = new Packet(4, null);
@@ -108,8 +98,9 @@ public class ClientController {
        sendPackage(p);
         if (p.getId() == 5){
             System.out.println("User deleted");
+        } else {
+            System.out.println("Something went wrong");
         }
-         System.out.println("Whoops something went wrong");
     }
    
     public String getPassword(String email){
@@ -141,6 +132,21 @@ public class ClientController {
             return (User) p.getObject();
         }
         return null;
+    }
+
+    public ArrayList<String> getLog(){
+        Packet p = new Packet(31, null);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 31){
+            return (ArrayList<String>) p.getObject();
+        }
+        return null;
+    }
+
+    public void updateUser(HashMap<String, String> form){
+        Packet p = new Packet(32, form);
+        sendPackage(p);
     }
 
 }

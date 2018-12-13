@@ -6,6 +6,7 @@
 package presentationLayer;
 
 import interfaces.iLogic.Ilogic;
+
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -66,7 +67,7 @@ public class RegisterViewController extends SuperController implements Initializ
     private PasswordField verifyPasswordField;
 
     private final ToggleGroup group = new ToggleGroup();
-    
+
     private ApplicationStateHandler applicationStateHandler = new ApplicationStateHandler();
 
     private HashMap<String, String> registerForm = new HashMap<>();
@@ -82,7 +83,7 @@ public class RegisterViewController extends SuperController implements Initializ
         manufacturerRadioButton.setToggleGroup(group);
         customerRadioButton.setToggleGroup(group);
         employeeRadioButton.setToggleGroup(group);
-        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
+        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
                 if (group.getSelectedToggle() != null) {
                     registerForm.put("type", group.getSelectedToggle().getUserData().toString());
@@ -101,10 +102,18 @@ public class RegisterViewController extends SuperController implements Initializ
         registerForm.put("name", firstNameField.getText() + " " + lastNameField.getText());
         registerForm.put("email", emailField.getText());
         registerForm.put("password", passwordField.getText());
-        registerForm.put("cname", companyNameField.getText());
-        registerForm.put("cvr", CVRField.getText());
+        if (companyNameField.getText() == ""){
+            registerForm.put("cname", "NULL");
+        }else {
+            registerForm.put("cname", companyNameField.getText());
+        }
+        if (CVRField.getText() == ""){
+            registerForm.put("cvr", "0000");
+        } else {
+            registerForm.put("cvr", CVRField.getText());
+        }
         ClientController cc = new ClientController();
-        switch (cc.register(registerForm)){
+        switch (cc.register(registerForm)) {
             case "success":
                 applicationStateHandler.setLogInScreen(cancelButton/*???*/);
                 break;
@@ -114,7 +123,7 @@ public class RegisterViewController extends SuperController implements Initializ
             default:
                 System.out.println("Registration failed");
                 break;
-            }
+        }
     }
 
 }

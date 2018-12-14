@@ -12,12 +12,16 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -73,9 +77,11 @@ public class EmployeeController extends SuperController implements Initializable
     @FXML
     private Button showAcceptedOrderButton;
     @FXML
-    private TableView<?> acceptedOrdersView;
+    private PasswordField searchPendingOrder;
     @FXML
-    private TableColumn<?, ?> acceptedOrdersColumn;
+    private TableView<Order> acceptedOrdersView;
+    @FXML
+    private TableColumn<Order, String> acceptedOrdersColumn;
     @FXML
     private AnchorPane LogisticsPortalView;
     @FXML
@@ -112,6 +118,13 @@ public class EmployeeController extends SuperController implements Initializable
     private Label manuFactorerLabel;
     @FXML
     private Label pendingOrderCostumer;
+    @FXML
+    private TabPane tabPane;
+    @FXML
+    private Tab pendingOrdersTab;
+    @FXML
+    private Tab acceptedOrdersTab;
+    ApplicationStateHandler stateHandler = new ApplicationStateHandler();
 
     public EmployeeController(Ilogic logic) {
         super(logic);
@@ -122,20 +135,45 @@ public class EmployeeController extends SuperController implements Initializable
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        tableviewPendingOrdersColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        displayPendingOrdersInTable();
+//        tableviewPendingOrdersColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+//        acceptedOrdersColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+//        displayPendingOrdersInTable();
+//        UDKOMMENTER NÅR GETORDERS IKKE RETUNERE NULL I CLIENTHANDLER
     }
 
     @FXML
     private void logOutButtonMethod(ActionEvent event) {
+        stateHandler.setLogInScreen(logOutButton);
     }
 
     @FXML
-    private void searchPending(ActionEvent event) {
+    private void showPendingOrder(ActionEvent event) {
+        Order order = getSelectedOrder();
+        pendingOrderAmount.setText(Integer.toString(order.getAmount()));
+        pendingOrderBriefDesc.setText(order.getBriefdescription());
+        pendingOrderCompletionDate.setText(order.getCompletionDate());
+        pendingOrderCostumer.setText(order.getCustomer());
+        pendingOrderDeadline.setText(order.getDeadline());
+        pendingOrderDevliviryDate.setText(order.getDeliviryDate());
+        pendingOrderPricePer.setText(Double.toString(order.getPriceper()));
+        pendingOrderPriceTotal.setText(Double.toString(order.getPricetotal()));
+        pendingOrderTitle.setText(order.getTitle());
+
     }
 
     @FXML
-    private void showCaseMethod(ActionEvent event) {
+    private void showAcceptedOrder(ActionEvent event) {
+        Order order = getSelectedOrder(); //SCHANGE TO ACCEPTED
+        pendingOrderAmount.setText(Integer.toString(order.getAmount()));
+        pendingOrderBriefDesc.setText(order.getBriefdescription());
+        pendingOrderCompletionDate.setText(order.getCompletionDate());
+        pendingOrderCostumer.setText(order.getCustomer());
+        pendingOrderDeadline.setText(order.getDeadline());
+        pendingOrderDevliviryDate.setText(order.getDeliviryDate());
+        pendingOrderPricePer.setText(Double.toString(order.getPriceper()));
+        pendingOrderPriceTotal.setText(Double.toString(order.getPricetotal()));
+        pendingOrderTitle.setText(order.getTitle());
+
     }
 
     @FXML
@@ -144,10 +182,14 @@ public class EmployeeController extends SuperController implements Initializable
 
     @FXML
     private void AcceptOnAction(ActionEvent event) {
+        Order order = getSelectedOrder();
+        order.setStatus(Boolean.TRUE);
     }
 
     @FXML
     private void RejectOnAction(ActionEvent event) {
+        Order order = getSelectedOrder();
+        order.setStatus(Boolean.FALSE);
     }
 
     @FXML
@@ -156,6 +198,17 @@ public class EmployeeController extends SuperController implements Initializable
 
     @FXML
     private void searchMethod(ActionEvent event) {
+        if (tabPane.getSelectionModel().getSelectedItem() == pendingOrdersTab) {
+            if (getSelectedOrder().getTitle().equals(searchPendingOrder.getText())) {
+                  tableviewPendingOrders.sort();
+                searchPendingOrder();
+            }
+        } else if (tabPane.getSelectionModel().getSelectedItem() == acceptedOrdersTab) {
+            if (getSelectedOrder().getTitle().equals(searchAcceptedOrder.getText())) {
+                acceptedOrdersView.sort();
+                searchAcceptedOrder();
+            }
+        }
     }
 
     public ArrayList<Order> getOrderListPending() {
@@ -170,8 +223,80 @@ public class EmployeeController extends SuperController implements Initializable
 
     private void displayPendingOrdersInTable() {
         tableviewPendingOrders.getColumns().clear();
-        tableviewPendingOrders.setItems(getOrders());
+        for (int i = 0; i < getOrders().size(); i++) {
+            if (!getOrders().get(i).getStatus()) {
+                tableviewPendingOrders.setItems(getOrders());
+            } else {
+                acceptedOrdersView.setItems(getOrders());
+            }
+        }
+        acceptedOrdersView.getColumns().addAll(acceptedOrdersColumn);
+        acceptedOrdersView.getSortOrder().add(acceptedOrdersColumn);
         tableviewPendingOrders.getColumns().addAll(tableviewPendingOrdersColumn);
         tableviewPendingOrders.getSortOrder().add(tableviewPendingOrdersColumn);
+    }
+
+    private Order getSelectedOrder() {
+        Order selectedOrder;
+        if (tabPane.getSelectionModel().getSelectedItem() == pendingOrdersTab) {
+            selectedOrder = tableviewPendingOrders.getSelectionModel().getSelectedItem();
+        } else {
+            selectedOrder = acceptedOrdersView.getSelectionModel().getSelectedItem();
+        }
+        return selectedOrder;
+    }
+
+    private void searchPendingOrder() {
+        FilteredList<Order> filteredData = new FilteredList<>(getOrders(), p -> true);
+
+        searchPendingOrder.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(order -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (order.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (order.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        SortedList<Order> sortedData = new SortedList<>(filteredData);
+
+        sortedData.comparatorProperty().bind(tableviewPendingOrders.comparatorProperty());
+
+        tableviewPendingOrders.setItems(sortedData);
+    }
+
+    private void searchAcceptedOrder() {
+        FilteredList<Order> filteredData = new FilteredList<>(getOrders(), p -> true);
+
+        searchAcceptedOrder.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(order -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (order.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (order.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        SortedList<Order> sortedData = new SortedList<>(filteredData);
+
+        sortedData.comparatorProperty().bind(acceptedOrdersView.comparatorProperty());
+
+        acceptedOrdersView.setItems(sortedData);
     }
 }

@@ -46,9 +46,9 @@
                <items>
                   <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <tabs>
-                              <Tab text="Pending Orders">
+                              <Tab fx:id="pendingOrdersTab" text="Pending Orders">
                                  <content>
                                     <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                                        <children>
@@ -60,14 +60,14 @@
                                                          <children>
                                                             <HBox>
                                                                <children>
-                                                                  <PasswordField maxWidth="133.77" promptText="Search" />
+                                                                  <PasswordField fx:id="searchPendingOrder" maxWidth="133.77" promptText="Search" />
                                                                   <Pane minWidth="-Infinity" prefWidth="5.0" />
-                                                                  <Button fx:id="pendingOrderSearchButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchPending" text="Search" />
+                                                                  <Button fx:id="pendingOrderSearchButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchMethod" text="Search" />
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="5.0" />
                                                             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
-                                                            <Button fx:id="showPendingOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showCaseMethod" prefHeight="25.0" prefWidth="190.0" text="Show Order">
+                                                            <Button fx:id="showPendingOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showPendingOrder" prefHeight="25.0" prefWidth="190.0" text="Show Order">
                                                                <padding>
                                                                   <Insets left="5.0" right="5.0" />
                                                                </padding>
@@ -228,7 +228,7 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Accepted Orders">
+                              <Tab fx:id="acceptedOrdersTab" text="Accepted Orders">
                                  <content>
                                     <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                                        <children>
@@ -247,7 +247,7 @@
                                                             </HBox>
                                                             <Pane prefHeight="5.0" />
                                                             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
-                                                            <Button fx:id="showAcceptedOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showCaseMethod" prefHeight="25.0" prefWidth="190.0" text="Show Order">
+                                                            <Button fx:id="showAcceptedOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showAcceptedOrder" prefHeight="25.0" prefWidth="190.0" text="Show Order">
                                                                <padding>
                                                                   <Insets left="5.0" right="5.0" />
                                                                </padding>

@@ -1,8 +1,11 @@
 package presentationLayer;
 
+import dataLayer.ClientController;
 import interfaces.iLogic.Ilogic;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +15,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import logicLayer.Order;
+
+import javax.swing.text.View;
 
 public class CustomerPortalViewController extends SuperController implements Initializable {
 
@@ -26,13 +33,13 @@ public class CustomerPortalViewController extends SuperController implements Ini
     @FXML
     private Label OrderIDLabel1;
     @FXML
-    private AnchorPane CreateOrderView1;
+    private AnchorPane EditOrderView;
     @FXML
     private Label OrderIDLabel2;
     @FXML
     private Button searchButton111;
     @FXML
-    private ListView<?> CaseListView1111;
+    private ListView<String> CaseListView111;
     @FXML
     private Button showCaseButton111;
     @FXML
@@ -93,6 +100,28 @@ public class CustomerPortalViewController extends SuperController implements Ini
     private Label OrderStateLabel1;
     @FXML
     private Button ShowLogisticsButton;
+    @FXML
+    private AnchorPane ViewOrderView;
+    @FXML
+    private Button deleteOrderButton;
+    @FXML
+    private Button editOrderButton;
+    @FXML
+    private Text showCaseBDText;
+    @FXML
+    private Label showCaseTitle;
+    @FXML
+    private Label showCaseAmount;
+    @FXML
+    private Label showCasePricePer;
+    @FXML
+    private Label showCasePriceTotal;
+    @FXML
+    private Label showCaseCompletionDate;
+    @FXML
+    private Label showCaseDeliveryDate;
+    @FXML
+    private Label showCaseDeadline;
 
     public CustomerPortalViewController(Ilogic logic) {
         super(logic);
@@ -104,6 +133,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        updateOrderList();
     }
 
     public void loadSceneOnAction(ActionEvent event) throws IOException {
@@ -116,10 +146,28 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     @FXML
     private void showCaseMethod(ActionEvent event) {
+        EditOrderView.setVisible(false);
+        CreateOrderView.setVisible(false);
+        ViewOrderView.setVisible(true);
+        ClientController cc = new ClientController();
+        String[] id = CaseListView111.getSelectionModel().getSelectedItem().split(" ");
+        Order order = cc.getOrder(id[0]);
+
+        showCaseTitle.setText(order.getTitle());
+        showCaseAmount.setText(Integer.toString(order.getAmount()));
+        showCasePricePer.setText(Double.toString(order.getPriceper()));
+        showCasePriceTotal.setText(Double.toString(order.getPricetotal()));
+        showCaseCompletionDate.setText(order.getCompletionDate());
+        showCaseDeliveryDate.setText(order.getDeliviryDate());
+        showCaseDeadline.setText("");
+        showCaseBDText.setText(order.getBriefdescription());
     }
 
     @FXML
     private void createNewOrderMethod(ActionEvent event) {
+        EditOrderView.setVisible(false);
+        ViewOrderView.setVisible(false);
+        CreateOrderView.setVisible(true);
     }
 
 
@@ -152,4 +200,25 @@ public class CustomerPortalViewController extends SuperController implements Ini
     private void ShowLogisticsOnAction(ActionEvent event) {
     }
 
+    @FXML
+    private void deleteOrderButtonOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void editOrderButtonOnAction(ActionEvent event) {
+        CreateOrderView.setVisible(false);
+        ViewOrderView.setVisible(false);
+        EditOrderView.setVisible(true);
+    }
+
+    private void updateOrderList(){
+        ClientController cc = new ClientController();
+        ArrayList<String> orders = cc.getOrderList();
+        CaseListView111.getItems().clear();
+
+        for (String order: orders) {
+            CaseListView111.getItems().add(order);
+        }
+    }
 }

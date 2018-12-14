@@ -5,10 +5,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import logicLayer.User;
-import logicLayer.order;
+import logicLayer.Order;
 
 public class ClientController {
 
@@ -28,7 +27,7 @@ public class ClientController {
 //tek-studsrv0c.stud-srv.sdu.dk
 
     private void connectToServer() throws IOException {
-        socket = new Socket("tek-studsrv0c.stud-srv.sdu.dk", 1337);
+        socket = new Socket("127.0.0.1", 1337);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectInputStream = new ObjectInputStream(socket.getInputStream());
         Packet p = null;
@@ -114,12 +113,12 @@ public class ClientController {
             return password;
         } return "Wrong Package";
     }
-    public ArrayList<order> getOrderListPending() {
+    public ArrayList<Order> getOrderListPending() {
         Packet p = new Packet(7, null);
         sendPackage(p);
         p = receivePackage();
         if (p.getId() == 7){
-            return (ArrayList<order>) p.getObject();
+            return (ArrayList<Order>) p.getObject();
         }
         return null;
     }
@@ -149,4 +148,23 @@ public class ClientController {
         sendPackage(p);
     }
 
+    public ArrayList<String> getOrderList(){
+        Packet p = new Packet(33, null);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 33){
+            return (ArrayList<String>) p.getObject();
+        }
+        return null;
+    }
+
+    public Order getOrder(String id){
+        Packet p = new Packet(34, id);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 34){
+            return (Order) p.getObject();
+        }
+        return null;
+    }
 }

@@ -9,13 +9,10 @@ package logicLayer;
  *
  * @author mehgn
  */
-import dataLayer.ClientController;
-import dataLayer.Packet;
 import interfaces.iLogic.Ilogic;
 import interfaces.iData.Idata;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -72,7 +69,7 @@ public class LogicFacade implements interfaces.iLogic.Ilogic {
     }
 
     @Override
-    public ArrayList<order> getOrderListPending() {
+    public ArrayList<Order> getOrderListPending() {
         return data.getOrderListPending();
     }
     

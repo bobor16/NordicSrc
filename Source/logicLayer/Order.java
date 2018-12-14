@@ -9,35 +9,45 @@ package logicLayer;
  *
  * @author mehgn
  */
-public class order {
-    private String title;
+public class Order implements java.io.Serializable{
     private int id;
+    private String title;
     private int psid;
     private String customer;
+    private String manufactorer;
     private boolean archived;
     private int amount;
     private double priceper;
     private double pricetotal;
     private String completionDate;
     private String deliviryDate;
-    private String briefdescription;
+    private String deadline;
 
-    public order(String title, int id, int psid, String customer, boolean archived, int amount, double priceper, double pricetotal, String completionDate, String deliviryDate, String briefdescription) {
-        this.title = title;
+    public Order(int id, String title, int psid, String customer, String manufactorer, boolean archived, int amount, double priceper, double pricetotal, String completionDate, String deliviryDate, String deadline, String briefdescription) {
         this.id = id;
+        this.title = title;
         this.psid = psid;
         this.customer = customer;
+        this.manufactorer = manufactorer;
         this.archived = archived;
         this.amount = amount;
         this.priceper = priceper;
         this.pricetotal = pricetotal;
         this.completionDate = completionDate;
         this.deliviryDate = deliviryDate;
+        this.deadline = deadline;
         this.briefdescription = briefdescription;
     }
 
+    public Order(String title, int amount){
+        this.title = title;
+        this.amount = amount;
+    }
+
+    private String briefdescription;
+
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -123,6 +133,6 @@ public class order {
     public void setBriefdescription(String briefdescription) {
         this.briefdescription = briefdescription;
     }
-    
-            
+
+
 }

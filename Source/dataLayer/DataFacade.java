@@ -16,7 +16,7 @@ import logicLayer.Case;
 import java.util.ArrayList;
 
 import logicLayer.User;
-import logicLayer.order;
+import logicLayer.Order;
 
 /**
  *
@@ -62,7 +62,7 @@ public class DataFacade implements Idata {
     }
 
     @Override
-    public ArrayList<order> getOrderListPending() {
+    public ArrayList<Order> getOrderListPending() {
         ClientController cc = new ClientController();
         return cc.getOrderListPending();
     }

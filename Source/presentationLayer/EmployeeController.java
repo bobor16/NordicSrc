@@ -23,7 +23,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import logicLayer.order;
+import logicLayer.Order;
 
 /**
  * FXML Controller class
@@ -39,9 +39,9 @@ public class EmployeeController extends SuperController implements Initializable
     @FXML
     private Button showPendingOrderButton;
     @FXML
-    private TableView<order> tableviewPendingOrders;
+    private TableView<Order> tableviewPendingOrders;
     @FXML
-    private TableColumn<order, String> tableviewPendingOrdersColumn;
+    private TableColumn<Order, String> tableviewPendingOrdersColumn;
     @FXML
     private Label pendingOrderTitle;
     @FXML
@@ -158,13 +158,13 @@ public class EmployeeController extends SuperController implements Initializable
     private void searchMethod(ActionEvent event) {
     }
 
-    public ArrayList<order> getOrderListPending() {
+    public ArrayList<Order> getOrderListPending() {
         ClientController cc = new ClientController();
         return cc.getOrderListPending();
     }
 
-    private ObservableList<order> getOrders() {
-        ObservableList<order> usersObservableList = FXCollections.observableArrayList(getOrderListPending());
+    private ObservableList<Order> getOrders() {
+        ObservableList<Order> usersObservableList = FXCollections.observableArrayList(getOrderListPending());
         return usersObservableList;
     }
 

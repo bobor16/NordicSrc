@@ -2,23 +2,30 @@ package presentationLayer;
 
 import dataLayer.ClientController;
 import interfaces.iLogic.Ilogic;
+
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 import logicLayer.Order;
-
-import javax.swing.text.View;
 
 public class CustomerPortalViewController extends SuperController implements Initializable {
 
@@ -122,6 +129,45 @@ public class CustomerPortalViewController extends SuperController implements Ini
     private Label showCaseDeliveryDate;
     @FXML
     private Label showCaseDeadline;
+    @FXML
+    private TextField createOrderTitle;
+    @FXML
+    private TextField createOrderAmount;
+    @FXML
+    private TextField createOrderPricePer;
+    @FXML
+    private TextField createOrderPriceTotal;
+    @FXML
+    private DatePicker createOrderDeadline;
+    @FXML
+    private DatePicker createOrderCompletionDate;
+    @FXML
+    private DatePicker createOrderDeliveryDate;
+    @FXML
+    private TextArea createOrderBriefDescription;
+    @FXML
+    private ListView<String> CaseListView1111;
+    @FXML
+    private AnchorPane showApproved;
+    @FXML
+    private Label approvedTitle;
+    @FXML
+    private Label approvedAmount;
+    @FXML
+    private Label approvedPricePer;
+    @FXML
+    private Label approvedPriceTotal;
+    @FXML
+    private Label approvedCompletionDate;
+    @FXML
+    private Label approvedDeliveryDate;
+    @FXML
+    private Label approvedDeadline;
+    @FXML
+    private Label approvedBD;
+
+    private File productSpecification;
+    private Order selectedOrder, selectedApprovedOrder;
 
     public CustomerPortalViewController(Ilogic logic) {
         super(logic);
@@ -145,22 +191,42 @@ public class CustomerPortalViewController extends SuperController implements Ini
     }
 
     @FXML
-    private void showCaseMethod(ActionEvent event) {
+    private void showPendingMethod(ActionEvent event) {
         EditOrderView.setVisible(false);
         CreateOrderView.setVisible(false);
         ViewOrderView.setVisible(true);
         ClientController cc = new ClientController();
         String[] id = CaseListView111.getSelectionModel().getSelectedItem().split(" ");
-        Order order = cc.getOrder(id[0]);
+        selectedOrder = cc.getOrder(id[0]);
 
-        showCaseTitle.setText(order.getTitle());
-        showCaseAmount.setText(Integer.toString(order.getAmount()));
-        showCasePricePer.setText(Double.toString(order.getPriceper()));
-        showCasePriceTotal.setText(Double.toString(order.getPricetotal()));
-        showCaseCompletionDate.setText(order.getCompletionDate());
-        showCaseDeliveryDate.setText(order.getDeliviryDate());
+        showCaseTitle.setText(selectedOrder.getTitle());
+        showCaseAmount.setText(Integer.toString(selectedOrder.getAmount()));
+        showCasePricePer.setText(Double.toString(selectedOrder.getPriceper()));
+        showCasePriceTotal.setText(Double.toString(selectedOrder.getPricetotal()));
+        showCaseCompletionDate.setText(selectedOrder.getCompletionDate());
+        showCaseDeliveryDate.setText(selectedOrder.getDeliveryDate());
         showCaseDeadline.setText("");
-        showCaseBDText.setText(order.getBriefdescription());
+        showCaseBDText.setText(selectedOrder.getBriefdescription());
+        OrderIDLabel1.setText(Integer.toString( selectedOrder.getId()));
+    }
+
+    @FXML
+    private void showApprovedMethod(ActionEvent event) {
+        OfferView.setVisible(false);
+        showApproved.setVisible(true);
+        ClientController cc = new ClientController();
+        String[] id = CaseListView1111.getSelectionModel().getSelectedItem().split(" ");
+        selectedApprovedOrder = cc.getOrder(id[0]);
+
+        approvedTitle.setText(selectedApprovedOrder.getTitle());
+        approvedAmount.setText(Integer.toString(selectedApprovedOrder.getAmount()));
+        approvedPricePer.setText(Double.toString(selectedApprovedOrder.getPriceper()));
+        approvedPriceTotal.setText(Double.toString(selectedApprovedOrder.getPricetotal()));
+        approvedCompletionDate.setText(selectedApprovedOrder.getCompletionDate());
+        approvedDeliveryDate.setText(selectedApprovedOrder.getDeliveryDate());
+        approvedDeadline.setText("");
+        approvedBD.setText(selectedApprovedOrder.getBriefdescription());
+        OrderIDLabel11.setText(Integer.toString(selectedApprovedOrder.getId()));
     }
 
     @FXML
@@ -212,13 +278,72 @@ public class CustomerPortalViewController extends SuperController implements Ini
         EditOrderView.setVisible(true);
     }
 
-    private void updateOrderList(){
+    private void updateOrderList() {
         ClientController cc = new ClientController();
-        ArrayList<String> orders = cc.getOrderList();
+        ArrayList<String> pending = cc.getOrderList("pending");
+        ArrayList<String> approved = cc.getOrderList("approved");
         CaseListView111.getItems().clear();
+        CaseListView1111.getItems().clear();
 
-        for (String order: orders) {
+        for (String order : pending) {
             CaseListView111.getItems().add(order);
         }
+        for (String order : approved) {
+            CaseListView1111.getItems().add(order);
+        }
+    }
+
+    @FXML
+    private void showDocumentOnAction(ActionEvent event) throws IOException {
+        File file = selectedOrder.getPs();
+
+        if (!Desktop.isDesktopSupported()) {
+            System.out.println("Desktop not supported");
+            return;
+        }
+
+        Desktop desktop = Desktop.getDesktop();
+
+        if (file.exists()) {
+            desktop.open(file);
+        }
+    }
+
+    private void clearCreateOrder(){
+        createOrderPricePer.clear();
+        createOrderAmount.clear();
+        createOrderBriefDescription.clear();
+        createOrderPriceTotal.clear();
+        createOrderTitle.clear();
+        createOrderCompletionDate.getEditor().clear();
+        createOrderDeadline.getEditor().clear();
+        createOrderDeliveryDate.getEditor().clear();
+    }
+
+    @FXML
+    private void createOrderOnAction(ActionEvent event){
+        ClientController cc = new ClientController();
+        LocalDate completionDate = createOrderCompletionDate.getValue();
+        LocalDate deliveryDate = createOrderDeliveryDate.getValue();
+        LocalDate deadline = createOrderDeadline.getValue();
+        String title = createOrderTitle.getText();
+        int amount = Integer.parseInt(createOrderAmount.getText());
+        double pricePer = Double.parseDouble(createOrderPricePer.getText());
+        double priceTotal = Double.parseDouble(createOrderPriceTotal.getText());
+        String bd = createOrderBriefDescription.getText();
+        Order order = new Order(title, amount, pricePer, priceTotal, completionDate.toString(), deliveryDate.toString(), deadline.toString(), bd, this.productSpecification);
+        cc.createOrder(order);
+        clearCreateOrder();
+        updateOrderList();
+    }
+
+    @FXML
+    private void uploadDocumentOnAction(ActionEvent event){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Product Specification");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Product Specification", "*.pdf"));
+        Node source = (Node) event.getSource();
+        Window stage = source.getScene().getWindow();
+        productSpecification = fileChooser.showOpenDialog(stage);
     }
 }

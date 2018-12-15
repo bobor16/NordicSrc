@@ -1,5 +1,6 @@
 package dataLayer;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -148,8 +149,8 @@ public class ClientController {
         sendPackage(p);
     }
 
-    public ArrayList<String> getOrderList(){
-        Packet p = new Packet(33, null);
+    public ArrayList<String> getOrderList(String message){
+        Packet p = new Packet(33, message);
         sendPackage(p);
         p = receivePackage();
         if (p.getId() == 33){
@@ -166,5 +167,10 @@ public class ClientController {
             return (Order) p.getObject();
         }
         return null;
+    }
+
+    public void createOrder(Order order){
+        Packet p = new Packet(36, order);
+        sendPackage(p);
     }
 }

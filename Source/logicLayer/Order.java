@@ -5,6 +5,8 @@
  */
 package logicLayer;
 
+import java.io.File;
+
 /**
  *
  * @author mehgn
@@ -15,7 +17,6 @@ public class Order implements java.io.Serializable {
 
     private int id;
     private String title;
-    private int psid;
     private String customer;
     private String manufactorer;
     private boolean archived;
@@ -23,15 +24,24 @@ public class Order implements java.io.Serializable {
     private double priceper;
     private double pricetotal;
     private String completionDate;
-    private String deliviryDate;
+    private String deliveryDate;
+
+
+
     private String deadline;
+<<<<<<< HEAD
     private Boolean status;
     private String briefdescription;
 
     public Order(int id, String title, int psid, String customer, String manufactorer, boolean archived, int amount, double priceper, double pricetotal, String completionDate, String deliviryDate, String deadline, String briefdescription, Boolean status) {
+=======
+    private File ps;
+
+
+    public Order(int id, String title, String customer, String manufactorer, boolean archived, int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String deadline, String briefdescription) {
+>>>>>>> master
         this.id = id;
         this.title = title;
-        this.psid = psid;
         this.customer = customer;
         this.manufactorer = manufactorer;
         this.archived = archived;
@@ -39,12 +49,35 @@ public class Order implements java.io.Serializable {
         this.priceper = priceper;
         this.pricetotal = pricetotal;
         this.completionDate = completionDate;
-        this.deliviryDate = deliviryDate;
+        this.deliveryDate = deliveryDate;
         this.deadline = deadline;
         this.briefdescription = briefdescription;
         this.status = status;
     }
 
+<<<<<<< HEAD
+=======
+    public Order(String title, int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String deadline, String briefdescription, File productSpecification) {
+        this.title = title;
+        this.archived = false;
+        this.amount = amount;
+        this.priceper = priceper;
+        this.pricetotal = pricetotal;
+        this.completionDate = completionDate;
+        this.deliveryDate = deliveryDate;
+        this.deadline = deadline;
+        this.briefdescription = briefdescription;
+        this.ps = productSpecification;
+    }
+
+    public Order(String title, int amount){
+        this.title = title;
+        this.amount = amount;
+    }
+
+    private String briefdescription;
+
+>>>>>>> master
     public String getTitle() {
         return title;
     }
@@ -59,14 +92,6 @@ public class Order implements java.io.Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getPsid() {
-        return psid;
-    }
-
-    public void setPsid(int psid) {
-        this.psid = psid;
     }
 
     public String getCustomer() {
@@ -117,12 +142,12 @@ public class Order implements java.io.Serializable {
         this.completionDate = completionDate;
     }
 
-    public String getDeliviryDate() {
-        return deliviryDate;
+    public String getDeliveryDate() {
+        return deliveryDate;
     }
 
-    public void setDeliviryDate(String deliviryDate) {
-        this.deliviryDate = deliviryDate;
+    public void setDeliveryDate(String deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
     public String getBriefdescription() {
@@ -133,17 +158,27 @@ public class Order implements java.io.Serializable {
         this.briefdescription = briefdescription;
     }
 
+<<<<<<< HEAD
     public String getManufactorer() {
         return manufactorer;
     }
 
     public void setManufactorer(String manufactorer) {
         this.manufactorer = manufactorer;
+=======
+    public File getPs() {
+        return ps;
+    }
+
+    public void setPs(File ps) {
+        this.ps = ps;
+>>>>>>> master
     }
 
     public String getDeadline() {
         return deadline;
     }
+<<<<<<< HEAD
 
     public void setDeadline(String deadline) {
         this.deadline = deadline;
@@ -157,5 +192,10 @@ public class Order implements java.io.Serializable {
         this.status = status;
     }
 
+=======
+>>>>>>> master
 
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
+    }
 }

@@ -28,7 +28,7 @@ public class ClientController {
 //tek-studsrv0c.stud-srv.sdu.dk
 
     private void connectToServer() throws IOException {
-        socket = new Socket("127.0.0.1", 1337);
+        socket = new Socket("tek-studsrv0c.stud-srv.sdu.dk", 1337);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectInputStream = new ObjectInputStream(socket.getInputStream());
         Packet p = null;
@@ -175,5 +175,14 @@ public class ClientController {
         Packet p = new Packet(36, order);
         sendPackage(p);
     }
-    
+
+    public void deleteOrder(String id){
+        Packet p = new Packet(37, id);
+        sendPackage(p);
+    }
+
+    public void updateOrder(Order order){
+        Packet p = new Packet(38, order);
+        sendPackage(p);
+    }
 }

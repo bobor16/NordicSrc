@@ -25,17 +25,9 @@ public class Order implements java.io.Serializable {
     private double pricetotal;
     private String completionDate;
     private String deliveryDate;
-
-
-
     private String deadline;
-<<<<<<< HEAD
-    private Boolean status;
-    private String briefdescription;
-
-    public Order(int id, String title, int psid, String customer, String manufactorer, boolean archived, int amount, double priceper, double pricetotal, String completionDate, String deliviryDate, String deadline, String briefdescription, Boolean status) {
-=======
-    private File ps;
+    private String psname;
+    private byte[] psBytes;
 
 
     public Order(int id, String title, String customer, String manufactorer, boolean archived, int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String deadline, String briefdescription) {
@@ -55,9 +47,7 @@ public class Order implements java.io.Serializable {
         this.status = status;
     }
 
-<<<<<<< HEAD
-=======
-    public Order(String title, int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String deadline, String briefdescription, File productSpecification) {
+    public Order(String title, int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String deadline, String briefdescription, String psname) {
         this.title = title;
         this.archived = false;
         this.amount = amount;
@@ -67,7 +57,7 @@ public class Order implements java.io.Serializable {
         this.deliveryDate = deliveryDate;
         this.deadline = deadline;
         this.briefdescription = briefdescription;
-        this.ps = productSpecification;
+        this.psname = psname;
     }
 
     public Order(String title, int amount){
@@ -158,21 +148,12 @@ public class Order implements java.io.Serializable {
         this.briefdescription = briefdescription;
     }
 
-<<<<<<< HEAD
-    public String getManufactorer() {
-        return manufactorer;
+    public String getPsname() {
+        return psname;
     }
 
-    public void setManufactorer(String manufactorer) {
-        this.manufactorer = manufactorer;
-=======
-    public File getPs() {
-        return ps;
-    }
-
-    public void setPs(File ps) {
-        this.ps = ps;
->>>>>>> master
+    public void setPsname(String psname) {
+        this.psname = psname;
     }
 
     public String getDeadline() {
@@ -184,18 +165,7 @@ public class Order implements java.io.Serializable {
         this.deadline = deadline;
     }
 
-    public Boolean getStatus() {
-        return status;
-    }
+    public byte[] getPsBytes() { return psBytes; }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
-=======
->>>>>>> master
-
-    public void setDeadline(String deadline) {
-        this.deadline = deadline;
-    }
+    public void setPsBytes(byte[] psBytes) { this.psBytes = psBytes; }
 }

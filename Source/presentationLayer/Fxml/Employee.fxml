@@ -56,7 +56,7 @@
                                              <items>
                                                 <AnchorPane maxWidth="190.0" prefHeight="647.0" prefWidth="185.0">
                                                    <children>
-                                                      <VBox minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                                      <VBox minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                                                          <children>
                                                             <HBox>
                                                                <children>
@@ -66,26 +66,27 @@
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="5.0" />
-                                                            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
-                                                            <Button fx:id="showPendingOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showPendingOrder" prefHeight="25.0" prefWidth="190.0" text="Show Order">
-                                                               <padding>
-                                                                  <Insets left="5.0" right="5.0" />
-                                                               </padding>
-                                                            </Button>
-                                                            <TableView fx:id="tableviewPendingOrders" prefHeight="577.0" prefWidth="165.0">
+                                                            <TableView fx:id="tableviewPendingOrders" maxHeight="1.7976931348623157E308" prefHeight="580.0" prefWidth="190.0">
                                                               <columns>
                                                                 <TableColumn fx:id="tableviewPendingOrdersColumn" prefWidth="190.0" text="C1" />
                                                               </columns>
                                                             </TableView>
+                                                            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" />
+                                                            <Button fx:id="showPendingOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showCaseMethod" prefHeight="25.0" prefWidth="190.0" text="Show Order">
+                                                               <padding>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </padding>
+                                                            </Button>
+                                                            <Pane prefHeight="5.0" />
                                                          </children>
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
                                                 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="500.0">
                                                    <children>
-                                                      <AnchorPane id="AnchorPane" layoutX="25.0" prefHeight="647.0" prefWidth="475.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <AnchorPane id="AnchorPane" layoutX="25.0" prefHeight="647.0" prefWidth="475.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
-                                                            <VBox layoutX="-23.0" layoutY="25.0" prefHeight="612.0" prefWidth="475.0" spacing="5.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="-23.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="25.0">
+                                                            <VBox layoutX="-23.0" layoutY="25.0" prefHeight="612.0" prefWidth="475.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0">
                                                                <children>
                                                                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="22.0" prefWidth="475.0">
                                                                      <children>
@@ -97,8 +98,20 @@
                                                                         <Insets top="5.0" />
                                                                      </VBox.margin>
                                                                   </HBox>
-                                                                  <Label text="Manufactorer:" />
-                                                                  <Label text="Costumer:" />
+                                                                  <HBox>
+                                                                     <children>
+                                                                        <Label text="Manufactorer:" />
+                                                                        <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
+                                                                        <Label fx:id="manuFactorerLabel" text="Label" />
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox>
+                                                                     <children>
+                                                                        <Label text="Costumer:" />
+                                                                        <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
+                                                                        <Label fx:id="pendingOrderCostumer" text="Label" />
+                                                                     </children>
+                                                                  </HBox>
                                                                   <HBox alignment="CENTER_LEFT">
                                                                      <children>
                                                                         <Label text="Amount" />
@@ -174,6 +187,7 @@
                                                                   <Pane VBox.vgrow="ALWAYS" />
                                                                   <Button fx:id="pendingOrderShowImagesButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showImagesPendingOrder" prefHeight="25.0" text="Images" />
                                                                   <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" text="Document" />
+                                                                  <Pane />
                                                                   <HBox>
                                                                      <children>
                                                                         <Pane HBox.hgrow="ALWAYS" />
@@ -185,25 +199,27 @@
                                                                   </HBox>
                                                                </children>
                                                             </VBox>
-                                                            <Pane layoutX="-25.0" prefHeight="25.0" prefWidth="500.0" style="-fx-background-color: #3399CC;" AnchorPane.leftAnchor="-25.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <Pane layoutX="-25.0" prefHeight="25.0" prefWidth="500.0" style="-fx-background-color: #3399CC;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                <children>
-                                                                  <Label layoutX="186.0" layoutY="4.0" text="Order Id: ">
-                                                                     <padding>
-                                                                        <Insets left="10.0" />
-                                                                     </padding>
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="OrderIDLabel1" layoutX="253.0" layoutY="4.0" text="label">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="12.0" />
-                                                                     </font>
-                                                                  </Label>
+                                                                  <HBox layoutX="204.0" layoutY="4.0">
+                                                                     <children>
+                                                                        <Label text="Order Id: ">
+                                                                           <padding>
+                                                                              <Insets left="10.0" />
+                                                                           </padding>
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="OrderIDLabel1" text="label">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="12.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
                                                                </children>
                                                             </Pane>
-                                                            <Label fx:id="manuFactorerLabel" layoutX="420.0" layoutY="66.0" prefHeight="17.0" prefWidth="31.0" text="Label" />
-                                                            <Label fx:id="pendingOrderCostumer" layoutX="421.0" layoutY="89.0" prefHeight="17.0" prefWidth="28.0" text="Label" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -246,17 +262,17 @@
                                                                </children>
                                                             </HBox>
                                                             <Pane prefHeight="5.0" />
-                                                            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
-                                                            <Button fx:id="showAcceptedOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showAcceptedOrder" prefHeight="25.0" prefWidth="190.0" text="Show Order">
-                                                               <padding>
-                                                                  <Insets left="5.0" right="5.0" />
-                                                               </padding>
-                                                            </Button>
-                                                            <TableView fx:id="acceptedOrdersView" prefHeight="570.0" prefWidth="140.0">
+                                                            <TableView fx:id="acceptedOrdersView" prefHeight="580.0" prefWidth="140.0">
                                                               <columns>
                                                                 <TableColumn fx:id="acceptedOrdersColumn" prefWidth="190.0" text="C1" />
                                                               </columns>
                                                             </TableView>
+                                                            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" />
+                                                            <Button fx:id="showAcceptedOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showCaseMethod" prefHeight="25.0" prefWidth="190.0" text="Show Order">
+                                                               <padding>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </padding>
+                                                            </Button>
                                                          </children>
                                                       </VBox>
                                                    </children>
@@ -331,7 +347,7 @@
                                                       </AnchorPane>
                                                       <AnchorPane id="AnchorPane" prefHeight="637.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
-                                                            <VBox layoutX="2.0" layoutY="28.0" prefHeight="614.0" prefWidth="475.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="28.0">
+                                                            <VBox layoutX="2.0" layoutY="28.0" prefHeight="614.0" prefWidth="475.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0">
                                                                <children>
                                                                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
                                                                      <children>

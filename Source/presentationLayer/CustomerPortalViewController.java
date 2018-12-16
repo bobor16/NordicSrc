@@ -6,6 +6,7 @@ import interfaces.iLogic.Ilogic;
 import java.awt.*;
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -320,7 +321,15 @@ public class CustomerPortalViewController extends SuperController implements Ini
             orderEditDeliveryDate.setValue(LocalDate.parse(selectedOrder.getDeliveryDate()));
             OrderIDLabel11.setText(Integer.toString(selectedOrder.getId()));
             orderEditBD.setText(selectedOrder.getBriefdescription());
-            productSpecification = selectedOrder.getPs();
+            productSpecification = new File(selectedOrder.getPsname());
+            FileOutputStream fos;
+            try {
+                fos = new FileOutputStream(productSpecification);
+                fos.write(selectedOrder.getPsBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
@@ -342,7 +351,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
     @FXML
     private void showDocumentOnAction(ActionEvent event) {
         new Thread(() -> {
-            String[] tempName = selectedOrder.getPs().getName().split("\\.");
+            String[] tempName = selectedOrder.getPsname().split("\\.");
             try {
                 File temp = File.createTempFile(tempName[0], "." + tempName[1]);
                 temp.deleteOnExit();
@@ -390,7 +399,12 @@ public class CustomerPortalViewController extends SuperController implements Ini
         double pricePer = Double.parseDouble(createOrderPricePer.getText());
         double priceTotal = Double.parseDouble(createOrderPriceTotal.getText());
         String bd = createOrderBriefDescription.getText().replaceAll("\'", "\\" + "\'");
-        Order order = new Order(title, amount, pricePer, priceTotal, completionDate.toString(), deliveryDate.toString(), deadline.toString(), bd, this.productSpecification);
+        Order order = new Order(title, amount, pricePer, priceTotal, completionDate.toString(), deliveryDate.toString(), deadline.toString(), bd, productSpecification.getName());
+        try {
+            order.setPsBytes(Files.readAllBytes(productSpecification.toPath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         cc.createOrder(order);
         clearCreateOrder();
         updateOrderList();
@@ -444,8 +458,13 @@ public class CustomerPortalViewController extends SuperController implements Ini
                 orderEditDeliveryDate.getValue().toString(),
                 orderEditDeadline.getValue().toString(),
                 orderEditBD.getText().replaceAll("\\'", "\\'"),
-                productSpecification);
+                productSpecification.getName());
         updatedOrder.setId(Integer.parseInt(OrderIDLabel11.getText()));
+        try {
+            updatedOrder.setPsBytes(Files.readAllBytes(productSpecification.toPath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ClientController cc = new ClientController();
         cc.updateOrder(updatedOrder);
         selectedOrder = cc.getOrder(OrderIDLabel11.getText());

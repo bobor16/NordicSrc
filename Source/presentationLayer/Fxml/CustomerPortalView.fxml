@@ -142,7 +142,7 @@
                                                 </AnchorPane>
                                                 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="500.0">
                                                    <children>
-                                                      <AnchorPane id="AnchorPane" fx:id="CreateOrderView" prefHeight="627.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <AnchorPane id="AnchorPane" fx:id="CreateOrderView" prefHeight="627.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <VBox layoutX="394.0" layoutY="333.0" prefHeight="865.4444444444445" prefWidth="638.4444444444445" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                                <children>
@@ -362,7 +362,7 @@
                                                             </Pane>
                                                          </children>
                                                       </AnchorPane>
-                                                      <AnchorPane id="AnchorPane" fx:id="EditOrderView" layoutX="10.0" layoutY="10.0" prefHeight="637.0" prefWidth="510.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <AnchorPane id="AnchorPane" fx:id="EditOrderView" layoutX="10.0" layoutY="10.0" prefHeight="637.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <VBox layoutX="394.0" layoutY="333.0" prefHeight="865.4444444444445" prefWidth="638.4444444444445" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                                <children>
@@ -564,7 +564,7 @@
                                                 </AnchorPane>
                                                 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="500.0">
                                                    <children>
-                                                      <AnchorPane id="AnchorPane" fx:id="OfferView" maxHeight="1.7976931348623157E308" prefHeight="627.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <AnchorPane id="AnchorPane" fx:id="OfferView" maxHeight="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                <children>
@@ -582,7 +582,7 @@
                                                                         </Label>
                                                                      </children>
                                                                   </Pane>
-                                                                  <SplitPane dividerPositions="0.5" maxHeight="1.7976931348623157E308" prefHeight="600.0">
+                                                                  <SplitPane dividerPositions="0.5" maxHeight="1.7976931348623157E308" prefHeight="625.0">
                                                                      <items>
                                                                         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                                                                            <children>
@@ -679,7 +679,7 @@
                                                             </VBox>
                                                          </children>
                                                       </AnchorPane>
-                                                      <AnchorPane id="AnchorPane" fx:id="showApproved" prefHeight="637.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <AnchorPane id="AnchorPane" fx:id="showApproved" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <VBox layoutX="394.0" layoutY="333.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                                <children>

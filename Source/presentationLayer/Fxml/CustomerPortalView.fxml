@@ -467,7 +467,7 @@
                                                                   <HBox>
                                                                      <children>
                                                                         <Pane HBox.hgrow="ALWAYS" />
-                                                                        <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="330.0" text="Upload Document" />
+                                                                        <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#uploadDocumentOnAction" prefHeight="25.0" prefWidth="330.0" text="Upload Document" />
                                                                         <Pane HBox.hgrow="ALWAYS" />
                                                                      </children>
                                                                   </HBox>

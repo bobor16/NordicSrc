@@ -178,4 +178,9 @@ public class ClientController {
         Packet p = new Packet(37, id);
         sendPackage(p);
     }
+
+    public void updateOrder(Order order){
+        Packet p = new Packet(38, order);
+        sendPackage(p);
+    }
 }

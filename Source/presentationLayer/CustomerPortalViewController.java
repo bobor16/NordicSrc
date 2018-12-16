@@ -210,9 +210,12 @@ public class CustomerPortalViewController extends SuperController implements Ini
         EditOrderView.setVisible(false);
         CreateOrderView.setVisible(false);
         ViewOrderView.setVisible(true);
-        ClientController cc = new ClientController();
         String[] id = CaseListView111.getSelectionModel().getSelectedItem().split(" ");
-        selectedOrder = cc.getOrder(id[0]);
+
+        if (selectedOrder == null || !id[0].equals(Integer.toString(selectedOrder.getId()))) {
+            ClientController cc = new ClientController();
+            selectedOrder = cc.getOrder(id[0]);
+        }
 
         showCaseTitle.setText(selectedOrder.getTitle());
         showCaseAmount.setText(Integer.toString(selectedOrder.getAmount()));
@@ -301,18 +304,22 @@ public class CustomerPortalViewController extends SuperController implements Ini
             CreateOrderView.setVisible(false);
             ViewOrderView.setVisible(false);
             EditOrderView.setVisible(true);
-            ClientController cc = new ClientController();
             String[] id = CaseListView111.getSelectionModel().getSelectedItem().split(" ");
-            selectedOrder = cc.getOrder(id[0]);
+
+            if (selectedOrder == null || !id[0].equals(Integer.toString(selectedOrder.getId()))) {
+                ClientController cc = new ClientController();
+                selectedOrder = cc.getOrder(id[0]);
+            }
 
             orderEditTitle.setText(selectedOrder.getTitle());
             orderEditAmount.setText(Integer.toString(selectedOrder.getAmount()));
             orderEditPricePer.setText(Double.toString(selectedOrder.getPriceper()));
             orderEditPriceTotal.setText(Double.toString(selectedOrder.getPricetotal()));
-            orderEditCompletionDate.getEditor().setText(selectedOrder.getCompletionDate());
-            orderEditDeadline.getEditor().setText(selectedOrder.getDeadline());
-            orderEditDeliveryDate.getEditor().setText(selectedOrder.getDeliveryDate());
+            orderEditCompletionDate.setValue(LocalDate.parse(selectedOrder.getCompletionDate()));
+            orderEditDeadline.setValue(LocalDate.parse(selectedOrder.getDeadline()));
+            orderEditDeliveryDate.setValue(LocalDate.parse(selectedOrder.getDeliveryDate()));
             OrderIDLabel11.setText(Integer.toString(selectedOrder.getId()));
+            orderEditBD.setText(selectedOrder.getBriefdescription());
             productSpecification = selectedOrder.getPs();
         }
     }
@@ -382,7 +389,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
         int amount = Integer.parseInt(createOrderAmount.getText());
         double pricePer = Double.parseDouble(createOrderPricePer.getText());
         double priceTotal = Double.parseDouble(createOrderPriceTotal.getText());
-        String bd = createOrderBriefDescription.getText();
+        String bd = createOrderBriefDescription.getText().replaceAll("\'", "\\" + "\'");
         Order order = new Order(title, amount, pricePer, priceTotal, completionDate.toString(), deliveryDate.toString(), deadline.toString(), bd, this.productSpecification);
         cc.createOrder(order);
         clearCreateOrder();
@@ -429,6 +436,20 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     @FXML
     private void updateOrderOnAction(ActionEvent event) {
-        //Order updatedOrder = new Order(Integer.parseInt(OrderIDLabel11.getText()), orderEditTitle.getText(), );
+        Order updatedOrder = new Order(orderEditTitle.getText(),
+                Integer.parseInt(orderEditAmount.getText()),
+                Double.parseDouble(orderEditPricePer.getText()),
+                Double.parseDouble(orderEditPriceTotal.getText()),
+                orderEditCompletionDate.getValue().toString(),
+                orderEditDeliveryDate.getValue().toString(),
+                orderEditDeadline.getValue().toString(),
+                orderEditBD.getText().replaceAll("\\'", "\\'"),
+                productSpecification);
+        updatedOrder.setId(Integer.parseInt(OrderIDLabel11.getText()));
+        ClientController cc = new ClientController();
+        cc.updateOrder(updatedOrder);
+        selectedOrder = cc.getOrder(OrderIDLabel11.getText());
+        System.out.println("Order updated");
+        updateOrderList();
     }
 }

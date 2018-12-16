@@ -4,8 +4,7 @@ import dataLayer.ClientController;
 import interfaces.iLogic.Ilogic;
 
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -165,6 +164,22 @@ public class CustomerPortalViewController extends SuperController implements Ini
     private Label approvedDeadline;
     @FXML
     private Label approvedBD;
+    @FXML
+    private TextField orderEditTitle;
+    @FXML
+    private DatePicker orderEditDeadline;
+    @FXML
+    private TextField orderEditAmount;
+    @FXML
+    private TextField orderEditPricePer;
+    @FXML
+    private TextField orderEditPriceTotal;
+    @FXML
+    private DatePicker orderEditCompletionDate;
+    @FXML
+    private DatePicker orderEditDeliveryDate;
+    @FXML
+    private TextArea orderEditBD;
 
     private File productSpecification;
     private Order selectedOrder, selectedApprovedOrder;
@@ -207,7 +222,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
         showCaseDeliveryDate.setText(selectedOrder.getDeliveryDate());
         showCaseDeadline.setText("");
         showCaseBDText.setText(selectedOrder.getBriefdescription());
-        OrderIDLabel1.setText(Integer.toString( selectedOrder.getId()));
+        OrderIDLabel1.setText(Integer.toString(selectedOrder.getId()));
     }
 
     @FXML
@@ -268,14 +283,38 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     @FXML
     private void deleteOrderButtonOnAction(ActionEvent event) {
-
+        ClientController cc = new ClientController();
+        if (selectedOrder == null) {
+            String[] id = CaseListView111.getSelectionModel().getSelectedItem().split(" ");
+            cc.deleteOrder(id[0]);
+        } else {
+            cc.deleteOrder(Integer.toString(selectedOrder.getId()));
+        }
+        clearPendingOrder();
+        clearApprovedOrder();
+        updateOrderList();
     }
 
     @FXML
     private void editOrderButtonOnAction(ActionEvent event) {
-        CreateOrderView.setVisible(false);
-        ViewOrderView.setVisible(false);
-        EditOrderView.setVisible(true);
+        if (!CaseListView111.getSelectionModel().isEmpty()) {
+            CreateOrderView.setVisible(false);
+            ViewOrderView.setVisible(false);
+            EditOrderView.setVisible(true);
+            ClientController cc = new ClientController();
+            String[] id = CaseListView111.getSelectionModel().getSelectedItem().split(" ");
+            selectedOrder = cc.getOrder(id[0]);
+
+            orderEditTitle.setText(selectedOrder.getTitle());
+            orderEditAmount.setText(Integer.toString(selectedOrder.getAmount()));
+            orderEditPricePer.setText(Double.toString(selectedOrder.getPriceper()));
+            orderEditPriceTotal.setText(Double.toString(selectedOrder.getPricetotal()));
+            orderEditCompletionDate.getEditor().setText(selectedOrder.getCompletionDate());
+            orderEditDeadline.getEditor().setText(selectedOrder.getDeadline());
+            orderEditDeliveryDate.getEditor().setText(selectedOrder.getDeliveryDate());
+            OrderIDLabel11.setText(Integer.toString(selectedOrder.getId()));
+            productSpecification = selectedOrder.getPs();
+        }
     }
 
     private void updateOrderList() {
@@ -294,22 +333,35 @@ public class CustomerPortalViewController extends SuperController implements Ini
     }
 
     @FXML
-    private void showDocumentOnAction(ActionEvent event) throws IOException {
-        File file = selectedOrder.getPs();
+    private void showDocumentOnAction(ActionEvent event) {
+        new Thread(() -> {
+            String[] tempName = selectedOrder.getPs().getName().split("\\.");
+            try {
+                File temp = File.createTempFile(tempName[0], "." + tempName[1]);
+                temp.deleteOnExit();
+                FileOutputStream fos = new FileOutputStream(temp);
+                fos.write(selectedOrder.getPsBytes());
 
-        if (!Desktop.isDesktopSupported()) {
-            System.out.println("Desktop not supported");
-            return;
-        }
+                if (!Desktop.isDesktopSupported()) {
+                    System.out.println("Desktop not supported");
+                    return;
+                }
 
-        Desktop desktop = Desktop.getDesktop();
+                Desktop desktop = Desktop.getDesktop();
 
-        if (file.exists()) {
-            desktop.open(file);
-        }
+                if (temp.canRead()) {
+                    desktop.open(temp);
+                    System.out.println("Should show the file: " + temp.getName());
+                } else {
+                    System.out.println("lol");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
-    private void clearCreateOrder(){
+    private void clearCreateOrder() {
         createOrderPricePer.clear();
         createOrderAmount.clear();
         createOrderBriefDescription.clear();
@@ -321,7 +373,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
     }
 
     @FXML
-    private void createOrderOnAction(ActionEvent event){
+    private void createOrderOnAction(ActionEvent event) {
         ClientController cc = new ClientController();
         LocalDate completionDate = createOrderCompletionDate.getValue();
         LocalDate deliveryDate = createOrderDeliveryDate.getValue();
@@ -338,12 +390,45 @@ public class CustomerPortalViewController extends SuperController implements Ini
     }
 
     @FXML
-    private void uploadDocumentOnAction(ActionEvent event){
+    private void uploadDocumentOnAction(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose Product Specification");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Product Specification", "*.pdf"));
         Node source = (Node) event.getSource();
         Window stage = source.getScene().getWindow();
         productSpecification = fileChooser.showOpenDialog(stage);
+    }
+
+    private void clearApprovedOrder() {
+        approvedTitle.setText("");
+        approvedAmount.setText("");
+        approvedPricePer.setText("");
+        approvedPriceTotal.setText("");
+        approvedCompletionDate.setText("");
+        approvedDeliveryDate.setText("");
+        approvedDeadline.setText("");
+        approvedBD.setText("");
+        OrderIDLabel11.setText("");
+        productSpecification = null;
+        selectedApprovedOrder = null;
+    }
+
+    private void clearPendingOrder() {
+        showCaseTitle.setText("");
+        showCaseAmount.setText("");
+        showCasePricePer.setText("");
+        showCasePriceTotal.setText("");
+        showCaseCompletionDate.setText("");
+        showCaseDeliveryDate.setText("");
+        showCaseDeadline.setText("");
+        showCaseBDText.setText("");
+        OrderIDLabel1.setText("");
+        productSpecification = null;
+        selectedOrder = null;
+    }
+
+    @FXML
+    private void updateOrderOnAction(ActionEvent event) {
+        //Order updatedOrder = new Order(Integer.parseInt(OrderIDLabel11.getText()), orderEditTitle.getText(), );
     }
 }

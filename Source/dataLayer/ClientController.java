@@ -173,4 +173,9 @@ public class ClientController {
         Packet p = new Packet(36, order);
         sendPackage(p);
     }
+
+    public void deleteOrder(String id){
+        Packet p = new Packet(37, id);
+        sendPackage(p);
+    }
 }

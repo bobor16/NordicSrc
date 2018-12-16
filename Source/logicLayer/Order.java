@@ -22,11 +22,9 @@ public class Order implements java.io.Serializable{
     private double pricetotal;
     private String completionDate;
     private String deliveryDate;
-
-
-
     private String deadline;
     private File ps;
+    private byte[] psBytes;
 
 
     public Order(int id, String title, String customer, String manufactorer, boolean archived, int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String deadline, String briefdescription) {
@@ -159,4 +157,8 @@ public class Order implements java.io.Serializable{
     public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
+
+    public byte[] getPsBytes() { return psBytes; }
+
+    public void setPsBytes(byte[] psBytes) { this.psBytes = psBytes; }
 }

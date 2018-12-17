@@ -5,21 +5,34 @@
  */
 package logicLayer;
 
+import java.io.Serializable;
+
 /**
  *
  * @author mehgn
  */
-public class Offer {
+public class Offer implements Serializable{
 
     private int offerID;
     private int orderID;
     private int amount;
+    private String manfemail;
+    private String psName;
+
+    public String getManfemail() {
+        return manfemail;
+    }
+
+    public void setManfemail(String manfemail) {
+        this.manfemail = manfemail;
+    }
     private double priceper;
     private double pricetotal;
     private String completionDate;
     private String deliveryDate;
     private String briefDescription;
     private byte[] psBytes;
+    
 
     public int getOfferID() {
         return offerID;
@@ -85,8 +98,7 @@ public class Offer {
         this.psBytes = psBytes;
     }
 
-    public Offer(int offerID, int orderID, int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String briefDescription) {
-        this.offerID = offerID;
+    public Offer(int orderID, int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String briefDescription, String psName, byte[] psBytes) {
         this.orderID = orderID;
         this.amount = amount;
         this.priceper = priceper;
@@ -94,6 +106,25 @@ public class Offer {
         this.completionDate = completionDate;
         this.deliveryDate = deliveryDate;
         this.briefDescription = briefDescription;
+        this.psName = psName;
+        this.psBytes = psBytes;
+        
+    }
+
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public String getPsName() {
+        return psName;
+    }
+
+    public void setPsName(String psName) {
+        this.psName = psName;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
     }
 
     

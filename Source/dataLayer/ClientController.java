@@ -29,7 +29,7 @@ public class ClientController {
 //tek-studsrv0c.stud-srv.sdu.dk
 
     private void connectToServer() throws IOException {
-        socket = new Socket("tek-studsrv0c.stud-srv.sdu.dk", 1337);
+        socket = new Socket("127.0.0.1", 1337);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectInputStream = new ObjectInputStream(socket.getInputStream());
         Packet p = null;
@@ -200,7 +200,7 @@ public class ClientController {
         Packet p = new Packet(40, offer);
         sendPackage(p);
     }
-    public void deleteOffer(String id) {
+    public void deleteOffer(int id) {
         Packet p = new Packet(41, id);
         sendPackage(p);
     }
@@ -209,8 +209,14 @@ public class ClientController {
         Packet p = new Packet(42, id);
         sendPackage(p);
     }
+      public void getOrderIDFromOfferID (int offerID) {
+        Packet p = new Packet(43, offerID);
+        sendPackage(p);
+    }
     
     public static void main(String[] args) {
         ClientController cc = new ClientController();
+           Offer offer = new Offer(1, 10, 10, 10, "NO", "NO", "NO", "NO", null);
+        cc.createOffer(offer);
     }
 }

@@ -262,13 +262,12 @@
                                                                </VBox.margin>
                                                             </VBox>
                                                             <Pane VBox.vgrow="ALWAYS" />
-                                                            <Button fx:id="AddPictureButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#AddPictureOnAction" prefHeight="25.0" text="Add Picture" />
-                                                            <Button fx:id="AddDocumentOnAction" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#AddDocumentOnAction" prefHeight="25.0" text="Add Document" />
+                                                            <Button fx:id="AddPictureButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#AddPictureOnAction" prefHeight="24.0" prefWidth="494.0" text="Add File" />
                                                             <Pane prefHeight="15.0" />
                                                             <HBox>
                                                                <children>
                                                                   <Pane HBox.hgrow="ALWAYS" />
-                                                                  <Button fx:id="PlaceBidButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#PlaceBidOnAction" prefWidth="125.0" text="Place Bid" />
+                                                                  <Button fx:id="PlaceBidButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#PlaceBidOnAction" prefWidth="125.0" text="Place offer" />
                                                                   <Pane HBox.hgrow="ALWAYS" />
                                                                   <Button fx:id="CancelButton" mnemonicParsing="false" onAction="#CancelOnAction" prefWidth="125.0" text="Cancel" />
                                                                   <Pane HBox.hgrow="ALWAYS" />
@@ -336,7 +335,7 @@
                                                          </children>
                                                       </HBox>
                                                       <Pane prefHeight="5.0" />
-                                                      <ListView fx:id="OrderListView" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
+                                                      <ListView fx:id="pendingOfferList" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
                                                       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
                                                       <Button fx:id="ShowOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ShowOrderOnAction" prefHeight="25.0" prefWidth="190.0" text="Show Order">
                                                          <padding>
@@ -514,7 +513,7 @@
                                                          </children>
                                                       </HBox>
                                                       <Pane prefHeight="5.0" />
-                                                      <ListView fx:id="CaseListView11" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
+                                                      <ListView fx:id="acceptOfferList" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
                                                       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
                                                       <Button fx:id="ShowOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ShowOrderOnAction" prefHeight="25.0" prefWidth="190.0" text="Show Order">
                                                          <padding>

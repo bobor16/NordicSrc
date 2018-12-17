@@ -9,6 +9,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -25,6 +26,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
+import logicLayer.Offer;
 import logicLayer.Order;
 
 public class CustomerPortalViewController extends SuperController implements Initializable {
@@ -54,7 +56,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
     @FXML
     private Label ManfCompanyNameLabel;
     @FXML
-    private ListView<?> CaseListView112;
+    private ListView<String> CaseListView112;
     @FXML
     private Label ProductPriceLabel;
     @FXML
@@ -184,6 +186,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     private File productSpecification;
     private Order selectedOrder, selectedApprovedOrder;
+    private Offer selectedOffer;
 
     public CustomerPortalViewController(Ilogic logic) {
         super(logic);
@@ -275,6 +278,16 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     @FXML
     private void DeclineOnAction(ActionEvent event) {
+        HashMap<Integer, String> offerMap = new HashMap<>();
+         ClientController cc = new ClientController();
+        if (selectedOffer == null) {
+            //offerMap.put(Integer.toString(selectedOrder.getId(), value) //VALUE = MANF EMAIL
+            String[] id = CaseListView112.getSelectionModel().getSelectedItem().split(" ");
+          //  cc.deleteOffer()); 
+        } else {
+            
+        }
+         
     }
 
     @FXML
@@ -335,8 +348,8 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     private void updateOrderList() {
         ClientController cc = new ClientController();
-        ArrayList<String> pending = cc.getOrderList("pending");
-        ArrayList<String> approved = cc.getOrderList("approved");
+        ArrayList<String> pending = cc.getCostumerList("pending");
+        ArrayList<String> approved = cc.getCostumerList("approved");
         CaseListView111.getItems().clear();
         CaseListView1111.getItems().clear();
 

@@ -166,21 +166,11 @@ public class ClientController {
         sendPackage(p);
     }
 
-    public ArrayList<String> getOrderList(String message) {
+    public ArrayList<String> getCostumerList(String message) {
         Packet p = new Packet(33, message);
         sendPackage(p);
         p = receivePackage();
         if (p.getId() == 33) {
-            return (ArrayList<String>) p.getObject();
-        }
-        return null;
-    }
-
-    public ArrayList<String> getOrderListManufacturer() {
-        Packet p = new Packet(39, null);
-        sendPackage(p);
-        p = receivePackage();
-        if (p.getId() == 39) {
             return (ArrayList<String>) p.getObject();
         }
         return null;
@@ -210,21 +200,51 @@ public class ClientController {
         Packet p = new Packet(38, order);
         sendPackage(p);
     }
+
+    public ArrayList<String> getOfferList(String message) {
+        Packet p = new Packet(39, message);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 39) {
+            return (ArrayList<String>) p.getObject();
+        }
+        return null;
+    }
+
     public void createOffer(Offer offer) {
         Packet p = new Packet(40, offer);
         sendPackage(p);
     }
-    public void deleteOffer(String id) {
-        Packet p = new Packet(41, id);
+
+    public void deleteOffer(HashMap test) {
+        Packet p = new Packet(41, test);
         sendPackage(p);
     }
-    
+
     public void acceptOrder(int id) {
         Packet p = new Packet(42, id);
         sendPackage(p);
     }
-    
+
+    public void getOrderIDFromOfferID(int offerID) {
+        Packet p = new Packet(43, offerID);
+        sendPackage(p);
+    }
+
+    public ArrayList<String> getManufacturerList() {
+        Packet p = new Packet(44, null);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 44) {
+            return (ArrayList<String>) p.getObject();
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         ClientController cc = new ClientController();
+        cc.getOfferList("pending").forEach((list) -> {
+            System.out.println(list);
+        });
     }
 }

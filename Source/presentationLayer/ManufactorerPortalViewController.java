@@ -5,6 +5,7 @@
  */
 package presentationLayer;
 
+import dataLayer.ClientController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,6 +21,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import interfaces.iLogic.Ilogic;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import javafx.scene.control.DatePicker;
+import logicLayer.Offer;
+import logicLayer.Order;
 import logicLayer.User;
 
 /**
@@ -27,14 +37,14 @@ import logicLayer.User;
  *
  * @author rasmu
  */
-public class ManufactorerPortalViewController implements Initializable {
+public class ManufactorerPortalViewController extends SuperController implements Initializable {
 
     @FXML
     private Button logOutButton;
     @FXML
     private PasswordField SearchField;
     @FXML
-    private ListView<?> OrderListView;
+    private ListView<String> OrderListView;
     @FXML
     private Button ShowOrderButton;
     @FXML
@@ -68,9 +78,9 @@ public class ManufactorerPortalViewController implements Initializable {
     @FXML
     private TextField PriceTotalTextField;
     @FXML
-    private TextField EstCompletionDateTextFiield;
+    private DatePicker EstCompletionDateTextFiield;
     @FXML
-    private TextField EstDeliveryDateTextField;
+    private DatePicker EstDeliveryDateTextField;
     @FXML
     private TextArea DescriptionField;
     @FXML
@@ -94,7 +104,7 @@ public class ManufactorerPortalViewController implements Initializable {
     @FXML
     private Button DeleteOfferButton;
     @FXML
-    private ListView<?> CaseListView11;
+    private ListView<String> CaseListView11;
     @FXML
     private AnchorPane OrderView;
     @FXML
@@ -118,6 +128,8 @@ public class ManufactorerPortalViewController implements Initializable {
     @FXML
     private Label OrderStateLabel;
     @FXML
+    private Label OrderIDLabel2;
+    @FXML
     private AnchorPane EditLogisticsView;
     @FXML
     private Label CompanyNameLabel1111;
@@ -134,6 +146,8 @@ public class ManufactorerPortalViewController implements Initializable {
     @FXML
     private Button SaveButton;
     @FXML
+    private Button acceptOrderButton;
+    @FXML
     private Button ShowLogisticsButton;
     @FXML
     private Button UpdateLogisticsButton;
@@ -141,9 +155,30 @@ public class ManufactorerPortalViewController implements Initializable {
     private AnchorPane ShowOrderView;
     @FXML
     private AnchorPane PlaceOfferView;
+    @FXML
+    private TextField orderEditTitle;
+    @FXML
+    private DatePicker orderEditDeadline;
+    @FXML
+    private TextField orderEditAmount;
+    @FXML
+    private TextField orderEditPricePer;
+    @FXML
+    private TextField orderEditPriceTotal;
+    @FXML
+    private DatePicker orderEditCompletionDate;
+    @FXML
+    private DatePicker orderEditDeliveryDate;
+    @FXML
+    private TextArea orderEditBD;
+    private Order selectedOrder, selectedApprovedOrder;
+    private File productSpecification;
+    ApplicationStateHandler statehandeler = new ApplicationStateHandler();
+    @FXML
+    private AnchorPane showOrderPane;
 
     ManufactorerPortalViewController(Ilogic logic) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super(logic);
     }
 
     /**
@@ -151,17 +186,20 @@ public class ManufactorerPortalViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        updateOrderList();
+    }
 
     @FXML
     private void logOutButtonMethod(ActionEvent event) {
     }
 
     @FXML
-    private void SearchOnAction(ActionEvent event) {
+    private void EditOfferOnAction(ActionEvent event) {
     }
 
+    @FXML
+    private void SearchOnAction(ActionEvent event) {
+    }
 
     @FXML
     private void showOrderOnAction(ActionEvent event) {
@@ -175,21 +213,36 @@ public class ManufactorerPortalViewController implements Initializable {
     private void ShowDocumentOnAction(ActionEvent event) {
     }
 
-
     @FXML
     private void AddDocumentOnAction(ActionEvent event) {
     }
 
     @FXML
     private void PlaceBidOnAction(ActionEvent event) {
+        ClientController cc = new ClientController();
+        String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
+        String title = cc.getOrder(id[0]).getTitle();
+        int orderId = cc.getOrder(id[0]).getId();
+        LocalDate completionDate = EstCompletionDateTextFiield.getValue();
+        LocalDate deliveryDate = EstDeliveryDateTextField.getValue();
+        OfferIDLabel.setText(title);
+        int amount = Integer.parseInt(AmountTextField.getText());
+        double pricePer = Double.parseDouble(PricePerTextField.getText());
+        double priceTotal = Double.parseDouble(PriceTotalTextField.getText());
+        String bd = DescriptionField.getText().replaceAll("\'", "\\" + "\'");
+        Offer offer = new Offer(2, orderId, amount, pricePer, priceTotal, completionDate.toString(), deliveryDate.toString(), bd);
+        try {
+            offer.setPsBytes(Files.readAllBytes(productSpecification.toPath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        cc.createOffer(offer);
+        clearCreateOffer();
+        updateOrderList();
     }
 
     @FXML
     private void CancelOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void ShowOrderOnAction(ActionEvent event) {
     }
 
     @FXML
@@ -202,14 +255,35 @@ public class ManufactorerPortalViewController implements Initializable {
 
     @FXML
     private void ShowOfferOnAction(ActionEvent event) {
+
     }
 
     @FXML
-    private void EditOfferOnAction(ActionEvent event) {
+    private void acceptOrder(ActionEvent event) {
+        ClientController cc = new ClientController();
+        if (selectedOrder == null) {
+            String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
+            cc.acceptOrder(id[0]);
+        } else {
+            cc.acceptOrder(Integer.toString(selectedOrder.getId()));
+        }
+        clearPendingOrder();
+        clearApprovedOrder();
+        updateOrderList();
     }
 
     @FXML
     private void DeleteOfferOnAction(ActionEvent event) {
+        ClientController cc = new ClientController();
+        if (selectedOrder == null) {
+            String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
+            cc.deleteOffer(id[0]);
+        } else {
+            cc.deleteOrder(Integer.toString(selectedOrder.getId()));
+        }
+        clearPendingOrder();
+        clearApprovedOrder();
+        updateOrderList();
     }
 
     @FXML
@@ -227,5 +301,103 @@ public class ManufactorerPortalViewController implements Initializable {
     @FXML
     private void AddPictureOnAction(ActionEvent event) {
     }
-    
+
+    private void updateOrderList() {
+        ClientController cc = new ClientController();
+        ArrayList<String> pending = cc.getOrderListManufacturer();
+        OrderListView.getItems().clear();
+        for (String order : pending) {
+            OrderListView.getItems().add(order);
+        }
+    }
+
+    @FXML
+    private void ShowOrderOnAction(ActionEvent event) {
+        String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
+
+        if (selectedOrder == null || !id[0].equals(Integer.toString(selectedOrder.getId()))) {
+            ClientController cc = new ClientController();
+            selectedOrder = cc.getOrder(id[0]);
+        }
+
+        TitelLabel.setText(selectedOrder.getTitle());
+        AmountLabel.setText(Integer.toString(selectedOrder.getAmount()));
+        PricePerLabel.setText(Double.toString(selectedOrder.getPriceper()));
+        PriceTotalLabel.setText(Double.toString(selectedOrder.getPricetotal()));
+        CompletionDateLabel.setText(selectedOrder.getCompletionDate());
+        DeliveryDateLabel.setText(selectedOrder.getDeliveryDate());
+        DeadlineLabel.setText(selectedOrder.getDeadline());
+        DescriptionTextArea.setText(selectedOrder.getBriefdescription());
+        OrderIDLabel.setText(Integer.toString(selectedOrder.getId()));
+    }
+
+    @FXML
+    private void showApprovedMethod(ActionEvent event) {
+        OfferView.setVisible(false);
+        ClientController cc = new ClientController();
+        String[] id = CaseListView11.getSelectionModel().getSelectedItem().split(" ");
+        selectedApprovedOrder = cc.getOrder(id[0]);
+
+        TitelLabel.setText(selectedApprovedOrder.getTitle());
+        AmountLabel.setText(Integer.toString(selectedApprovedOrder.getAmount()));
+        PricePerLabel.setText(Double.toString(selectedApprovedOrder.getPriceper()));
+        PriceTotalLabel.setText(Double.toString(selectedApprovedOrder.getPricetotal()));
+        CompletionDateLabel.setText(selectedApprovedOrder.getCompletionDate());
+        DeliveryDateLabel.setText(selectedApprovedOrder.getDeliveryDate());
+        DeadlineLabel.setText("");
+        DescriptionTextArea.setText(selectedApprovedOrder.getBriefdescription());
+        OfferIdLabel.setText(Integer.toString(selectedApprovedOrder.getId()));
+    }
+
+    private void clearApprovedOrder() {
+        TitelLabel.setText("");
+        AmountLabel.setText("");
+        PricePerLabel.setText("");
+        PriceTotalLabel.setText("");
+        CompletionDateLabel.setText("");
+        DeliveryDateLabel.setText("");
+        DeadlineLabel.setText("");
+        DescriptionTextArea.setText("");
+        OfferIdLabel.setText("");
+        productSpecification = null;
+        selectedApprovedOrder = null;
+    }
+
+    private void clearPendingOrder() {
+        TitelLabel.setText("");
+        AmountLabel.setText("");
+        PricePerLabel.setText("");
+        PriceTotalLabel.setText("");
+        CompletionDateLabel.setText("");
+        DeliveryDateLabel.setText("");
+        DeadlineLabel.setText("");
+        DescriptionTextArea.setText("");
+        OrderIDLabel.setText("");
+        productSpecification = null;
+        selectedOrder = null;
+    }
+
+    @FXML
+    private void deleteOrderButtonOnAction(ActionEvent event) {
+        ClientController cc = new ClientController();
+        if (selectedOrder == null) {
+            String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
+            cc.deleteOrder(id[0]);
+        } else {
+            cc.deleteOrder(Integer.toString(selectedOrder.getId()));
+        }
+        clearPendingOrder();
+        clearApprovedOrder();
+        updateOrderList();
+    }
+
+    private void clearCreateOffer() {
+        PricePerTextField.clear();
+        AmountTextField.clear();
+        DescriptionField.clear();
+        PriceTotalTextField.clear();
+        OfferIDLabel.setText("");
+        EstCompletionDateTextFiield.getEditor().clear();
+        EstDeliveryDateTextField.getEditor().clear();
+    }
 }

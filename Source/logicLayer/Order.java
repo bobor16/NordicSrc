@@ -15,6 +15,7 @@ public class Order implements java.io.Serializable {
 
     private static final long serialVersionUID = -7279684461532176262L;
 
+    private int orderID;
     private int id;
     private String title;
     private String customer;
@@ -28,11 +29,11 @@ public class Order implements java.io.Serializable {
     private String deadline;
     private String psname;
     private byte[] psBytes;
+    private Boolean status;
 
-
-    public Order(int id, String title, String customer, String manufactorer, boolean archived, int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String deadline, String briefdescription) {
->>>>>>> master
+    public Order(int id, int orderID, String title, String customer, String manufactorer, boolean archived, int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String deadline, String briefdescription) {
         this.id = id;
+        this.orderID = orderID;
         this.title = title;
         this.customer = customer;
         this.manufactorer = manufactorer;
@@ -44,6 +45,22 @@ public class Order implements java.io.Serializable {
         this.deliveryDate = deliveryDate;
         this.deadline = deadline;
         this.briefdescription = briefdescription;
+        this.status = status;
+    }
+
+    public String getManufactorer() {
+        return manufactorer;
+    }
+
+    public void setManufactorer(String manufactorer) {
+        this.manufactorer = manufactorer;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
@@ -60,14 +77,13 @@ public class Order implements java.io.Serializable {
         this.psname = psname;
     }
 
-    public Order(String title, int amount){
+    public Order(String title, int amount) {
         this.title = title;
         this.amount = amount;
     }
 
     private String briefdescription;
 
->>>>>>> master
     public String getTitle() {
         return title;
     }
@@ -159,13 +175,16 @@ public class Order implements java.io.Serializable {
     public String getDeadline() {
         return deadline;
     }
-<<<<<<< HEAD
 
     public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 
-    public byte[] getPsBytes() { return psBytes; }
+    public byte[] getPsBytes() {
+        return psBytes;
+    }
 
-    public void setPsBytes(byte[] psBytes) { this.psBytes = psBytes; }
+    public void setPsBytes(byte[] psBytes) {
+        this.psBytes = psBytes;
+    }
 }

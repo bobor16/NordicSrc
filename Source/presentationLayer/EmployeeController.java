@@ -154,7 +154,7 @@ public class EmployeeController extends SuperController implements Initializable
         pendingOrderCompletionDate.setText(order.getCompletionDate());
         pendingOrderCostumer.setText(order.getCustomer());
         pendingOrderDeadline.setText(order.getDeadline());
-        pendingOrderDevliviryDate.setText(order.getDeliviryDate());
+        pendingOrderDevliviryDate.setText(order.getDeliveryDate());
         pendingOrderPricePer.setText(Double.toString(order.getPriceper()));
         pendingOrderPriceTotal.setText(Double.toString(order.getPricetotal()));
         pendingOrderTitle.setText(order.getTitle());
@@ -169,7 +169,7 @@ public class EmployeeController extends SuperController implements Initializable
         pendingOrderCompletionDate.setText(order.getCompletionDate());
         pendingOrderCostumer.setText(order.getCustomer());
         pendingOrderDeadline.setText(order.getDeadline());
-        pendingOrderDevliviryDate.setText(order.getDeliviryDate());
+        pendingOrderDevliviryDate.setText(order.getDeliveryDate());
         pendingOrderPricePer.setText(Double.toString(order.getPriceper()));
         pendingOrderPriceTotal.setText(Double.toString(order.getPricetotal()));
         pendingOrderTitle.setText(order.getTitle());

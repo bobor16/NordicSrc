@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
+import logicLayer.Offer;
 import logicLayer.User;
 import logicLayer.Order;
 
@@ -151,38 +152,65 @@ public class ClientController {
         sendPackage(p);
     }
 
-    public ArrayList<String> getOrderList(String message){
+    public ArrayList<String> getOrderList(String message) {
         Packet p = new Packet(33, message);
         sendPackage(p);
         p = receivePackage();
-        if (p.getId() == 33){
+        if (p.getId() == 33) {
             return (ArrayList<String>) p.getObject();
         }
         return null;
     }
 
-    public Order getOrder(String id){
+    public ArrayList<String> getOrderListManufacturer() {
+        Packet p = new Packet(39, null);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 39) {
+            return (ArrayList<String>) p.getObject();
+        }
+        return null;
+    }
+
+    public Order getOrder(String id) {
         Packet p = new Packet(34, id);
         sendPackage(p);
         p = receivePackage();
-        if (p.getId() == 34){
+        if (p.getId() == 34) {
             return (Order) p.getObject();
         }
         return null;
     }
 
-    public void createOrder(Order order){
+    public void createOrder(Order order) {
         Packet p = new Packet(36, order);
         sendPackage(p);
     }
 
-    public void deleteOrder(String id){
+    public void deleteOrder(String id) {
         Packet p = new Packet(37, id);
         sendPackage(p);
     }
 
-    public void updateOrder(Order order){
+    public void updateOrder(Order order) {
         Packet p = new Packet(38, order);
         sendPackage(p);
+    }
+    public void createOffer(Offer offer) {
+        Packet p = new Packet(40, offer);
+        sendPackage(p);
+    }
+    public void deleteOffer(String id) {
+        Packet p = new Packet(41, id);
+        sendPackage(p);
+    }
+    
+    public void acceptOrder(int id) {
+        Packet p = new Packet(42, id);
+        sendPackage(p);
+    }
+    
+    public static void main(String[] args) {
+        ClientController cc = new ClientController();
     }
 }

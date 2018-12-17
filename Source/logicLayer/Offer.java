@@ -98,7 +98,7 @@ public class Offer implements Serializable{
         this.psBytes = psBytes;
     }
 
-    public Offer(int orderID, int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String briefDescription, String psName, byte[] psBytes) {
+    public Offer(int orderID, int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String briefDescription, String psName) {
         this.orderID = orderID;
         this.amount = amount;
         this.priceper = priceper;
@@ -107,7 +107,6 @@ public class Offer implements Serializable{
         this.deliveryDate = deliveryDate;
         this.briefDescription = briefDescription;
         this.psName = psName;
-        this.psBytes = psBytes;
         
     }
 

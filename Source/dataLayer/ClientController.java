@@ -152,7 +152,7 @@ public class ClientController {
         sendPackage(p);
     }
 
-    public ArrayList<String> getOrderList(String message) {
+    public ArrayList<String> getCostumerList(String message) {
         Packet p = new Packet(33, message);
         sendPackage(p);
         p = receivePackage();
@@ -162,8 +162,8 @@ public class ClientController {
         return null;
     }
 
-    public ArrayList<String> getOrderListManufacturer() {
-        Packet p = new Packet(39, null);
+    public ArrayList<String> getOfferList(String message) {
+        Packet p = new Packet(39, message);
         sendPackage(p);
         p = receivePackage();
         if (p.getId() == 39) {
@@ -213,10 +213,19 @@ public class ClientController {
         Packet p = new Packet(43, offerID);
         sendPackage(p);
     }
+       public ArrayList<String> getManufacturerList() {
+        Packet p = new Packet(44, null);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 44) {
+            return (ArrayList<String>) p.getObject();
+        }
+        return null;
+    }
     
     public static void main(String[] args) {
         ClientController cc = new ClientController();
-           Offer offer = new Offer(1, 10, 10, 10, "NO", "NO", "NO", "NO", null);
+           Offer offer = new Offer(1, 10, 10, 10, "NO", "NO", "NO", "NO");
         cc.createOffer(offer);
     }
 }

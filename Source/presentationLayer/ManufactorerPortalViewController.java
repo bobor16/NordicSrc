@@ -236,7 +236,7 @@ public class ManufactorerPortalViewController extends SuperController implements
         double pricePer = Double.parseDouble(PricePerTextField.getText());
         double priceTotal = Double.parseDouble(PriceTotalTextField.getText());
         String bd = DescriptionField.getText().replaceAll("\'", "\\" + "\'");
-        Offer offer = new Offer(2, orderId, amount, pricePer, priceTotal, completionDate.toString(), deliveryDate.toString(), bd);
+        Offer offer = new Offer(orderId, amount, pricePer, priceTotal, completionDate.toString(), deliveryDate.toString(), bd, productSpecification.getName());
         try {
             offer.setPsBytes(Files.readAllBytes(productSpecification.toPath()));
         } catch (IOException e) {
@@ -317,7 +317,7 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     private void updateOrderList() {
         ClientController cc = new ClientController();
-        ArrayList<String> pending = cc.getOrderListManufacturer();
+        ArrayList<String> pending = cc.getManufacturerList();
         OrderListView.getItems().clear();
         for (String order : pending) {
             OrderListView.getItems().add(order);
@@ -325,12 +325,12 @@ public class ManufactorerPortalViewController extends SuperController implements
     }
 
     private void updatePendingAndApprovedList() {
-        ClientController cc = new ClientController();
-        ArrayList<String> pending = cc.getOrderListManufacturer();
-        OrderListView.getItems().clear();
-        for (String order : pending) {
-            OrderListView.getItems().add(order);
-        }
+//        ClientController cc = new ClientController();
+//        ArrayList<String> pending = cc.();
+//        pendingOfferList.getItems().clear();
+//        for (String order : pending) {
+//            pendingOfferList.getItems().add(order);
+//        }
     }
 
     @FXML

@@ -335,8 +335,8 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     private void updateOrderList() {
         ClientController cc = new ClientController();
-        ArrayList<String> pending = cc.getOrderList("pending");
-        ArrayList<String> approved = cc.getOrderList("approved");
+        ArrayList<String> pending = cc.getCostumerList("pending");
+        ArrayList<String> approved = cc.getCostumerList("approved");
         CaseListView111.getItems().clear();
         CaseListView1111.getItems().clear();
 

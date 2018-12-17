@@ -108,6 +108,8 @@ public class LogInScreenController extends SuperController implements Initializa
                 case "not verified":
                     System.out.println("User not verified");
                     break;
+                case "timeout":
+                    break;
                 default:
                     System.out.println("Something went wrong, I received: " + p.getObject());
                     break;

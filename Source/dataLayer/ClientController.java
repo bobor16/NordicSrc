@@ -60,7 +60,7 @@ public class ClientController {
         });
 
         try {
-            future.get(15, TimeUnit.SECONDS);
+            future.get(10, TimeUnit.SECONDS);
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         } catch (TimeoutException e) {
@@ -69,12 +69,26 @@ public class ClientController {
     }
 
     public Packet receivePackage() {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        final Packet p = new Packet();
+        Future future = executor.submit(() -> {
+            try {
+                Packet temp = (Packet)objectInputStream.readObject();
+                p.setId(temp.getId());
+                p.setObject(temp.getObject());
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
         try {
-            return (Packet) objectInputStream.readObject();
-        } catch (IOException | ClassNotFoundException e) {
+            future.get(10, TimeUnit.SECONDS);
+            return p;
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
+        } catch (TimeoutException e) {
+            System.out.println("Connection timed out");
         }
-        return null;
+        return new Packet(1, "timeout");
     }
 
     public String login(String UP) {

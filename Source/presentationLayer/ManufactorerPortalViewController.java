@@ -86,6 +86,18 @@ public class ManufactorerPortalViewController extends SuperController implements
     @FXML
     private TextArea DescriptionField;
     @FXML
+    private TextField AmountTextField1;
+    @FXML
+    private TextField PricePerTextField1;
+    @FXML
+    private TextField PriceTotalTextField1;
+    @FXML
+    private DatePicker EstCompletionDateTextFiield1;
+    @FXML
+    private DatePicker EstDeliveryDateTextField1;
+    @FXML
+    private TextArea DescriptionField1;
+    @FXML
     private Button AddPictureButton;
     @FXML
     private Button AddDocumentOnAction;
@@ -108,17 +120,25 @@ public class ManufactorerPortalViewController extends SuperController implements
     @FXML
     private ListView<String> acceptOfferList;
     @FXML
-    private AnchorPane OrderView;
+    private AnchorPane showPlaceOfferView;
+    @FXML
+    private AnchorPane editOfferView;
+    @FXML
+    private AnchorPane ShowOrderView;
+    @FXML
+    private AnchorPane showOrderEditView;
+    @FXML
+    private AnchorPane acceptedOfferView;
+    @FXML
+    private AnchorPane EditLogisticsView;
+    @FXML
+    private AnchorPane LogisticsView;
     @FXML
     private Label OrderIDLabel112;
     @FXML
     private Label OfferIDLabel1;
     @FXML
-    private AnchorPane OfferView;
-    @FXML
     private Label OfferIdLabel;
-    @FXML
-    private AnchorPane LogisticsView;
     @FXML
     private Label CompanyNameLabel1;
     @FXML
@@ -133,8 +153,6 @@ public class ManufactorerPortalViewController extends SuperController implements
     private Label OrderStateLabel;
     @FXML
     private Label OrderIDLabel2;
-    @FXML
-    private AnchorPane EditLogisticsView;
     @FXML
     private Label CompanyNameLabel1111;
     @FXML
@@ -155,12 +173,7 @@ public class ManufactorerPortalViewController extends SuperController implements
     private Button ShowLogisticsButton;
     @FXML
     private Button UpdateLogisticsButton;
-    @FXML
-    private AnchorPane ShowOrderView;
-    @FXML
-    private AnchorPane PlaceOfferView;
-    @FXML
-    private AnchorPane editOfferView;
+
     @FXML
     private TextField orderEditTitle;
     @FXML
@@ -181,8 +194,6 @@ public class ManufactorerPortalViewController extends SuperController implements
     private Offer selectedOffer;
     private File productSpecification;
     ApplicationStateHandler statehandeler = new ApplicationStateHandler();
-    @FXML
-    private AnchorPane showOrderPane;
 
     ManufactorerPortalViewController(Ilogic logic) {
         super(logic);
@@ -193,7 +204,14 @@ public class ManufactorerPortalViewController extends SuperController implements
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        showPlaceOfferView.setVisible(false);
+        editOfferView.setVisible(false);
+        acceptedOfferView.setVisible(true);
+        EditLogisticsView.setVisible(false);
+        LogisticsView.setVisible(true);
+        ShowOrderView.setVisible(true);
         updateOrderList();
+        updateOfferLists();
     }
 
     @FXML
@@ -202,15 +220,20 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     @FXML
     private void EditOfferOnAction(ActionEvent event) {
+        showPlaceOfferView.setVisible(false);
+        editOfferView.setVisible(true);
+        acceptedOfferView.setVisible(false);
+        EditLogisticsView.setVisible(false);
+        LogisticsView.setVisible(false);
+        ShowOrderView.setVisible(false);
+        showOrderEditView.setVisible(false);
         if (!pendingOfferList.getSelectionModel().isEmpty()) {
-            PlaceOfferView.setVisible(false);
-            ShowOrderView.setVisible(false);
+            showPlaceOfferView.setVisible(false);
             editOfferView.setVisible(true);
             String[] id = pendingOfferList.getSelectionModel().getSelectedItem().split(" ");
-
-            if (selectedOrder == null || !id[0].equals(Integer.toString(selectedOrder.getId()))) {
+            if (selectedOffer == null || !id[0].equals(Integer.toString(selectedOffer.getOfferID()))) {
                 ClientController cc = new ClientController();
-                selectedOrder = cc.getOrder(id[0]);
+                selectedOffer = cc.getOffer(id[0]);
             }
             orderEditTitle.setText(selectedOrder.getTitle());
             orderEditAmount.setText(Integer.toString(selectedOrder.getAmount()));
@@ -229,7 +252,7 @@ public class ManufactorerPortalViewController extends SuperController implements
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            
+
         }
     }
 
@@ -255,17 +278,32 @@ public class ManufactorerPortalViewController extends SuperController implements
     }
 
     @FXML
-    private void PlaceBidOnAction(ActionEvent event) {
-        PlaceOfferView.setVisible(true);
+    private void showBidView(ActionEvent event) {
+        showPlaceOfferView.setVisible(false);
         editOfferView.setVisible(false);
+        acceptedOfferView.setVisible(false);
+        EditLogisticsView.setVisible(false);
+        LogisticsView.setVisible(false);
         ShowOrderView.setVisible(false);
+        showOrderEditView.setVisible(true);
+
+        AmountTextField.setText(Integer.toString(selectedOrder.getAmount()));
+        PricePerTextField.setText(Double.toString(selectedOrder.getPriceper()));
+        PriceTotalTextField.setText(Double.toString(selectedOrder.getPricetotal()));
+        EstCompletionDateTextFiield.setValue(LocalDate.parse(selectedOrder.getCompletionDate()));
+        EstDeliveryDateTextField.setValue(LocalDate.parse(selectedOrder.getDeliveryDate()));
+        DescriptionField.setText(selectedOrder.getBriefdescription());
+        OfferIDLabel.setText(selectedOrder.getTitle());
+    }
+
+    @FXML
+    private void PlaceBidOnAction(ActionEvent event) {
         ClientController cc = new ClientController();
         String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
         String title = cc.getOrder(id[0]).getTitle();
         int orderId = cc.getOrder(id[0]).getId();
         LocalDate completionDate = EstCompletionDateTextFiield.getValue();
         LocalDate deliveryDate = EstDeliveryDateTextField.getValue();
-        OfferIDLabel.setText(title);
         int amount = Integer.parseInt(AmountTextField.getText());
         double pricePer = Double.parseDouble(PricePerTextField.getText());
         double priceTotal = Double.parseDouble(PriceTotalTextField.getText());
@@ -283,6 +321,13 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     @FXML
     private void CancelOnAction(ActionEvent event) {
+        showPlaceOfferView.setVisible(true);
+        editOfferView.setVisible(false);
+        acceptedOfferView.setVisible(false);
+        EditLogisticsView.setVisible(false);
+        LogisticsView.setVisible(false);
+        ShowOrderView.setVisible(false);
+        showOrderEditView.setVisible(false);
     }
 
     @FXML
@@ -294,20 +339,14 @@ public class ManufactorerPortalViewController extends SuperController implements
     }
 
     @FXML
-    private void ShowOfferOnAction(ActionEvent event) {
-
-    }
-
-    /*@FXML
     private void acceptOrder(ActionEvent event) {
         ClientController cc = new ClientController();
 
         if (selectedOrder == null) {
             String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
-            selectedOrder = cc.getOrder(id[0]);
-            cc.acceptOrder(selectedOrder.getId());
+//            cc.acceptOrderid[0]);
             try {
-//                cc.deleteOffer(selectedOrder.getId());
+                cc.deleteOffer(selectedOrder.getId());
             } catch (Exception e) {
                 System.out.println("No offer exists");
             }
@@ -318,13 +357,13 @@ public class ManufactorerPortalViewController extends SuperController implements
         clearApprovedOrder();
         updateOrderList();
     }
-*/
+
     @FXML
     private void DeleteOfferOnAction(ActionEvent event) {
         ClientController cc = new ClientController();
         if (selectedOffer == null) {
             String[] id = pendingOfferList.getSelectionModel().getSelectedItem().split(" ");
-//            cc.deleteOffer(selectedOffer.getOfferID());
+            cc.deleteOffer(selectedOffer.getOrderID());
         } else {
             System.out.println("Something went wrong");
         }
@@ -339,10 +378,30 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     @FXML
     private void ShowLogisticsOnAction(ActionEvent event) {
+        showPlaceOfferView.setVisible(false);
+        editOfferView.setVisible(false);
+        acceptedOfferView.setVisible(false);
+        EditLogisticsView.setVisible(false);
+        LogisticsView.setVisible(true);
+        ShowOrderView.setVisible(false);
+        showOrderEditView.setVisible(false);
     }
 
     @FXML
     private void UpdateLogisticsOnAction(ActionEvent event) {
+    }
+     @FXML
+    private void saveOffer(ActionEvent event) {
+        Offer updatedOffer = new Offer(selectedOffer.getOrderID(), Integer.parseInt(AmountTextField1.getText()),Double.parseDouble(PricePerTextField1.getText()) , Double.parseDouble(PriceTotalTextField1.getText()), EstCompletionDateTextFiield1.toString(), EstDeliveryDateTextField1.toString(), DescriptionField1.getText(), productSpecification.getName());
+        try {
+            updatedOffer.setPsBytes(Files.readAllBytes(productSpecification.toPath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ClientController cc = new ClientController();
+        cc.updateOffer(updatedOffer);
+        System.out.println("Order updated");
+        updateOrderList();
     }
 
     @FXML
@@ -359,7 +418,7 @@ public class ManufactorerPortalViewController extends SuperController implements
     }
 
     private void updateOfferLists() {
-       ClientController cc = new ClientController();
+        ClientController cc = new ClientController();
         ArrayList<String> pending = cc.getCostumerList("pending");
         ArrayList<String> approved = cc.getCostumerList("approved");
         pendingOfferList.getItems().clear();
@@ -374,17 +433,22 @@ public class ManufactorerPortalViewController extends SuperController implements
     }
 
     private void updatePendingAndApprovedList() {
-//        ClientController cc = new ClientController();
-//        ArrayList<String> pending = cc.();
-//        pendingOfferList.getItems().clear();
-//        for (String order : pending) {
-//            pendingOfferList.getItems().add(order);
-//        }
+        ClientController cc = new ClientController();
+        ArrayList<Order> pending = cc.getOrderListPending();
+        pendingOfferList.getItems().clear();
+        for (Order order : pending) {
+            pendingOfferList.getItems().add(order.getTitle());
+        }
     }
 
     @FXML
     private void ShowOrderOnAction(ActionEvent event) {
-        PlaceOfferView.setVisible(false);
+        showPlaceOfferView.setVisible(false);
+        editOfferView.setVisible(false);
+        acceptedOfferView.setVisible(false);
+        EditLogisticsView.setVisible(false);
+        LogisticsView.setVisible(false);
+        showOrderEditView.setVisible(false);
         ShowOrderView.setVisible(true);
         String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
 
@@ -405,13 +469,41 @@ public class ManufactorerPortalViewController extends SuperController implements
     }
 
     @FXML
-    private void showApprovedMethod(ActionEvent event) {
-        PlaceOfferView.setVisible(false);
-        ShowOrderView.setVisible(true);
+    private void ShowOfferOnActionPending(ActionEvent event) {
+        showPlaceOfferView.setVisible(true);
+        editOfferView.setVisible(false);
+        acceptedOfferView.setVisible(false);
+        EditLogisticsView.setVisible(false);
+        showOrderEditView.setVisible(false);
+        LogisticsView.setVisible(false);
+        ShowOrderView.setVisible(false);
         ClientController cc = new ClientController();
         String[] id = acceptOfferList.getSelectionModel().getSelectedItem().split(" ");
         selectedApprovedOrder = cc.getOrder(id[0]);
 
+        TitelLabel.setText(selectedApprovedOrder.getTitle());
+        AmountLabel.setText(Integer.toString(selectedApprovedOrder.getAmount()));
+        PricePerLabel.setText(Double.toString(selectedApprovedOrder.getPriceper()));
+        PriceTotalLabel.setText(Double.toString(selectedApprovedOrder.getPricetotal()));
+        CompletionDateLabel.setText(selectedApprovedOrder.getCompletionDate());
+        DeliveryDateLabel.setText(selectedApprovedOrder.getDeliveryDate());
+        DeadlineLabel.setText("");
+        DescriptionTextArea.setText(selectedApprovedOrder.getBriefdescription());
+        OfferIdLabel.setText(Integer.toString(selectedApprovedOrder.getId()));
+    }
+
+    @FXML
+    private void ShowOfferOnActionAccepted(ActionEvent event) {
+        showPlaceOfferView.setVisible(false);
+        editOfferView.setVisible(false);
+        acceptedOfferView.setVisible(true);
+        EditLogisticsView.setVisible(false);
+        LogisticsView.setVisible(false);
+        ShowOrderView.setVisible(false);
+        showOrderEditView.setVisible(false);
+        ClientController cc = new ClientController();
+        String[] id = acceptOfferList.getSelectionModel().getSelectedItem().split(" ");
+        selectedApprovedOrder = cc.getOrder(id[0]);
         TitelLabel.setText(selectedApprovedOrder.getTitle());
         AmountLabel.setText(Integer.toString(selectedApprovedOrder.getAmount()));
         PricePerLabel.setText(Double.toString(selectedApprovedOrder.getPriceper()));
@@ -449,20 +541,6 @@ public class ManufactorerPortalViewController extends SuperController implements
         OrderIDLabel.setText("");
         productSpecification = null;
         selectedOrder = null;
-    }
-
-    @FXML
-    private void deleteOrderButtonOnAction(ActionEvent event) {
-        ClientController cc = new ClientController();
-        if (selectedOrder == null) {
-            String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
-            cc.deleteOrder(id[0]);
-        } else {
-            cc.deleteOrder(Integer.toString(selectedOrder.getId()));
-        }
-        clearPendingOrder();
-        clearApprovedOrder();
-        updateOrderList();
     }
 
     private void clearCreateOffer() {

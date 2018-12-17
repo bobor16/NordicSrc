@@ -220,6 +220,7 @@ public class ClientController {
         sendPackage(p);
         p = receivePackage();
         if (p.getId() == 39) {
+             System.out.println(p.getObject() +"AFTER ID CHECK");
             return (ArrayList<String>) p.getObject();
         }
         return null;
@@ -230,13 +231,13 @@ public class ClientController {
         sendPackage(p);
     }
 
-    public void deleteOffer(HashMap test) {
-        Packet p = new Packet(41, test);
+    public void deleteOffer(int id) {
+        Packet p = new Packet(41, id);
         sendPackage(p);
     }
 
-    public void acceptOrder(int id) {
-        Packet p = new Packet(42, id);
+    public void acceptOffer(String message) {
+        Packet p = new Packet(42, message);
         sendPackage(p);
     }
 
@@ -245,20 +246,28 @@ public class ClientController {
         sendPackage(p);
     }
 
-    public ArrayList<String> getManufacturerList() {
-        Packet p = new Packet(44, null);
+    public Offer getOffer(String id) {
+        Packet p = new Packet(44, id);
         sendPackage(p);
         p = receivePackage();
         if (p.getId() == 44) {
+            return (Offer) p.getObject();
+        }
+        return null;
+    }
+    public ArrayList<String> getManufacturerList() {
+        Packet p = new Packet(45, null);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 45) {
             return (ArrayList<String>) p.getObject();
         }
         return null;
     }
-
-    public static void main(String[] args) {
-        ClientController cc = new ClientController();
-        cc.getOfferList("pending").forEach((list) -> {
-            System.out.println(list);
-        });
+    
+      public void updateOffer(Offer offer) {
+        Packet p = new Packet(46, offer);
+        sendPackage(p);
     }
+
 }

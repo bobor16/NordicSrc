@@ -77,7 +77,7 @@
                                           </AnchorPane>
                                           <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="500.0">
                                              <children>
-                                                <AnchorPane id="AnchorPane" fx:id="ShowOrderView" prefHeight="627.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <AnchorPane id="AnchorPane" fx:id="ShowOrderView" prefHeight="627.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <VBox layoutX="394.0" layoutY="333.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                          <children>
@@ -187,13 +187,13 @@
                                                       </Pane>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane id="AnchorPane" fx:id="PlaceOfferView" prefHeight="627.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <AnchorPane id="AnchorPane" fx:id="showOrderEditView" prefHeight="627.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <VBox layoutX="394.0" layoutY="333.0" prefHeight="865.4444444444445" prefWidth="638.4444444444445" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                          <children>
                                                             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
                                                                <children>
-                                                                  <Label text="Offer Id:" />
+                                                                  <Label text="Order:" />
                                                                   <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
                                                                   <Label fx:id="OfferIDLabel" text="label" />
                                                                </children>
@@ -300,7 +300,7 @@
                                                 </ImageView>
                                                 <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0">
                                                    <children>
-                                                      <Button fx:id="PlaceBidButton" mnemonicParsing="false" onAction="#PlaceBidOnAction" prefWidth="190.0" text="Place Bid">
+                                                      <Button fx:id="PlaceBidButton" mnemonicParsing="false" onAction="#showBidView" prefWidth="190.0" text="Place Bid">
                                                          <VBox.margin>
                                                             <Insets top="5.0" />
                                                          </VBox.margin>
@@ -348,7 +348,7 @@
                                           </AnchorPane>
                                           <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="500.0">
                                              <children>
-                                                <AnchorPane id="AnchorPane" prefHeight="647.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <AnchorPane id="AnchorPane" fx:id="showPlaceOfferView" prefHeight="647.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <VBox layoutX="394.0" layoutY="333.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                          <children>
@@ -458,6 +458,108 @@
                                                       </Pane>
                                                    </children>
                                                 </AnchorPane>
+                                                <AnchorPane id="AnchorPane" fx:id="editOfferView" prefHeight="627.0" prefWidth="500.0" visible="false">
+                                                   <children>
+                                                      <VBox layoutX="394.0" layoutY="333.0" prefHeight="865.4444444444445" prefWidth="638.4444444444445" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
+                                                         <children>
+                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
+                                                               <children>
+                                                                  <Label text="Offer Id:" />
+                                                                  <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
+                                                                  <Label fx:id="OfferIDLabel1" text="label" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT">
+                                                               <children>
+                                                                  <Label text="Amount" />
+                                                                  <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="AmountTextField1" />
+                                                               </children>
+                                                               <VBox.margin>
+                                                                  <Insets top="5.0" />
+                                                               </VBox.margin>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
+                                                               <children>
+                                                                  <Label text="Price per" />
+                                                                  <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="PricePerTextField1" />
+                                                               </children>
+                                                               <VBox.margin>
+                                                                  <Insets top="5.0" />
+                                                               </VBox.margin>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="101.0">
+                                                               <children>
+                                                                  <Label text="Price Total" />
+                                                                  <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="PriceTotalTextField1" />
+                                                               </children>
+                                                               <VBox.margin>
+                                                                  <Insets top="5.0" />
+                                                               </VBox.margin>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="70.0">
+                                                               <children>
+                                                                  <Label text="Estimated Completion Date" />
+                                                                  <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
+                                                                  <DatePicker fx:id="EstCompletionDateTextFiield1" prefHeight="26.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <VBox.margin>
+                                                                  <Insets top="5.0" />
+                                                               </VBox.margin>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="161.0">
+                                                               <children>
+                                                                  <Label text="Estimated Delivery Date" />
+                                                                  <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
+                                                                  <DatePicker fx:id="EstDeliveryDateTextField1" prefHeight="26.0" prefWidth="200.0" />
+                                                               </children>
+                                                               <VBox.margin>
+                                                                  <Insets top="5.0" />
+                                                               </VBox.margin>
+                                                            </HBox>
+                                                            <VBox>
+                                                               <children>
+                                                                  <Label text="Brief Description" />
+                                                                  <TextArea fx:id="DescriptionField1" maxHeight="1.7976931348623157E308" prefHeight="300.0" VBox.vgrow="ALWAYS">
+                                                                     <VBox.margin>
+                                                                        <Insets top="5.0" />
+                                                                     </VBox.margin>
+                                                                  </TextArea>
+                                                               </children>
+                                                               <VBox.margin>
+                                                                  <Insets top="5.0" />
+                                                               </VBox.margin>
+                                                            </VBox>
+                                                            <Pane VBox.vgrow="ALWAYS" />
+                                                            <Button fx:id="AddPictureButton1" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#AddPictureOnAction" prefHeight="24.0" prefWidth="494.0" text="Add File" />
+                                                            <Pane prefHeight="15.0" />
+                                                            <HBox>
+                                                               <children>
+                                                                  <Pane HBox.hgrow="ALWAYS" />
+                                                                  <Button fx:id="saveOfferButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveOffer" prefWidth="125.0" text="Save Offer" />
+                                                                  <Pane HBox.hgrow="ALWAYS" />
+                                                                  <Button fx:id="CancelButton1" mnemonicParsing="false" onAction="#CancelOnAction" prefWidth="125.0" text="Cancel" />
+                                                                  <Pane HBox.hgrow="ALWAYS" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                      <Pane prefHeight="25.0" style="-fx-background-color: #3399CC;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <Label layoutX="219.0" layoutY="4.0" text="Place Offer">
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                               <font>
+                                                                  <Font name="System Bold" size="12.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </Pane>
+                                                   </children>
+                                                </AnchorPane>
                                              </children>
                                           </AnchorPane>
                                           <AnchorPane maxWidth="190.0" prefWidth="190.0">
@@ -469,7 +571,7 @@
                                                 </ImageView>
                                                 <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0">
                                                    <children>
-                                                      <Button fx:id="ShowOfferButton" mnemonicParsing="false" onAction="#ShowOfferOnAction" prefWidth="190.0" text="Show Offer">
+                                                      <Button fx:id="ShowOfferButton" mnemonicParsing="false" onAction="#ShowOfferOnActionPending" prefWidth="190.0" text="Show Offer">
                                                          <VBox.margin>
                                                             <Insets top="5.0" />
                                                          </VBox.margin>
@@ -526,118 +628,7 @@
                                           </AnchorPane>
                                           <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="500.0">
                                              <children>
-                                                <AnchorPane id="AnchorPane" fx:id="OrderView" prefHeight="647.0" prefWidth="510.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <children>
-                                                      <VBox layoutX="394.0" layoutY="333.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
-                                                         <children>
-                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
-                                                               <children>
-                                                                  <Label text="Title" />
-                                                                  <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label text="Label" />
-                                                               </children>
-                                                               <VBox.margin>
-                                                                  <Insets top="5.0" />
-                                                               </VBox.margin>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT">
-                                                               <children>
-                                                                  <Label text="Amount" />
-                                                                  <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label text="Label" />
-                                                               </children>
-                                                               <VBox.margin>
-                                                                  <Insets top="15.0" />
-                                                               </VBox.margin>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
-                                                               <children>
-                                                                  <Label text="Price per" />
-                                                                  <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label text="Label" />
-                                                               </children>
-                                                               <VBox.margin>
-                                                                  <Insets top="15.0" />
-                                                               </VBox.margin>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="101.0">
-                                                               <children>
-                                                                  <Label text="Price Total" />
-                                                                  <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label text="Label" />
-                                                               </children>
-                                                               <VBox.margin>
-                                                                  <Insets top="5.0" />
-                                                               </VBox.margin>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="70.0">
-                                                               <children>
-                                                                  <Label text="Completion Date" />
-                                                                  <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label text="Label" />
-                                                               </children>
-                                                               <VBox.margin>
-                                                                  <Insets top="15.0" />
-                                                               </VBox.margin>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="161.0">
-                                                               <children>
-                                                                  <Label text="Delivery Date" />
-                                                                  <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label text="Label" />
-                                                               </children>
-                                                               <VBox.margin>
-                                                                  <Insets top="5.0" />
-                                                               </VBox.margin>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT">
-                                                               <children>
-                                                                  <Label text="Deadline" />
-                                                                  <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label text="Label" />
-                                                               </children>
-                                                               <VBox.margin>
-                                                                  <Insets top="5.0" />
-                                                               </VBox.margin>
-                                                            </HBox>
-                                                            <VBox>
-                                                               <children>
-                                                                  <Label text="Brief Description" />
-                                                                  <TextArea prefHeight="300.0">
-                                                                     <VBox.margin>
-                                                                        <Insets top="5.0" />
-                                                                     </VBox.margin>
-                                                                  </TextArea>
-                                                               </children>
-                                                               <VBox.margin>
-                                                                  <Insets top="15.0" />
-                                                               </VBox.margin>
-                                                            </VBox>
-                                                            <Pane VBox.vgrow="ALWAYS" />
-                                                            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" text="Images" />
-                                                            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" text="Document" />
-                                                         </children>
-                                                      </VBox>
-                                                      <Pane prefHeight="25.0" style="-fx-background-color: #3399CC;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                         <children>
-                                                            <Label layoutX="186.0" layoutY="4.0" text="Order Id: ">
-                                                               <padding>
-                                                                  <Insets left="10.0" />
-                                                               </padding>
-                                                               <font>
-                                                                  <Font name="System Bold" size="12.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="OrderIDLabel112" layoutX="253.0" layoutY="4.0" text="label">
-                                                               <font>
-                                                                  <Font name="System Bold" size="12.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </Pane>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane id="AnchorPane" fx:id="OfferView" prefHeight="647.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <AnchorPane id="AnchorPane" fx:id="acceptedOfferView" prefHeight="647.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <VBox layoutX="394.0" layoutY="333.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                          <children>
@@ -750,7 +741,7 @@
                                                 </AnchorPane>
                                                 <AnchorPane fx:id="LogisticsView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="510.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
-                                                      <VBox prefHeight="637.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <VBox prefHeight="637.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <Pane prefHeight="25.0" style="-fx-background-color: #3399CC;">
                                                                <children>
@@ -859,7 +850,7 @@
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane fx:id="EditLogisticsView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="510.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <AnchorPane fx:id="EditLogisticsView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="506.0" visible="false" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <VBox prefHeight="637.0" prefWidth="500.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                          <children>
@@ -990,7 +981,7 @@
                                                 </ImageView>
                                                 <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0">
                                                    <children>
-                                                      <Button fx:id="ShowOfferButton" mnemonicParsing="false" onAction="#ShowOfferOnAction" prefWidth="190.0" text="Show Offer">
+                                                      <Button fx:id="ShowOfferButton" mnemonicParsing="false" onAction="#ShowOfferOnActionAccepted" prefWidth="190.0" text="Show Offer">
                                                          <VBox.margin>
                                                             <Insets top="5.0" />
                                                          </VBox.margin>

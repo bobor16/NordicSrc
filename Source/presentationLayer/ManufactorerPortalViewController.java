@@ -258,7 +258,7 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     }
 
-    @FXML
+    /*@FXML
     private void acceptOrder(ActionEvent event) {
         ClientController cc = new ClientController();
         if (selectedOrder == null) {
@@ -271,7 +271,7 @@ public class ManufactorerPortalViewController extends SuperController implements
         clearApprovedOrder();
         updateOrderList();
     }
-
+*/
     @FXML
     private void DeleteOfferOnAction(ActionEvent event) {
         ClientController cc = new ClientController();

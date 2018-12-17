@@ -50,13 +50,6 @@ public class LogicFacade implements interfaces.iLogic.Ilogic {
         return data.getCaseList();
     }
 
-    public static void main(String[] args) {
-        LogicFacade s = new LogicFacade();
-//        for (int i = 0; i < s.getCaseList().size(); i++) {
-//            s.getCaseList().get(i).getCaseName();
-//        }
-    }
-
     //ER NULL!?!?!?! D:
     @Override
     public ArrayList<User> displayUsers() {

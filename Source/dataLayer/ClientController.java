@@ -7,6 +7,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.*;
+
 import logicLayer.Offer;
 import logicLayer.User;
 import logicLayer.Order;
@@ -16,6 +18,7 @@ public class ClientController {
     private static ObjectOutputStream objectOutputStream;
     private static ObjectInputStream objectInputStream;
     private static Socket socket;
+    private static Thread send;
 
     public ClientController() {
         if (socket == null) {
@@ -29,7 +32,7 @@ public class ClientController {
 //tek-studsrv0c.stud-srv.sdu.dk
 
     private void connectToServer() throws IOException {
-        socket = new Socket("tek-studsrv0c.stud-srv.sdu.dk", 1337);
+        socket = new Socket("127.0.0.1", 1337);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectInputStream = new ObjectInputStream(socket.getInputStream());
         Packet p = null;
@@ -47,10 +50,21 @@ public class ClientController {
     }
 
     public void sendPackage(Packet packet) {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future future = executor.submit(() -> {
+            try {
+                objectOutputStream.writeObject(packet);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
         try {
-            objectOutputStream.writeObject(packet);
-        } catch (IOException e) {
+            future.get(15, TimeUnit.SECONDS);
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
+        } catch (TimeoutException e) {
+            System.out.println("Connection timed out");
         }
     }
 

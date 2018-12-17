@@ -369,7 +369,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
                     desktop.open(temp);
                     System.out.println("Should show the file: " + temp.getName());
                 } else {
-                    System.out.println("lol");
+                    System.out.println("Couldn't read file");
                 }
             } catch (IOException e) {
                 e.printStackTrace();

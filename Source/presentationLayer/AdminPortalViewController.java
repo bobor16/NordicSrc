@@ -9,6 +9,9 @@ import com.sun.corba.se.impl.orb.ParserTable;
 import dataLayer.ClientController;
 import interfaces.iLogic.Ilogic;
 
+import java.awt.*;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,7 +31,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import logicLayer.Order;
 import logicLayer.User;
 
 import javax.swing.text.LabelView;
@@ -130,7 +137,7 @@ public class AdminPortalViewController extends SuperController implements Initia
     ApplicationStateHandler appliCationStateHandler = new ApplicationStateHandler();
     private final ToggleGroup group = new ToggleGroup();
     private HashMap<String, String> registerForm = new HashMap<>();
-
+    private Order selectedOrder;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -324,5 +331,9 @@ public class AdminPortalViewController extends SuperController implements Initia
         for (String entry : log) {
             logListView.getItems().add(entry);
         }
+    }
+
+    @FXML
+    private void showDocumentOnAction(ActionEvent event){
     }
 }

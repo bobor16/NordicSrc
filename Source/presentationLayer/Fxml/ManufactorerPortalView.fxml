@@ -307,7 +307,7 @@
                                                          </VBox.margin>
                                                       </Button>
                                                       <VBox />
-                                                      <Button fx:id="acceptOrderButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="191.0" text="Accept Order" />
+                                                      <Button fx:id="acceptOrderButton" mnemonicParsing="false" onAction="#acceptOrder" prefHeight="25.0" prefWidth="191.0" text="Accept Order" />
                                                    </children>
                                                 </VBox>
                                              </children>

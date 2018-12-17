@@ -112,6 +112,8 @@ public class ManufactorerPortalViewController extends SuperController implements
     @FXML
     private Label OrderIDLabel112;
     @FXML
+    private Label OfferIDLabel1;
+    @FXML
     private AnchorPane OfferView;
     @FXML
     private Label OfferIdLabel;
@@ -158,6 +160,8 @@ public class ManufactorerPortalViewController extends SuperController implements
     @FXML
     private AnchorPane PlaceOfferView;
     @FXML
+    private AnchorPane editOfferView;
+    @FXML
     private TextField orderEditTitle;
     @FXML
     private DatePicker orderEditDeadline;
@@ -198,6 +202,35 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     @FXML
     private void EditOfferOnAction(ActionEvent event) {
+        if (!pendingOfferList.getSelectionModel().isEmpty()) {
+            PlaceOfferView.setVisible(false);
+            ShowOrderView.setVisible(false);
+            editOfferView.setVisible(true);
+            String[] id = pendingOfferList.getSelectionModel().getSelectedItem().split(" ");
+
+            if (selectedOrder == null || !id[0].equals(Integer.toString(selectedOrder.getId()))) {
+                ClientController cc = new ClientController();
+                selectedOrder = cc.getOrder(id[0]);
+            }
+            orderEditTitle.setText(selectedOrder.getTitle());
+            orderEditAmount.setText(Integer.toString(selectedOrder.getAmount()));
+            orderEditPricePer.setText(Double.toString(selectedOrder.getPriceper()));
+            orderEditPriceTotal.setText(Double.toString(selectedOrder.getPricetotal()));
+            orderEditCompletionDate.setValue(LocalDate.parse(selectedOrder.getCompletionDate()));
+            orderEditDeadline.setValue(LocalDate.parse(selectedOrder.getDeadline()));
+            orderEditDeliveryDate.setValue(LocalDate.parse(selectedOrder.getDeliveryDate()));
+            OfferIDLabel1.setText(Integer.toString(selectedOrder.getId()));
+            orderEditBD.setText(selectedOrder.getBriefdescription());
+            productSpecification = new File(selectedOrder.getPsname());
+            FileOutputStream fos;
+            try {
+                fos = new FileOutputStream(productSpecification);
+                fos.write(selectedOrder.getPsBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+        }
     }
 
     @FXML
@@ -224,6 +257,7 @@ public class ManufactorerPortalViewController extends SuperController implements
     @FXML
     private void PlaceBidOnAction(ActionEvent event) {
         PlaceOfferView.setVisible(true);
+        editOfferView.setVisible(false);
         ShowOrderView.setVisible(false);
         ClientController cc = new ClientController();
         String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
@@ -273,7 +307,7 @@ public class ManufactorerPortalViewController extends SuperController implements
             selectedOrder = cc.getOrder(id[0]);
             cc.acceptOrder(selectedOrder.getId());
             try {
-                cc.deleteOffer(selectedOrder.getId());
+//                cc.deleteOffer(selectedOrder.getId());
             } catch (Exception e) {
                 System.out.println("No offer exists");
             }
@@ -290,7 +324,7 @@ public class ManufactorerPortalViewController extends SuperController implements
         ClientController cc = new ClientController();
         if (selectedOffer == null) {
             String[] id = pendingOfferList.getSelectionModel().getSelectedItem().split(" ");
-            cc.deleteOffer(selectedOffer.getOfferID());
+//            cc.deleteOffer(selectedOffer.getOfferID());
         } else {
             System.out.println("Something went wrong");
         }
@@ -321,6 +355,21 @@ public class ManufactorerPortalViewController extends SuperController implements
         OrderListView.getItems().clear();
         for (String order : pending) {
             OrderListView.getItems().add(order);
+        }
+    }
+
+    private void updateOfferLists() {
+       ClientController cc = new ClientController();
+        ArrayList<String> pending = cc.getCostumerList("pending");
+        ArrayList<String> approved = cc.getCostumerList("approved");
+        pendingOfferList.getItems().clear();
+        acceptOfferList.getItems().clear();
+
+        for (String order : pending) {
+            pendingOfferList.getItems().add(order);
+        }
+        for (String order : approved) {
+            acceptOfferList.getItems().add(order);
         }
     }
 

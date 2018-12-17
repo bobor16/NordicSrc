@@ -419,8 +419,8 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     private void updateOfferLists() {
         ClientController cc = new ClientController();
-        ArrayList<String> pending = cc.getCostumerList("pending");
-        ArrayList<String> approved = cc.getCostumerList("approved");
+        ArrayList<String> pending = cc.getOfferList("pending");
+        ArrayList<String> approved = cc.getOfferList("approved");
         pendingOfferList.getItems().clear();
         acceptOfferList.getItems().clear();
 

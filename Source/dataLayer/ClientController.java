@@ -269,5 +269,4 @@ public class ClientController {
         Packet p = new Packet(46, offer);
         sendPackage(p);
     }
-
 }

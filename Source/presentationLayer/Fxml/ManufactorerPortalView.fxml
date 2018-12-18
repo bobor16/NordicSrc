@@ -161,7 +161,6 @@
                                                                </VBox.margin>
                                                             </VBox>
                                                             <Pane VBox.vgrow="ALWAYS" />
-                                                            <Button fx:id="ShowImagesButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ShowImagesOnAction" prefHeight="25.0" text="Show Images" />
                                                             <Button fx:id="ShowDocumentButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ShowDocumentOnAction" prefHeight="25.0" text="Show Document" />
                                                          </children>
                                                       </VBox>
@@ -303,7 +302,6 @@
                                                          </VBox.margin>
                                                       </Button>
                                                       <VBox />
-                                                      <Button fx:id="acceptOrderButton" mnemonicParsing="false" onAction="#acceptOrder" prefHeight="25.0" prefWidth="191.0" text="Accept Order" />
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -617,7 +615,7 @@
                                           </AnchorPane>
                                           <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="500.0">
                                              <children>
-                                                <AnchorPane id="AnchorPane" fx:id="acceptedOfferView" prefHeight="647.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <AnchorPane id="AnchorPane" fx:id="acceptedOfferView" prefHeight="647.0" prefWidth="510.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <VBox layoutX="394.0" layoutY="333.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                                          <children>

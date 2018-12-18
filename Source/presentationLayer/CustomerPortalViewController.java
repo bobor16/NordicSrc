@@ -207,8 +207,16 @@ public class CustomerPortalViewController extends SuperController implements Ini
     private Label acceptedBD;
     @FXML
     private Label offerIDLabel;
-
-
+    @FXML
+    private Label offerAmount;
+    @FXML
+    private Label offerPricePer;
+    @FXML
+    private Label offerPriceTotal;
+    @FXML
+    private Label offerCompletion;
+    @FXML
+    private Label offerDelivery;
 
     private File productSpecification;
     private Order selectedOrder;
@@ -316,6 +324,10 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     @FXML
     private void AcceptOnAction(ActionEvent event) {
+        String[] id = CaseListView112.getSelectionModel().getSelectedItem().split(" ");
+        logic.acceptOffer(id[0]);
+        updateOfferList();
+        updateOrderList();
     }
 
     @FXML
@@ -324,7 +336,8 @@ public class CustomerPortalViewController extends SuperController implements Ini
         if (selectedOffer == null) {
             //offerMap.put(Integer.toString(selectedOrder.getId(), value) //VALUE = MANF EMAIL
             String[] id = CaseListView112.getSelectionModel().getSelectedItem().split(" ");
-          //  cc.deleteOffer()); 
+          logic.deleteOffer(Integer.parseInt(id[0]));
+          updateOfferList();
         } else {
             
         }
@@ -403,13 +416,17 @@ public class CustomerPortalViewController extends SuperController implements Ini
     }
 
     private void updateOfferList(){
-        ArrayList<String> offers = logic.getOfferList("");
-        ArrayList<String> accepted = logic.getOfferList("accepted");
         CaseListView112.getItems().clear();
         CaseListView11.getItems().clear();
-        for (String offer: offers) {
-            CaseListView112.getItems().add(offer);
+        if (CaseListView1111.getSelectionModel().getSelectedItem() != null) {
+            String[] id = CaseListView1111.getSelectionModel().getSelectedItem().split(" ");
+            ArrayList<String> offers = logic.getOfferList(id[0]);
+            for (String offer: offers) {
+                CaseListView112.getItems().add(offer);
+            }
         }
+        ArrayList<String> accepted = logic.getOfferList("accepted");
+
         for (String offer: accepted) {
             CaseListView11.getItems().add(offer);
         }
@@ -570,6 +587,17 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     @FXML
     private void showOfferOnAction(ActionEvent even){
-
+        try {
+            String[] id = CaseListView112.getSelectionModel().getSelectedItem().split(" ");
+            selectedOffer = logic.getOffer(id[0]);
+            offerAmount.setText(Integer.toString(selectedOffer.getAmount()));
+            offerPricePer.setText(Double.toString(selectedOffer.getPriceper()));
+            offerPriceTotal.setText(Double.toString(selectedOffer.getPricetotal()));
+            offerCompletion.setText(selectedOffer.getCompletionDate());
+            offerDelivery.setText(selectedOffer.getDeliveryDate());
+            offerIDLabel.setText(Integer.toString(selectedOffer.getOfferID()));
+        } catch (NullPointerException e) {
+            System.out.println("No offer selected");
+        }
     }
 }

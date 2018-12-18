@@ -470,30 +470,6 @@ public class ManufactorerPortalViewController extends SuperController implements
     }
 
     @FXML
-    private void acceptOrder(ActionEvent event) {
-        try {
-            if (selectedOrder == null) {
-                String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
-                String UP = logic.getUser() + " " + id[0];
-                logic.acceptOffer(UP);
-                try {
-                    logic.deleteOffer(Integer.parseInt(id[0]));
-                } catch (Exception e) {
-                    System.out.println("No offer exists");
-                }
-            } else {
-                logic.deleteOffer(selectedOrder.getId());
-                logic.acceptOffer(selectedOrder.getTitle());
-            }
-            clearPendingOrder();
-            clearApprovedOrder();
-            updateOrderList();
-        } catch (NullPointerException e) {
-            System.out.println("No order selected");
-        }
-    }
-
-    @FXML
     private void DeleteOfferOnAction(ActionEvent event) {
         try {
             String[] id = pendingOfferList.getSelectionModel().getSelectedItem().split(" ");

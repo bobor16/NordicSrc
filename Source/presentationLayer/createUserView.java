@@ -10,7 +10,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-import dataLayer.ClientController;
 import dataLayer.Packet;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -103,8 +102,7 @@ public class createUserView extends SuperController implements Initializable {
         registerForm.put("password", passwordField.getText());
         registerForm.put("cname", companyNameField.getText());
         registerForm.put("cvr", CVRField.getText());
-        ClientController cc = new ClientController();
-        switch (cc.register(registerForm)){
+        switch (logic.register(registerForm)){
             case "success":
                 applicationStateHandler.setLogInScreen(cancelButton/*???*/);
                 break;

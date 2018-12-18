@@ -5,7 +5,6 @@
  */
 package presentationLayer;
 
-import dataLayer.ClientController;
 import interfaces.iLogic.Ilogic;
 import java.net.URL;
 import java.util.ArrayList;
@@ -212,8 +211,7 @@ public class EmployeeController extends SuperController implements Initializable
     }
 
     public ArrayList<Order> getOrderListPending() {
-        ClientController cc = new ClientController();
-        return cc.getOrderListPending();
+        return logic.getOrderListPending();
     }
 
     private ObservableList<Order> getOrders() {

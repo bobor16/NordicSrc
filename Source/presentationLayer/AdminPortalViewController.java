@@ -6,7 +6,6 @@
 package presentationLayer;
 
 import com.sun.corba.se.impl.orb.ParserTable;
-import dataLayer.ClientController;
 import interfaces.iLogic.Ilogic;
 
 import java.awt.*;
@@ -204,9 +203,8 @@ public class AdminPortalViewController extends SuperController implements Initia
         createUserPane.setVisible(false);
         editUserPane.setVisible(false);
         userProfilePane.setVisible(true);
-        ClientController cc = new ClientController();
         String email = CaseListView111.getSelectionModel().getSelectedItems().toString().replaceAll("[\\[\\]]", "");
-        User user = cc.getUser(email);
+        User user = logic.getUser(email);
 
         CompanyNameLabel.setText(user.getCompanyName());
         CVRNumberLabel.setText(Integer.toString(user.getCvr()));
@@ -228,8 +226,7 @@ public class AdminPortalViewController extends SuperController implements Initia
         } else {
             registerForm.put("cvr", CVRField.getText());
         }
-        ClientController cc = new ClientController();
-        switch (cc.register(registerForm)) {
+        switch (logic.register(registerForm)) {
             case "success":
                 clearCreateUser();
                 break;
@@ -279,13 +276,12 @@ public class AdminPortalViewController extends SuperController implements Initia
 
     @FXML
     public void editUserButtonAction(ActionEvent event) throws IOException {
-        ClientController cc = new ClientController();
         userProfilePane.setVisible(false);
         createUserPane.setVisible(false);
         editUserPane.setVisible(true);
         String email = CaseListView111.getSelectionModel().getSelectedItems().toString().replaceAll("[\\[\\]]", "");
         userEditMailLabel.setText(email);
-        User user = cc.getUser(email);
+        User user = logic.getUser(email);
         companyNameEdit.setText(user.getCompanyName());
         verifiedCheckBox.setSelected(user.isVerified());
         CVRNumberEdit.setText(Integer.toString(user.getCvr()));
@@ -293,7 +289,6 @@ public class AdminPortalViewController extends SuperController implements Initia
 
     @FXML
     public void updateUserOnAction(ActionEvent event){
-        ClientController cc = new ClientController();
         HashMap<String, String> form = new HashMap<>();
         String email = CaseListView111.getSelectionModel().getSelectedItems().toString().replaceAll("[\\[\\]]", "");
         form.put("email", email);
@@ -304,14 +299,13 @@ public class AdminPortalViewController extends SuperController implements Initia
             form.put("verified", "false");
         }
         form.put("cvr", CVRNumberEdit.getText());
-        cc.updateUser(form);
+        logic.updateUser(form);
     }
 
     //skal rykkes ned i datafacade
     public ArrayList<User> displayUsers() {
-        ClientController cc = new ClientController();
         ArrayList<User> userEmailList = new ArrayList<>();
-        ArrayList<String> emails = cc.getEmails();
+        ArrayList<String> emails = logic.getEmails();
         for (int i = 0; i < emails.size(); i++) {
             userEmailList.add(new User(emails.get(i)));
         }
@@ -325,9 +319,8 @@ public class AdminPortalViewController extends SuperController implements Initia
     }
 
     private void updateLog(){
-        ClientController cc = new ClientController();
         logListView.getItems().clear();
-        ArrayList<String> log = cc.getLog();
+        ArrayList<String> log = logic.getLog();
         for (String entry : log) {
             logListView.getItems().add(entry);
         }

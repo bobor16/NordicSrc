@@ -5,25 +5,80 @@
  */
 package interfaces.iLogic;
 
-import interfaces.all.ICase;
-import interfaces.all.IFileChooser;
-import interfaces.all.iAuthenticate;
+import dataLayer.Packet;
 import interfaces.iData.Idata;
 import java.util.ArrayList;
-import logicLayer.Case;
-import logicLayer.User;
+import java.util.HashMap;
+import logicLayer.Offer;
 import logicLayer.Order;
+import logicLayer.User;
+
 
 /**
  *
  * @author mehgn
  */
-public interface Ilogic extends iAuthenticate, IFileChooser, ICase {
-
+public interface Ilogic{
     public void injectData(Idata data);
-    public Boolean passwordCheck(String password);
-    public void addCaseToList(Case aCase);
+      public String login(String UP);
+
+    public String register(HashMap registerForm);
+
+
+    public ArrayList<String> getEmails();
+
     public void deleteUser(String email);
-    public ArrayList<User> displayUsers();
+
+
+    public String getPassword(String email);
+
+
     public ArrayList<Order> getOrderListPending();
+
+    public User getUser(String email);
+
+
+    public ArrayList<String> getLog();
+
+
+    public void updateUser(HashMap<String, String> form);
+
+
+    public ArrayList<String> getCostumerList(String message);
+
+    public Order getOrder(String id);
+
+
+    public void createOrder(Order order);
+
+
+    public void deleteOrder(String id);
+
+    public void updateOrder(Order order);
+
+
+    public ArrayList<String> getOfferList(String message);
+
+
+    public void createOffer(Offer offer);
+
+
+    public void deleteOffer(int id);
+
+    public void acceptOffer(String message);
+
+
+    public void getOrderIDFromOfferID(int offerID);
+
+
+    public Offer getOffer(String id);
+
+    public ArrayList<String> getManufacturerList();
+
+    
+    public void updateOffer(Offer offer);
+    public void sendPackage(Packet packet);
+
+
+    public Packet receivePackage();
 }

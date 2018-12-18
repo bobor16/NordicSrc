@@ -5,7 +5,6 @@
  */
 package presentationLayer;
 
-import dataLayer.ClientController;
 import dataLayer.Packet;
 import interfaces.iLogic.Ilogic;
 import interfaces.iPresentation.Ipresentation;
@@ -63,8 +62,7 @@ public class ForgotPasswordFXMLController extends SuperController implements Ini
     public void showButtonOnAction(ActionEvent event) {
         String password;
         String message = emailField.getText();
-        ClientController cc = new ClientController();
-        password = cc.getPassword(message);
+        password = logic.getPassword(message);
         if (password.equals("invalid")) {
 
         } else {

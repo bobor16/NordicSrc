@@ -1,6 +1,5 @@
 package presentationLayer;
 
-import dataLayer.ClientController;
 import interfaces.iLogic.Ilogic;
 
 import java.awt.*;
@@ -217,8 +216,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
         String[] id = CaseListView111.getSelectionModel().getSelectedItem().split(" ");
 
         if (selectedOrder == null || !id[0].equals(Integer.toString(selectedOrder.getId()))) {
-            ClientController cc = new ClientController();
-            selectedOrder = cc.getOrder(id[0]);
+            selectedOrder = logic.getOrder(id[0]);
         }
 
         showCaseTitle.setText(selectedOrder.getTitle());
@@ -236,9 +234,8 @@ public class CustomerPortalViewController extends SuperController implements Ini
     private void showApprovedMethod(ActionEvent event) {
         OfferView.setVisible(false);
         showApproved.setVisible(true);
-        ClientController cc = new ClientController();
         String[] id = CaseListView1111.getSelectionModel().getSelectedItem().split(" ");
-        selectedApprovedOrder = cc.getOrder(id[0]);
+        selectedApprovedOrder = logic.getOrder(id[0]);
 
         approvedTitle.setText(selectedApprovedOrder.getTitle());
         approvedAmount.setText(Integer.toString(selectedApprovedOrder.getAmount()));
@@ -279,7 +276,6 @@ public class CustomerPortalViewController extends SuperController implements Ini
     @FXML
     private void DeclineOnAction(ActionEvent event) {
         HashMap<Integer, String> offerMap = new HashMap<>();
-         ClientController cc = new ClientController();
         if (selectedOffer == null) {
             //offerMap.put(Integer.toString(selectedOrder.getId(), value) //VALUE = MANF EMAIL
             String[] id = CaseListView112.getSelectionModel().getSelectedItem().split(" ");
@@ -303,12 +299,11 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     @FXML
     private void deleteOrderButtonOnAction(ActionEvent event) {
-        ClientController cc = new ClientController();
         if (selectedOrder == null) {
             String[] id = CaseListView111.getSelectionModel().getSelectedItem().split(" ");
-            cc.deleteOrder(id[0]);
+            logic.deleteOrder(id[0]);
         } else {
-            cc.deleteOrder(Integer.toString(selectedOrder.getId()));
+            logic.deleteOrder(Integer.toString(selectedOrder.getId()));
         }
         clearPendingOrder();
         clearApprovedOrder();
@@ -324,8 +319,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
             String[] id = CaseListView111.getSelectionModel().getSelectedItem().split(" ");
 
             if (selectedOrder == null || !id[0].equals(Integer.toString(selectedOrder.getId()))) {
-                ClientController cc = new ClientController();
-                selectedOrder = cc.getOrder(id[0]);
+                selectedOrder = logic.getOrder(id[0]);
             }
 
             orderEditTitle.setText(selectedOrder.getTitle());
@@ -350,9 +344,8 @@ public class CustomerPortalViewController extends SuperController implements Ini
     }
 
     private void updateOrderList() {
-        ClientController cc = new ClientController();
-        ArrayList<String> pending = cc.getCostumerList("pending");
-        ArrayList<String> approved = cc.getCostumerList("approved");
+        ArrayList<String> pending = logic.getCostumerList("pending");
+        ArrayList<String> approved = logic.getCostumerList("approved");
         CaseListView111.getItems().clear();
         CaseListView1111.getItems().clear();
 
@@ -365,8 +358,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
     }
 
     private void updateOfferList(){
-        ClientController cc = new ClientController();
-        ArrayList<String> offers = cc.getOfferList("");
+        ArrayList<String> offers = logic.getOfferList("");
         CaseListView112.getItems().clear();
         for (String offer: offers) {
             CaseListView112.getItems().add(offer);
@@ -415,7 +407,6 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     @FXML
     private void createOrderOnAction(ActionEvent event) {
-        ClientController cc = new ClientController();
         LocalDate completionDate = createOrderCompletionDate.getValue();
         LocalDate deliveryDate = createOrderDeliveryDate.getValue();
         LocalDate deadline = createOrderDeadline.getValue();
@@ -430,7 +421,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
         } catch (IOException e) {
             e.printStackTrace();
         }
-        cc.createOrder(order);
+        logic.createOrder(order);
         clearCreateOrder();
         updateOrderList();
     }
@@ -490,9 +481,8 @@ public class CustomerPortalViewController extends SuperController implements Ini
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ClientController cc = new ClientController();
-        cc.updateOrder(updatedOrder);
-        selectedOrder = cc.getOrder(OrderIDLabel11.getText());
+        logic.updateOrder(updatedOrder);
+        selectedOrder = logic.getOrder(OrderIDLabel11.getText());
         System.out.println("Order updated");
         updateOrderList();
     }

@@ -74,7 +74,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
     @FXML
     private Button searchButton1;
     @FXML
-    private ListView<?> CaseListView11;
+    private ListView<String> CaseListView11;
     @FXML
     private Button showCaseButton1;
     @FXML
@@ -183,6 +183,32 @@ public class CustomerPortalViewController extends SuperController implements Ini
     private DatePicker orderEditDeliveryDate;
     @FXML
     private TextArea orderEditBD;
+    @FXML
+    private AnchorPane showAccepted;
+    @FXML
+    private Label acceptedID;
+    @FXML
+    private Label acceptedOrderID;
+    @FXML
+    private Label acceptedTitle;
+    @FXML
+    private Label acceptedAmount;
+    @FXML
+    private Label acceptedPricePer;
+    @FXML
+    private Label acceptedPriceTotal;
+    @FXML
+    private Label acceptedCompletionDate;
+    @FXML
+    private Label acceptedDeliveryDate;
+    @FXML
+    private Label acceptedDeadline;
+    @FXML
+    private Label acceptedBD;
+    @FXML
+    private Label offerIDLabel;
+
+
 
     private File productSpecification;
     private Order selectedOrder;
@@ -216,10 +242,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
         CreateOrderView.setVisible(false);
         ViewOrderView.setVisible(true);
         String[] id = CaseListView111.getSelectionModel().getSelectedItem().split(" ");
-
-        if (selectedOrder == null || !id[0].equals(Integer.toString(selectedOrder.getId()))) {
-            selectedOrder = logic.getOrder(id[0]);
-        }
+        selectedOrder = logic.getOrder(id[0]);
 
         showCaseTitle.setText(selectedOrder.getTitle());
         showCaseAmount.setText(Integer.toString(selectedOrder.getAmount()));
@@ -248,6 +271,26 @@ public class CustomerPortalViewController extends SuperController implements Ini
         approvedDeadline.setText("");
         approvedBD.setText(selectedOrder.getBriefdescription());
         OrderIDLabel11.setText(Integer.toString(selectedOrder.getId()));
+    }
+
+    @FXML
+    private void showAcceptedMethod(ActionEvent event) {
+        OfferView.setVisible(false);
+        showAccepted.setVisible(true);
+        String[] id = CaseListView11.getSelectionModel().getSelectedItem().split(" ");
+        selectedOffer = logic.getOffer(id[0]);
+        selectedOrder = logic.getOrder(Integer.toString(selectedOffer.getOrderID()));
+
+        acceptedTitle.setText(selectedOffer.getTitle());
+        acceptedAmount.setText(Integer.toString(selectedOffer.getAmount()));
+        acceptedPricePer.setText(Double.toString(selectedOffer.getPriceper()));
+        acceptedPriceTotal.setText(Double.toString(selectedOffer.getPricetotal()));
+        acceptedCompletionDate.setText(selectedOffer.getCompletionDate());
+        acceptedDeliveryDate.setText(selectedOffer.getDeliveryDate());
+        acceptedDeadline.setText("");
+        acceptedBD.setText(selectedOffer.getBriefDescription());
+        acceptedID.setText(Integer.toString(selectedOffer.getOfferID()));
+        acceptedOrderID.setText(Integer.toString(selectedOffer.getOrderID()));
     }
 
     @FXML
@@ -361,9 +404,14 @@ public class CustomerPortalViewController extends SuperController implements Ini
 
     private void updateOfferList(){
         ArrayList<String> offers = logic.getOfferList("");
+        ArrayList<String> accepted = logic.getOfferList("accepted");
         CaseListView112.getItems().clear();
+        CaseListView11.getItems().clear();
         for (String offer: offers) {
             CaseListView112.getItems().add(offer);
+        }
+        for (String offer: accepted) {
+            CaseListView11.getItems().add(offer);
         }
     }
 
@@ -376,6 +424,36 @@ public class CustomerPortalViewController extends SuperController implements Ini
                 temp.deleteOnExit();
                 FileOutputStream fos = new FileOutputStream(temp);
                 fos.write(selectedOrder.getPsBytes());
+
+                if (!Desktop.isDesktopSupported()) {
+                    System.out.println("Desktop not supported");
+                    return;
+                }
+
+                Desktop desktop = Desktop.getDesktop();
+
+                if (temp.canRead()) {
+                    desktop.open(temp);
+                    System.out.println("Should show the file: " + temp.getName());
+                } else {
+                    System.out.println("Couldn't read file");
+                }
+                temp.deleteOnExit();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    @FXML
+    private void viewDocumentOnAction(ActionEvent event) {
+        new Thread(() -> {
+            String[] tempName = selectedOffer.getPsName().split("\\.");
+            try {
+                File temp = File.createTempFile(tempName[0], "." + tempName[1]);
+                temp.deleteOnExit();
+                FileOutputStream fos = new FileOutputStream(temp);
+                fos.write(selectedOffer.getPsBytes());
 
                 if (!Desktop.isDesktopSupported()) {
                     System.out.println("Desktop not supported");
@@ -476,7 +554,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
                 orderEditCompletionDate.getValue().toString(),
                 orderEditDeliveryDate.getValue().toString(),
                 orderEditDeadline.getValue().toString(),
-                orderEditBD.getText().replaceAll("\\'", "\\'"),
+                orderEditBD.getText(),
                 productSpecification.getName());
         updatedOrder.setId(Integer.parseInt(OrderIDLabel11.getText()));
         try {
@@ -488,5 +566,10 @@ public class CustomerPortalViewController extends SuperController implements Ini
         selectedOrder = logic.getOrder(OrderIDLabel11.getText());
         System.out.println("Order updated");
         updateOrderList();
+    }
+
+    @FXML
+    private void showOfferOnAction(ActionEvent even){
+
     }
 }

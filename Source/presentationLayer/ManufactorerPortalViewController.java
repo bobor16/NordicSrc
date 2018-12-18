@@ -8,6 +8,7 @@ package presentationLayer;
 import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,12 +23,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import interfaces.iLogic.Ilogic;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
 import javafx.scene.control.DatePicker;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
@@ -214,6 +217,56 @@ public class ManufactorerPortalViewController extends SuperController implements
     private Label orderDeadline;
     @FXML
     private Label orderBD;
+    @FXML
+    private Label pendingID;
+    @FXML
+    private Label pendingTitle;
+    @FXML
+    private Label pendingAmount;
+    @FXML
+    private Label pendingPricePer;
+    @FXML
+    private Label pendingPriceTotal;
+    @FXML
+    private Label pendingCompletionDate;
+    @FXML
+    private Label pendingDeliveryDate;
+    @FXML
+    private Label pendingDeadline;
+    @FXML
+    private Label pendingBD;
+    @FXML
+    private Label offerEditID;
+    @FXML
+    private TextField offerEditAmount;
+    @FXML
+    private TextField offerEditPricePer;
+    @FXML
+    private TextField offerEditPriceTotal;
+    @FXML
+    private DatePicker offerEditCompletionDate;
+    @FXML
+    private DatePicker offerEditDeliveryDate;
+    @FXML
+    private TextArea offerEditBD;
+    @FXML
+    private Label offerAcceptedID;
+    @FXML
+    private Label offerAcceptedTitle;
+    @FXML
+    private Label offerAcceptedAmount;
+    @FXML
+    private Label offerAcceptedPricePer;
+    @FXML
+    private Label offerAcceptedPriceTotal;
+    @FXML
+    private Label offerAcceptedCompletionDate;
+    @FXML
+    private Label offerAcceptedDeliveryDate;
+    @FXML
+    private Label offerAcceptedDeadline;
+    @FXML
+    private Label offerAcceptedBD;
 
     private Order selectedOrder;
     private Offer selectedOffer, selectedAcceptedOffer;
@@ -257,23 +310,20 @@ public class ManufactorerPortalViewController extends SuperController implements
             showPlaceOfferView.setVisible(false);
             editOfferView.setVisible(true);
             String[] id = pendingOfferList.getSelectionModel().getSelectedItem().split(" ");
-            if (selectedOffer == null || !id[0].equals(Integer.toString(selectedOffer.getOfferID()))) {
-                selectedOffer = logic.getOffer(id[0]);
-            }
-            orderEditTitle.setText(selectedOrder.getTitle());
-            orderEditAmount.setText(Integer.toString(selectedOrder.getAmount()));
-            orderEditPricePer.setText(Double.toString(selectedOrder.getPriceper()));
-            orderEditPriceTotal.setText(Double.toString(selectedOrder.getPricetotal()));
-            orderEditCompletionDate.setValue(LocalDate.parse(selectedOrder.getCompletionDate()));
-            orderEditDeadline.setValue(LocalDate.parse(selectedOrder.getDeadline()));
-            orderEditDeliveryDate.setValue(LocalDate.parse(selectedOrder.getDeliveryDate()));
-            OfferIDLabel1.setText(Integer.toString(selectedOrder.getId()));
-            orderEditBD.setText(selectedOrder.getBriefdescription());
-            productSpecification = new File(selectedOrder.getPsname());
+            selectedOffer = logic.getOffer(id[0]);
+            offerEditAmount.setText(Integer.toString(selectedOffer.getAmount()));
+            offerEditPricePer.setText(Double.toString(selectedOffer.getPriceper()));
+            offerEditPriceTotal.setText(Double.toString(selectedOffer.getPricetotal()));
+            offerEditCompletionDate.setValue(LocalDate.parse(selectedOffer.getCompletionDate()));
+            //orderEditDeadline.setValue();
+            offerEditDeliveryDate.setValue(LocalDate.parse(selectedOffer.getDeliveryDate()));
+            offerEditID.setText(Integer.toString(selectedOffer.getOfferID()));
+            offerEditBD.setText(selectedOffer.getBriefDescription());
+            productSpecification = new File(selectedOffer.getPsName());
             FileOutputStream fos;
             try {
                 fos = new FileOutputStream(productSpecification);
-                fos.write(selectedOrder.getPsBytes());
+                fos.write(selectedOffer.getPsBytes());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -298,6 +348,36 @@ public class ManufactorerPortalViewController extends SuperController implements
                 temp.deleteOnExit();
                 FileOutputStream fos = new FileOutputStream(temp);
                 fos.write(selectedOrder.getPsBytes());
+
+                if (!Desktop.isDesktopSupported()) {
+                    System.out.println("Desktop not supported");
+                    return;
+                }
+
+                Desktop desktop = Desktop.getDesktop();
+
+                if (temp.canRead()) {
+                    desktop.open(temp);
+                    System.out.println("Should show the file: " + temp.getName());
+                } else {
+                    System.out.println("Couldn't read file");
+                }
+                temp.deleteOnExit();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    @FXML
+    private void viewDocumentOnAction(ActionEvent event) {
+        new Thread(() -> {
+            String[] tempName = selectedOffer.getPsName().split("\\.");
+            try {
+                File temp = File.createTempFile(tempName[0], "." + tempName[1]);
+                temp.deleteOnExit();
+                FileOutputStream fos = new FileOutputStream(temp);
+                fos.write(selectedOffer.getPsBytes());
 
                 if (!Desktop.isDesktopSupported()) {
                     System.out.println("Desktop not supported");
@@ -390,10 +470,6 @@ public class ManufactorerPortalViewController extends SuperController implements
     }
 
     @FXML
-    private void ViewDocumentOnAction(ActionEvent event) {
-    }
-
-    @FXML
     private void acceptOrder(ActionEvent event) {
         try {
             if (selectedOrder == null) {
@@ -420,15 +496,11 @@ public class ManufactorerPortalViewController extends SuperController implements
     @FXML
     private void DeleteOfferOnAction(ActionEvent event) {
         try {
-            if (selectedOffer == null) {
-                String[] id = pendingOfferList.getSelectionModel().getSelectedItem().split(" ");
-                logic.deleteOffer(selectedOffer.getOrderID());
-            } else {
-                System.out.println("Something went wrong");
-            }
+            String[] id = pendingOfferList.getSelectionModel().getSelectedItem().split(" ");
+            logic.deleteOffer(Integer.parseInt(id[0]));
             clearPendingOrder();
             clearApprovedOrder();
-            updateOrderList();
+            updateOfferLists();
         } catch (NullPointerException e) {
             System.out.println("No offer selected");
         }
@@ -456,7 +528,8 @@ public class ManufactorerPortalViewController extends SuperController implements
     @FXML
     private void saveOffer(ActionEvent event) {
         try {
-            Offer updatedOffer = new Offer(selectedOffer.getOrderID(), Integer.parseInt(AmountTextField1.getText()), Double.parseDouble(PricePerTextField1.getText()), Double.parseDouble(PriceTotalTextField1.getText()), EstCompletionDateTextFiield1.toString(), EstDeliveryDateTextField1.toString(), DescriptionField1.getText(), productSpecification.getName());
+            Offer updatedOffer = new Offer(selectedOffer.getOrderID(), Integer.parseInt(offerEditAmount.getText()), Double.parseDouble(offerEditPricePer.getText()), Double.parseDouble(offerEditPriceTotal.getText()), offerEditCompletionDate.getValue().toString(), offerEditDeliveryDate.getValue().toString(), offerEditBD.getText(), productSpecification.getName());
+            updatedOffer.setOfferID(Integer.parseInt(offerEditID.getText()));
             try {
                 updatedOffer.setPsBytes(Files.readAllBytes(productSpecification.toPath()));
             } catch (IOException e) {
@@ -467,6 +540,7 @@ public class ManufactorerPortalViewController extends SuperController implements
             updateOrderList();
         } catch (NullPointerException e) {
             System.out.println("No offer selected");
+            e.printStackTrace();
         }
     }
 
@@ -515,24 +589,21 @@ public class ManufactorerPortalViewController extends SuperController implements
         showOrderEditView.setVisible(false);
         ShowOrderView.setVisible(true);
         try {
-            if (selectedOrder == null) {
-                String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
-                selectedOrder = logic.getOrder(id[0]);
-                System.out.println(selectedOrder.getAmount());
-                System.out.println(selectedOrder.getBriefdescription());
-                System.out.println(selectedOrder.getCompletionDate());
-                System.out.println(selectedOrder.getDeadline());
-                orderIDLabel.setText(Integer.toString(selectedOrder.getId()));
-                orderTitle.setText(selectedOrder.getTitle());
-                orderAmount.setText(Integer.toString(selectedOrder.getAmount()));
-                orderPricePer.setText(Double.toString(selectedOrder.getPriceper()));
-                orderPriceTotal.setText(Double.toString(selectedOrder.getPricetotal()));
-                orderCompletionDate.setText(selectedOrder.getCompletionDate());
-                orderDeliveryDate.setText(selectedOrder.getDeliveryDate());
-                orderDeadline.setText(selectedOrder.getDeadline());
-                orderBD.setText(selectedOrder.getBriefdescription());
-            }
-
+            String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
+            selectedOrder = logic.getOrder(id[0]);
+            System.out.println(selectedOrder.getAmount());
+            System.out.println(selectedOrder.getBriefdescription());
+            System.out.println(selectedOrder.getCompletionDate());
+            System.out.println(selectedOrder.getDeadline());
+            orderIDLabel.setText(Integer.toString(selectedOrder.getId()));
+            orderTitle.setText(selectedOrder.getTitle());
+            orderAmount.setText(Integer.toString(selectedOrder.getAmount()));
+            orderPricePer.setText(Double.toString(selectedOrder.getPriceper()));
+            orderPriceTotal.setText(Double.toString(selectedOrder.getPricetotal()));
+            orderCompletionDate.setText(selectedOrder.getCompletionDate());
+            orderDeliveryDate.setText(selectedOrder.getDeliveryDate());
+            orderDeadline.setText(selectedOrder.getDeadline());
+            orderBD.setText(selectedOrder.getBriefdescription());
         } catch (NullPointerException e) {
             System.out.println("No order selected");
         }
@@ -548,21 +619,17 @@ public class ManufactorerPortalViewController extends SuperController implements
         LogisticsView.setVisible(false);
         ShowOrderView.setVisible(false);
         try {
-            if (selectedOffer == null) {
-                String[] id = pendingOfferList.getSelectionModel().getSelectedItem().split(" ");
-                selectedAcceptedOffer = logic.getOffer(id[0]);
-                TitelLabel.setText(selectedAcceptedOffer.getTitle());
-                AmountLabel.setText(Integer.toString(selectedAcceptedOffer.getAmount()));
-                PricePerLabel.setText(Double.toString(selectedAcceptedOffer.getPriceper()));
-                PriceTotalLabel.setText(Double.toString(selectedAcceptedOffer.getPricetotal()));
-                CompletionDateLabel.setText(selectedAcceptedOffer.getCompletionDate());
-                DeliveryDateLabel.setText(selectedAcceptedOffer.getDeliveryDate());
-                DeadlineLabel.setText("");
-                DescriptionTextArea.setText(selectedAcceptedOffer.getBriefDescription());
-                OfferIdLabel.setText(Integer.toString(selectedAcceptedOffer.getOfferID()));
-            } else {
-                System.out.println("No offer selected");
-            }
+            String[] id = pendingOfferList.getSelectionModel().getSelectedItem().split(" ");
+            selectedOffer = logic.getOffer(id[0]);
+            pendingTitle.setText(selectedOffer.getTitle());
+            pendingAmount.setText(Integer.toString(selectedOffer.getAmount()));
+            pendingPricePer.setText(Double.toString(selectedOffer.getPriceper()));
+            pendingPriceTotal.setText(Double.toString(selectedOffer.getPricetotal()));
+            pendingCompletionDate.setText(selectedOffer.getCompletionDate());
+            pendingDeliveryDate.setText(selectedOffer.getDeliveryDate());
+            pendingDeadline.setText("");
+            pendingBD.setText(selectedOffer.getBriefDescription());
+            pendingID.setText(Integer.toString(selectedOffer.getOfferID()));
         } catch (NullPointerException e) {
             System.out.println("No offer selected");
         }
@@ -578,19 +645,18 @@ public class ManufactorerPortalViewController extends SuperController implements
         ShowOrderView.setVisible(false);
         showOrderEditView.setVisible(false);
         try {
-            if (selectedOffer == null) {
-                String[] id = acceptOfferList.getSelectionModel().getSelectedItem().split(" ");
-                selectedOffer = logic.getOffer(id[0]);
-                TitelLabel.setText(selectedOffer.getTitle());
-                AmountLabel.setText(Integer.toString(selectedOffer.getAmount()));
-                PricePerLabel.setText(Double.toString(selectedOffer.getPriceper()));
-                PriceTotalLabel.setText(Double.toString(selectedOffer.getPricetotal()));
-                CompletionDateLabel.setText(selectedOffer.getCompletionDate());
-                DeliveryDateLabel.setText(selectedOffer.getDeliveryDate());
-                DeadlineLabel.setText("");
-                DescriptionTextArea.setText(selectedOffer.getBriefDescription());
-                OfferIdLabel.setText(Integer.toString(selectedOffer.getOfferID()));
-            }
+            String[] id = acceptOfferList.getSelectionModel().getSelectedItem().split(" ");
+            selectedOffer = logic.getOffer(id[0]);
+            selectedOrder = logic.getOrder(Integer.toString(selectedOffer.getOrderID()));
+            offerAcceptedTitle.setText(selectedOffer.getTitle());
+            offerAcceptedAmount.setText(Integer.toString(selectedOffer.getAmount()));
+            offerAcceptedPricePer.setText(Double.toString(selectedOffer.getPriceper()));
+            offerAcceptedPriceTotal.setText(Double.toString(selectedOffer.getPricetotal()));
+            offerAcceptedCompletionDate.setText(selectedOffer.getCompletionDate());
+            offerAcceptedDeliveryDate.setText(selectedOffer.getDeliveryDate());
+            offerAcceptedDeadline.setText("");
+            offerAcceptedBD.setText(selectedOffer.getBriefDescription());
+            offerAcceptedID.setText(Integer.toString(selectedOffer.getOfferID()));
         } catch (NullPointerException e) {
             System.out.println("No offer selected");
         }
@@ -612,15 +678,15 @@ public class ManufactorerPortalViewController extends SuperController implements
     }
 
     private void clearPendingOrder() {
-        TitelLabel.setText("");
-        AmountLabel.setText("");
-        PricePerLabel.setText("");
-        PriceTotalLabel.setText("");
-        CompletionDateLabel.setText("");
-        DeliveryDateLabel.setText("");
-        DeadlineLabel.setText("");
-        DescriptionTextArea.setText("");
-        OrderIDLabel.setText("");
+        pendingTitle.setText("");
+        pendingAmount.setText("");
+        pendingPricePer.setText("");
+        pendingPriceTotal.setText("");
+        pendingCompletionDate.setText("");
+        pendingDeliveryDate.setText("");
+        pendingDeadline.setText("");
+        pendingBD.setText("");
+        pendingID.setText("");
         productSpecification = null;
         selectedOrder = null;
     }

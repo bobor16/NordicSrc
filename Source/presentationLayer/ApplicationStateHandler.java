@@ -122,24 +122,7 @@ public class ApplicationStateHandler {
         }
     }
 
-    public void setPlaceBidView(Button button) {
-        //Login as manufactorer
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/ManufactorerPortalView.fxml"));
-            loader.setController(new ManufacturerBidViewController(logic));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) button.getScene().getWindow();
-            stage.setTitle("NordicSrc");
-            stage.setResizable(false);
-            stage.setScene(scene);
-//                logic.writeToSystemlog(userNameField.getText() + " Logged in"); // writes to systemlog
-        } catch (Exception e) {
-            e.printStackTrace();
-//        }
-        }
-    }
-
+   
     public void setEmployeeView(Button button) {
         //Login as an Employee
         try {

@@ -284,7 +284,10 @@ public class ManufactorerPortalViewController extends SuperController implements
         LogisticsView.setVisible(false);
         ShowOrderView.setVisible(false);
         showOrderEditView.setVisible(true);
-
+        String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
+        if (selectedOrder == null || !id[0].equals(Integer.toString(selectedOrder.getId()))) {
+            selectedOrder = logic.getOrder(id[0]);
+        }
         AmountTextField.setText(Integer.toString(selectedOrder.getAmount()));
         PricePerTextField.setText(Double.toString(selectedOrder.getPriceper()));
         PriceTotalTextField.setText(Double.toString(selectedOrder.getPricetotal()));
@@ -340,7 +343,7 @@ public class ManufactorerPortalViewController extends SuperController implements
 
         if (selectedOrder == null) {
             String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
-//            logic.acceptOrderid[0]);
+            logic.acceptOffer(id[0]);
             try {
                 logic.deleteOffer(selectedOrder.getId());
             } catch (Exception e) {
@@ -385,9 +388,10 @@ public class ManufactorerPortalViewController extends SuperController implements
     @FXML
     private void UpdateLogisticsOnAction(ActionEvent event) {
     }
-     @FXML
+
+    @FXML
     private void saveOffer(ActionEvent event) {
-        Offer updatedOffer = new Offer(selectedOffer.getOrderID(), Integer.parseInt(AmountTextField1.getText()),Double.parseDouble(PricePerTextField1.getText()) , Double.parseDouble(PriceTotalTextField1.getText()), EstCompletionDateTextFiield1.toString(), EstDeliveryDateTextField1.toString(), DescriptionField1.getText(), productSpecification.getName());
+        Offer updatedOffer = new Offer(selectedOffer.getOrderID(), Integer.parseInt(AmountTextField1.getText()), Double.parseDouble(PricePerTextField1.getText()), Double.parseDouble(PriceTotalTextField1.getText()), EstCompletionDateTextFiield1.toString(), EstDeliveryDateTextField1.toString(), DescriptionField1.getText(), productSpecification.getName());
         try {
             updatedOffer.setPsBytes(Files.readAllBytes(productSpecification.toPath()));
         } catch (IOException e) {
@@ -442,11 +446,11 @@ public class ManufactorerPortalViewController extends SuperController implements
         showOrderEditView.setVisible(false);
         ShowOrderView.setVisible(true);
         String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
-
         if (selectedOrder == null || !id[0].equals(Integer.toString(selectedOrder.getId()))) {
             selectedOrder = logic.getOrder(id[0]);
         }
-
+        System.out.println(selectedOrder.getAmount());
+        
         TitelLabel.setText(selectedOrder.getTitle());
         AmountLabel.setText(Integer.toString(selectedOrder.getAmount()));
         PricePerLabel.setText(Double.toString(selectedOrder.getPriceper()));

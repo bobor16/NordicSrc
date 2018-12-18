@@ -12,7 +12,7 @@ import java.io.File;
  * @author mehgn
  */
 public class Order implements java.io.Serializable {
-
+ //Contains information about Orders
     private static final long serialVersionUID = -7279684461532176262L;
 
 

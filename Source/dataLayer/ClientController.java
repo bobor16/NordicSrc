@@ -30,7 +30,10 @@ public class ClientController {
         }
     }
 //tek-studsrv0c.stud-srv.sdu.dk
+    
+    //This class connects to the server and recieves /sends packages from the datalayer. The packages carries objects back and worth through the client and server
 
+    //Connect to server
     private void connectToServer() throws IOException {
         socket = new Socket("127.0.0.1", 1337);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -49,6 +52,7 @@ public class ClientController {
         }
     }
 
+    // send package to the client handler
     public void sendPackage(Packet packet) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future future = executor.submit(() -> {
@@ -68,6 +72,7 @@ public class ClientController {
         }
     }
 
+    //recieves packaches from the client handler
     public Packet receivePackage() {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         final Packet p = new Packet();
@@ -279,5 +284,4 @@ public class ClientController {
         Packet p = new Packet(46, offer);
         sendPackage(p);
     }
-   
 }

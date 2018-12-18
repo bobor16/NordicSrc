@@ -5,6 +5,7 @@ public class Packet implements java.io.Serializable {
     private int id;
     private Object object;
 
+    //Packet class that carries objects. 
     public Packet(){
 
     }

@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author mehgn
  */
 public class Offer implements Serializable{
-
+ //Contains information about offers
     private int offerID;
     private int orderID;
     private int amount;

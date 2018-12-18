@@ -11,7 +11,6 @@ package dataLayer;
  */
 import interfaces.iLogic.Ilogic;
 import interfaces.iData.Idata;
-import logicLayer.Case;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +23,8 @@ import logicLayer.Order;
  *
  * @author mehgn
  */
+
+//Datafacde holds the methods used in the client controller, these methods is called in logic layer through the data obejct
 public class DataFacade implements Idata {
 
     private static Idata data;

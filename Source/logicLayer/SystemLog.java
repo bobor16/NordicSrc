@@ -10,7 +10,7 @@ package logicLayer;
  * @author mehgn
  */
 public class SystemLog {
-    
+     //Contains information about the systemlog
     private String logText;
     
     public SystemLog(){

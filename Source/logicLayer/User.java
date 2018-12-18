@@ -10,7 +10,7 @@ package logicLayer;
  */
 
 public class User implements java.io.Serializable{
-
+ //Contains information about the user
     private String name;
     private String password;
     private String type;

@@ -427,31 +427,24 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     @FXML
     private void PlaceBidOnAction(ActionEvent event) {
-        try {
-            String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
-            if (selectedOrder == null || !id[0].equals(Integer.toString(selectedOrder.getId()))) {
-                selectedOrder = logic.getOrder(id[0]);
-            }
-            String title = logic.getOrder(id[0]).getTitle();
-            int orderId = logic.getOrder(id[0]).getId();
+            String title = selectedOrder.getTitle();
+            int orderId = selectedOrder.getId();
             LocalDate completionDate = EstCompletionDateTextFiield.getValue();
             LocalDate deliveryDate = EstDeliveryDateTextField.getValue();
             int amount = Integer.parseInt(AmountTextField.getText());
             double pricePer = Double.parseDouble(PricePerTextField.getText());
             double priceTotal = Double.parseDouble(PriceTotalTextField.getText());
             String bd = DescriptionField.getText().replaceAll("\'", "\\" + "\'");
-            Offer offer = new Offer(orderId, amount, pricePer, priceTotal, completionDate.toString(), deliveryDate.toString(), bd, productSpecification.getName());
-            try {
-                offer.setPsBytes(Files.readAllBytes(productSpecification.toPath()));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            System.out.println(completionDate + " " + deliveryDate + " " +amount + pricePer + priceTotal+ bd);
+            Offer offer = new Offer(orderId, amount, pricePer, priceTotal, completionDate.toString(), deliveryDate.toString(), bd, null);
+//            try {
+//                offer.setPsBytes(Files.readAllBytes(productSpecification.toPath()));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
             logic.createOffer(offer);
             clearCreateOffer();
             updateOfferLists();
-        } catch (NullPointerException e) {
-            System.out.println("No order selected");
-        }
     }
 
     @FXML

@@ -85,7 +85,7 @@
                                                                <children>
                                                                   <Label text="Title" />
                                                                   <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="TitelLabel" text="Label" />
+                                                                  <Label fx:id="orderTitle" text="Label" />
                                                                </children>
                                                                <VBox.margin>
                                                                   <Insets top="5.0" />
@@ -95,7 +95,7 @@
                                                                <children>
                                                                   <Label text="Amount" />
                                                                   <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="AmountLabel" text="Label" />
+                                                                  <Label fx:id="orderAmount" text="Label" />
                                                                </children>
                                                                <VBox.margin>
                                                                   <Insets top="15.0" />
@@ -105,7 +105,7 @@
                                                                <children>
                                                                   <Label text="Price per" />
                                                                   <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="PricePerLabel" text="Label" />
+                                                                  <Label fx:id="orderPricePer" text="Label" />
                                                                </children>
                                                                <VBox.margin>
                                                                   <Insets top="15.0" />
@@ -115,7 +115,7 @@
                                                                <children>
                                                                   <Label text="Price Total" />
                                                                   <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="PriceTotalLabel" text="Label" />
+                                                                  <Label fx:id="orderPriceTotal" text="Label" />
                                                                </children>
                                                                <VBox.margin>
                                                                   <Insets top="5.0" />
@@ -125,7 +125,7 @@
                                                                <children>
                                                                   <Label text="Completion Date" />
                                                                   <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="CompletionDateLabel" text="Label" />
+                                                                  <Label fx:id="orderCompletionDate" text="Label" />
                                                                </children>
                                                                <VBox.margin>
                                                                   <Insets top="15.0" />
@@ -135,7 +135,7 @@
                                                                <children>
                                                                   <Label text="Delivery Date" />
                                                                   <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="DeliveryDateLabel" text="Label" />
+                                                                  <Label fx:id="orderDeliveryDate" text="Label" />
                                                                </children>
                                                                <VBox.margin>
                                                                   <Insets top="5.0" />
@@ -145,7 +145,7 @@
                                                                <children>
                                                                   <Label text="Deadline" />
                                                                   <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="5.0" HBox.hgrow="ALWAYS" />
-                                                                  <Label fx:id="DeadlineLabel" text="Label" />
+                                                                  <Label fx:id="orderDeadline" text="Label" />
                                                                </children>
                                                                <VBox.margin>
                                                                   <Insets top="5.0" />
@@ -154,10 +154,7 @@
                                                             <VBox VBox.vgrow="ALWAYS">
                                                                <children>
                                                                   <Label text="Brief Description" />
-                                                                  <TextArea fx:id="DescriptionTextArea" VBox.vgrow="ALWAYS">
-                                                                     <VBox.margin>
-                                                                        <Insets top="5.0" />
-                                                                     </VBox.margin></TextArea>
+                                                                  <Label fx:id="orderBD" text="Label" />
                                                                </children>
                                                                <VBox.margin>
                                                                   <Insets top="15.0" />
@@ -178,7 +175,7 @@
                                                                   <Font name="System Bold" size="12.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label fx:id="OrderIDLabel" layoutX="253.0" layoutY="4.0" text="label">
+                                                            <Label fx:id="orderIDLabel" layoutX="253.0" layoutY="4.0" text="label">
                                                                <font>
                                                                   <Font name="System Bold" size="12.0" />
                                                                </font>

@@ -5,11 +5,13 @@
  */
 package presentationLayer;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -27,6 +29,8 @@ import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javafx.scene.control.DatePicker;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 import logicLayer.Offer;
 import logicLayer.Order;
 import logicLayer.User;
@@ -192,6 +196,25 @@ public class ManufactorerPortalViewController extends SuperController implements
     private DatePicker orderEditDeliveryDate;
     @FXML
     private TextArea orderEditBD;
+    @FXML
+    private Label orderIDLabel;
+    @FXML
+    private Label orderTitle;
+    @FXML
+    private Label orderAmount;
+    @FXML
+    private Label orderPricePer;
+    @FXML
+    private Label orderPriceTotal;
+    @FXML
+    private Label orderCompletionDate;
+    @FXML
+    private Label orderDeliveryDate;
+    @FXML
+    private Label orderDeadline;
+    @FXML
+    private Label orderBD;
+
     private Order selectedOrder;
     private Offer selectedOffer, selectedAcceptedOffer;
     private File productSpecification;
@@ -213,7 +236,7 @@ public class ManufactorerPortalViewController extends SuperController implements
         LogisticsView.setVisible(false);
         ShowOrderView.setVisible(true);
         updateOrderList();
-//        updateOfferLists();
+        updateOfferLists();
     }
 
     @FXML
@@ -268,6 +291,32 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     @FXML
     private void ShowDocumentOnAction(ActionEvent event) {
+        new Thread(() -> {
+            String[] tempName = selectedOrder.getPsname().split("\\.");
+            try {
+                File temp = File.createTempFile(tempName[0], "." + tempName[1]);
+                temp.deleteOnExit();
+                FileOutputStream fos = new FileOutputStream(temp);
+                fos.write(selectedOrder.getPsBytes());
+
+                if (!Desktop.isDesktopSupported()) {
+                    System.out.println("Desktop not supported");
+                    return;
+                }
+
+                Desktop desktop = Desktop.getDesktop();
+
+                if (temp.canRead()) {
+                    desktop.open(temp);
+                    System.out.println("Should show the file: " + temp.getName());
+                } else {
+                    System.out.println("Couldn't read file");
+                }
+                temp.deleteOnExit();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     @FXML
@@ -319,8 +368,7 @@ public class ManufactorerPortalViewController extends SuperController implements
             }
             logic.createOffer(offer);
             clearCreateOffer();
-            updateOrderList();
-            System.out.println("No order selected");
+            updateOfferLists();
         } catch (NullPointerException e) {
             System.out.println("No order selected");
         }
@@ -424,6 +472,12 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     @FXML
     private void AddPictureOnAction(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Product Specification");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Product Image", "*.jpg"));
+        Node source = (Node) event.getSource();
+        Window stage = source.getScene().getWindow();
+        productSpecification = fileChooser.showOpenDialog(stage);
     }
 
     private void updateOrderList() {
@@ -468,14 +522,15 @@ public class ManufactorerPortalViewController extends SuperController implements
                 System.out.println(selectedOrder.getBriefdescription());
                 System.out.println(selectedOrder.getCompletionDate());
                 System.out.println(selectedOrder.getDeadline());
-                AmountLabel.setText(Integer.toString(selectedOrder.getAmount()));
-                PricePerLabel.setText(Double.toString(selectedOrder.getPriceper()));
-                PriceTotalLabel.setText(Double.toString(selectedOrder.getPricetotal()));
-                CompletionDateLabel.setText(selectedOrder.getCompletionDate());
-                DeliveryDateLabel.setText(selectedOrder.getDeliveryDate());
-                DeadlineLabel.setText(selectedOrder.getDeadline());
-                DescriptionTextArea.setText(selectedOrder.getBriefdescription());
-                OrderIDLabel.setText(Integer.toString(selectedOrder.getId()));
+                orderIDLabel.setText(Integer.toString(selectedOrder.getId()));
+                orderTitle.setText(selectedOrder.getTitle());
+                orderAmount.setText(Integer.toString(selectedOrder.getAmount()));
+                orderPricePer.setText(Double.toString(selectedOrder.getPriceper()));
+                orderPriceTotal.setText(Double.toString(selectedOrder.getPricetotal()));
+                orderCompletionDate.setText(selectedOrder.getCompletionDate());
+                orderDeliveryDate.setText(selectedOrder.getDeliveryDate());
+                orderDeadline.setText(selectedOrder.getDeadline());
+                orderBD.setText(selectedOrder.getBriefdescription());
             }
 
         } catch (NullPointerException e) {

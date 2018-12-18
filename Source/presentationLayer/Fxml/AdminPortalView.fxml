@@ -91,7 +91,7 @@
                                           <Pane prefHeight="5.0" />
                                           <ListView fx:id="CaseListView11" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
                                           <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
-                                          <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#showOrderOnAction" prefHeight="25.0" prefWidth="190.0" text="Show Order">
+                                          <Button maxWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Show Order">
                                              <padding>
                                                 <Insets left="5.0" right="5.0" />
                                              </padding>
@@ -102,7 +102,7 @@
                               </AnchorPane>
                               <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0">
                                  <children>
-                                    <AnchorPane id="AnchorPane" fx:id="OfferView" maxHeight="1.7976931348623157E308" prefHeight="600.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <AnchorPane id="AnchorPane" fx:id="OfferView" maxHeight="1.7976931348623157E308" prefHeight="600.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
@@ -133,7 +133,7 @@
                                                                   </HBox>
                                                                   <ListView fx:id="CaseListView112" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
                                                                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
-                                                                  <Button fx:id="ShowOffersButton" maxHeight="25.0" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ShowOffersOnAction" prefHeight="25.0" prefWidth="190.0" text="Show Offers">
+                                                                  <Button fx:id="ShowOffersButton" maxHeight="25.0" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Show Offers">
                                                                      <padding>
                                                                         <Insets left="5.0" right="5.0" />
                                                                      </padding>
@@ -197,8 +197,8 @@
                                                                      </VBox.margin>
                                                                   </HBox>
                                                                   <Pane VBox.vgrow="ALWAYS" />
-                                                                  <Button fx:id="ShowPicturesButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ShowPicturesOnAction" prefHeight="25.0" text="Show Pictures" />
-                                                                  <Button fx:id="ShowDocumentButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ShowDocumentOnAction" prefHeight="25.0" text="Show Document" />
+                                                                  <Button fx:id="ShowPicturesButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" text="Show Pictures" />
+                                                                  <Button fx:id="ShowDocumentButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" text="Show Document" />
                                                                </children>
                                                             </VBox>
                                                          </children>
@@ -209,7 +209,7 @@
                                           </VBox>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane id="AnchorPane" fx:id="OrderView" prefHeight="600.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <AnchorPane id="AnchorPane" fx:id="OrderView" prefHeight="600.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <VBox layoutX="394.0" layoutY="333.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                              <children>
@@ -296,7 +296,7 @@
                                                       <Label fx:id="orderBD" layoutX="9.0" layoutY="9.0" text="Label" />
                                                    </children></Pane>
                                                 <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" text="Images" />
-                                                <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showDocumentOnAction" prefHeight="25.0" text="Document" />
+                                                <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" text="Document" />
                                              </children>
                                           </VBox>
                                           <Pane prefHeight="25.0" style="-fx-background-color: #3399CC;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -329,7 +329,7 @@
                                     </ImageView>
                                     <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0">
                                        <children>
-                                          <Button fx:id="DeleteButton" layoutX="10.0" layoutY="15.0" mnemonicParsing="false" onAction="#DeleteOnAction" prefWidth="190.0" text="Delete case">
+                                          <Button fx:id="DeleteButton" layoutX="10.0" layoutY="15.0" mnemonicParsing="false" prefWidth="190.0" text="Delete case">
                                              <VBox.margin>
                                                 <Insets top="5.0" />
                                              </VBox.margin>

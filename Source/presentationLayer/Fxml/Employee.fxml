@@ -72,7 +72,7 @@
                                                               </columns>
                                                             </TableView>
                                                             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" />
-                                                            <Button fx:id="showPendingOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showCaseMethod" prefHeight="25.0" prefWidth="190.0" text="Show Order">
+                                                            <Button fx:id="showPendingOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showPendingOrder" prefHeight="25.0" prefWidth="190.0" text="Show Order">
                                                                <padding>
                                                                   <Insets left="5.0" right="5.0" />
                                                                </padding>
@@ -268,7 +268,7 @@
                                                               </columns>
                                                             </TableView>
                                                             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" />
-                                                            <Button fx:id="showAcceptedOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showCaseMethod" prefHeight="25.0" prefWidth="190.0" text="Show Order">
+                                                            <Button fx:id="showAcceptedOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#showAcceptedOrder" prefHeight="25.0" prefWidth="190.0" text="Show Order">
                                                                <padding>
                                                                   <Insets left="5.0" right="5.0" />
                                                                </padding>

@@ -185,7 +185,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
     private TextArea orderEditBD;
 
     private File productSpecification;
-    private Order selectedOrder, selectedApprovedOrder;
+    private Order selectedOrder;
     private Offer selectedOffer;
 
     public CustomerPortalViewController(Ilogic logic) {
@@ -199,6 +199,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         updateOrderList();
+        updateOfferList();
     }
 
     public void loadSceneOnAction(ActionEvent event) throws IOException {
@@ -236,17 +237,17 @@ public class CustomerPortalViewController extends SuperController implements Ini
         OfferView.setVisible(false);
         showApproved.setVisible(true);
         String[] id = CaseListView1111.getSelectionModel().getSelectedItem().split(" ");
-        selectedApprovedOrder = logic.getOrder(id[0]);
+        selectedOrder = logic.getOrder(id[0]);
 
-        approvedTitle.setText(selectedApprovedOrder.getTitle());
-        approvedAmount.setText(Integer.toString(selectedApprovedOrder.getAmount()));
-        approvedPricePer.setText(Double.toString(selectedApprovedOrder.getPriceper()));
-        approvedPriceTotal.setText(Double.toString(selectedApprovedOrder.getPricetotal()));
-        approvedCompletionDate.setText(selectedApprovedOrder.getCompletionDate());
-        approvedDeliveryDate.setText(selectedApprovedOrder.getDeliveryDate());
+        approvedTitle.setText(selectedOrder.getTitle());
+        approvedAmount.setText(Integer.toString(selectedOrder.getAmount()));
+        approvedPricePer.setText(Double.toString(selectedOrder.getPriceper()));
+        approvedPriceTotal.setText(Double.toString(selectedOrder.getPricetotal()));
+        approvedCompletionDate.setText(selectedOrder.getCompletionDate());
+        approvedDeliveryDate.setText(selectedOrder.getDeliveryDate());
         approvedDeadline.setText("");
-        approvedBD.setText(selectedApprovedOrder.getBriefdescription());
-        OrderIDLabel11.setText(Integer.toString(selectedApprovedOrder.getId()));
+        approvedBD.setText(selectedOrder.getBriefdescription());
+        OrderIDLabel11.setText(Integer.toString(selectedOrder.getId()));
     }
 
     @FXML
@@ -389,6 +390,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
                 } else {
                     System.out.println("Couldn't read file");
                 }
+                temp.deleteOnExit();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -448,7 +450,7 @@ public class CustomerPortalViewController extends SuperController implements Ini
         approvedBD.setText("");
         OrderIDLabel11.setText("");
         productSpecification = null;
-        selectedApprovedOrder = null;
+        selectedOrder = null;
     }
 
     private void clearPendingOrder() {

@@ -47,7 +47,9 @@ public class ManufactorerPortalViewController extends SuperController implements
     @FXML
     private ListView<String> pendingOfferList;
     @FXML
-    private Button ShowOrderButton;
+    private Button showOfferPending;
+    @FXML
+    private Button showOfferAccepted;
     @FXML
     private Label TitelLabel;
     @FXML
@@ -173,6 +175,7 @@ public class ManufactorerPortalViewController extends SuperController implements
     @FXML
     private Button UpdateLogisticsButton;
 
+    ApplicationStateHandler statehandler = new ApplicationStateHandler();
     @FXML
     private TextField orderEditTitle;
     @FXML
@@ -192,7 +195,7 @@ public class ManufactorerPortalViewController extends SuperController implements
     private Order selectedOrder;
     private Offer selectedOffer, selectedAcceptedOffer;
     private File productSpecification;
-    ApplicationStateHandler statehandeler = new ApplicationStateHandler();
+    ApplicationStateHandler stateHandler = new ApplicationStateHandler();
 
     ManufactorerPortalViewController(Ilogic logic) {
         super(logic);
@@ -215,6 +218,7 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     @FXML
     private void logOutButtonMethod(ActionEvent event) {
+        stateHandler.setLogInScreen(logOutButton);
     }
 
     @FXML
@@ -299,24 +303,30 @@ public class ManufactorerPortalViewController extends SuperController implements
 
     @FXML
     private void PlaceBidOnAction(ActionEvent event) {
-        String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
-        String title = logic.getOrder(id[0]).getTitle();
-        int orderId = logic.getOrder(id[0]).getId();
-        LocalDate completionDate = EstCompletionDateTextFiield.getValue();
-        LocalDate deliveryDate = EstDeliveryDateTextField.getValue();
-        int amount = Integer.parseInt(AmountTextField.getText());
-        double pricePer = Double.parseDouble(PricePerTextField.getText());
-        double priceTotal = Double.parseDouble(PriceTotalTextField.getText());
-        String bd = DescriptionField.getText().replaceAll("\'", "\\" + "\'");
-        Offer offer = new Offer(orderId, amount, pricePer, priceTotal, completionDate.toString(), deliveryDate.toString(), bd, productSpecification.getName());
         try {
-            offer.setPsBytes(Files.readAllBytes(productSpecification.toPath()));
-        } catch (IOException e) {
-            e.printStackTrace();
+            if (selectedOrder == null) {
+                String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
+                String title = logic.getOrder(id[0]).getTitle();
+                int orderId = logic.getOrder(id[0]).getId();
+                LocalDate completionDate = EstCompletionDateTextFiield.getValue();
+                LocalDate deliveryDate = EstDeliveryDateTextField.getValue();
+                int amount = Integer.parseInt(AmountTextField.getText());
+                double pricePer = Double.parseDouble(PricePerTextField.getText());
+                double priceTotal = Double.parseDouble(PriceTotalTextField.getText());
+                String bd = DescriptionField.getText().replaceAll("\'", "\\" + "\'");
+                Offer offer = new Offer(orderId, amount, pricePer, priceTotal, completionDate.toString(), deliveryDate.toString(), bd, productSpecification.getName());
+                try {
+                    offer.setPsBytes(Files.readAllBytes(productSpecification.toPath()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                logic.createOffer(offer);
+                clearCreateOffer();
+                updateOrderList();
+            }
+        } catch(NullPointerException e){
+            System.out.println("No order selected");
         }
-        logic.createOffer(offer);
-        clearCreateOffer();
-        updateOrderList();
     }
 
     @FXML
@@ -342,15 +352,18 @@ public class ManufactorerPortalViewController extends SuperController implements
     private void acceptOrder(ActionEvent event) {
 
         if (selectedOrder == null) {
+
             String[] id = OrderListView.getSelectionModel().getSelectedItem().split(" ");
-            logic.acceptOffer(id[0]);
+            String UP = logic.getUser() + " " + id[0];
+            logic.acceptOffer(UP);
             try {
-                logic.deleteOffer(selectedOrder.getId());
+                logic.deleteOffer(Integer.parseInt(id[0]));
             } catch (Exception e) {
                 System.out.println("No offer exists");
             }
         } else {
-            System.out.println("LOL");
+            logic.deleteOffer(selectedOrder.getId());
+            logic.acceptOffer(selectedOrder.getTitle());
         }
         clearPendingOrder();
         clearApprovedOrder();
@@ -450,7 +463,6 @@ public class ManufactorerPortalViewController extends SuperController implements
             selectedOrder = logic.getOrder(id[0]);
         }
         System.out.println(selectedOrder.getAmount());
-        
         TitelLabel.setText(selectedOrder.getTitle());
         AmountLabel.setText(Integer.toString(selectedOrder.getAmount()));
         PricePerLabel.setText(Double.toString(selectedOrder.getPriceper()));
@@ -471,6 +483,7 @@ public class ManufactorerPortalViewController extends SuperController implements
         showOrderEditView.setVisible(false);
         LogisticsView.setVisible(false);
         ShowOrderView.setVisible(false);
+        if(selectedOffer == null){
         String[] id = pendingOfferList.getSelectionModel().getSelectedItem().split(" ");
         System.out.println(id[0]);
         selectedAcceptedOffer = logic.getOffer(id[0]);
@@ -484,6 +497,9 @@ public class ManufactorerPortalViewController extends SuperController implements
         DeadlineLabel.setText("");
         DescriptionTextArea.setText(selectedAcceptedOffer.getBriefDescription());
         OfferIdLabel.setText(Integer.toString(selectedAcceptedOffer.getOfferID()));
+        } else{
+            System.out.println("No offer selected");
+        }
     }
 
     @FXML
@@ -495,6 +511,7 @@ public class ManufactorerPortalViewController extends SuperController implements
         LogisticsView.setVisible(false);
         ShowOrderView.setVisible(false);
         showOrderEditView.setVisible(false);
+         if(selectedOffer == null){
         String[] id = acceptOfferList.getSelectionModel().getSelectedItem().split(" ");
         selectedOffer = logic.getOffer(id[0]);
         TitelLabel.setText(selectedOffer.getTitle());
@@ -506,6 +523,8 @@ public class ManufactorerPortalViewController extends SuperController implements
         DeadlineLabel.setText("");
         DescriptionTextArea.setText(selectedOffer.getBriefDescription());
         OfferIdLabel.setText(Integer.toString(selectedOffer.getOfferID()));
+         }
+         System.out.println("No offer selected");
     }
 
     private void clearApprovedOrder() {

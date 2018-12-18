@@ -28,7 +28,7 @@ public interface Ilogic{
     public ArrayList<String> getEmails();
 
     public void deleteUser(String email);
-
+public String getUser();
 
     public String getPassword(String email);
 

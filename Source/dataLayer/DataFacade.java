@@ -161,5 +161,10 @@ public class DataFacade implements Idata {
     public Packet receivePackage() {
         return cc.receivePackage();
     }
+    
+    @Override
+    public String getUser(){
+        return cc.getUser();
+    }
 
 }

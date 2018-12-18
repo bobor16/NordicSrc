@@ -86,5 +86,6 @@ public interface Idata{
 
 
     public Packet receivePackage();
+    public String getUser();
       
 }

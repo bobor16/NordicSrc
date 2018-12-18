@@ -73,7 +73,7 @@ public class ClientController {
         final Packet p = new Packet();
         Future future = executor.submit(() -> {
             try {
-                Packet temp = (Packet)objectInputStream.readObject();
+                Packet temp = (Packet) objectInputStream.readObject();
                 p.setId(temp.getId());
                 p.setObject(temp.getObject());
             } catch (IOException | ClassNotFoundException e) {
@@ -254,6 +254,7 @@ public class ClientController {
         }
         return null;
     }
+
     public ArrayList<String> getManufacturerList() {
         Packet p = new Packet(45, null);
         sendPackage(p);
@@ -263,9 +264,20 @@ public class ClientController {
         }
         return null;
     }
-    
-      public void updateOffer(Offer offer) {
+
+    public String getUser() {
+        Packet p = new Packet(48, null);
+        sendPackage(p);
+        p = receivePackage();
+        if (p.getId() == 48) {
+            return (String) p.getObject();
+        }
+        return null;
+    }
+
+    public void updateOffer(Offer offer) {
         Packet p = new Packet(46, offer);
         sendPackage(p);
     }
+   
 }

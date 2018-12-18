@@ -158,6 +158,11 @@ public class LogicFacade implements interfaces.iLogic.Ilogic {
     public Packet receivePackage() {
         return data.receivePackage();
     }
+
+    @Override
+    public String getUser() {
+        return data.getUser();
+    }
      
      
 }

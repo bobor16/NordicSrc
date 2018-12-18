@@ -32,7 +32,15 @@ public class Offer implements Serializable{
     private String deliveryDate;
     private String briefDescription;
     private byte[] psBytes;
-    
+    private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public int getOfferID() {
         return offerID;
@@ -82,6 +90,15 @@ public class Offer implements Serializable{
         this.deliveryDate = deliveryDate;
     }
 
+    public Offer(int amount, double priceper, double pricetotal, String completionDate, String deliveryDate, String briefDescription) {
+        this.amount = amount;
+        this.priceper = priceper;
+        this.pricetotal = pricetotal;
+        this.completionDate = completionDate;
+        this.deliveryDate = deliveryDate;
+        this.briefDescription = briefDescription;
+    }
+
     public String getBriefDescription() {
         return briefDescription;
     }
@@ -107,7 +124,8 @@ public class Offer implements Serializable{
         this.deliveryDate = deliveryDate;
         this.briefDescription = briefDescription;
         this.psName = psName;
-        
+        this.psBytes = psBytes;
+
     }
 
     public int getOrderID() {
@@ -126,6 +144,6 @@ public class Offer implements Serializable{
         this.orderID = orderID;
     }
 
-    
+
 
 }

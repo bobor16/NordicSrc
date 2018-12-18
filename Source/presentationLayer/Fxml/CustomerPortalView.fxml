@@ -798,7 +798,7 @@
                                                       </ImageView>
                                                       <VBox layoutX="50.0" layoutY="194.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0">
                                                          <children>
-                                                            <Button fx:id="ShowofferButton" mnemonicParsing="false" onAction="#ShowOfferOnAction" prefWidth="190.0" text="Show Offers">
+                                                            <Button fx:id="ShowofferButton" mnemonicParsing="false" onAction="#ShowOffersOnAction" prefWidth="190.0" text="Show Offers">
                                                                <VBox.margin>
                                                                   <Insets top="5.0" />
                                                                </VBox.margin>

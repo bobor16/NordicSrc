@@ -190,8 +190,8 @@ public class ManufactorerPortalViewController extends SuperController implements
     private DatePicker orderEditDeliveryDate;
     @FXML
     private TextArea orderEditBD;
-    private Order selectedOrder, selectedApprovedOrder;
-    private Offer selectedOffer;
+    private Order selectedOrder;
+    private Offer selectedOffer, selectedAcceptedOffer;
     private File productSpecification;
     ApplicationStateHandler statehandeler = new ApplicationStateHandler();
 
@@ -478,18 +478,19 @@ public class ManufactorerPortalViewController extends SuperController implements
         LogisticsView.setVisible(false);
         ShowOrderView.setVisible(false);
         ClientController cc = new ClientController();
-        String[] id = acceptOfferList.getSelectionModel().getSelectedItem().split(" ");
-        selectedApprovedOrder = cc.getOrder(id[0]);
+        String[] id = pendingOfferList.getSelectionModel().getSelectedItem().split(" ");
+        System.out.println(id[0]);
+        selectedAcceptedOffer = cc.getOffer(id[0]);
 
-        TitelLabel.setText(selectedApprovedOrder.getTitle());
-        AmountLabel.setText(Integer.toString(selectedApprovedOrder.getAmount()));
-        PricePerLabel.setText(Double.toString(selectedApprovedOrder.getPriceper()));
-        PriceTotalLabel.setText(Double.toString(selectedApprovedOrder.getPricetotal()));
-        CompletionDateLabel.setText(selectedApprovedOrder.getCompletionDate());
-        DeliveryDateLabel.setText(selectedApprovedOrder.getDeliveryDate());
+        TitelLabel.setText(selectedAcceptedOffer.getTitle());
+        AmountLabel.setText(Integer.toString(selectedAcceptedOffer.getAmount()));
+        PricePerLabel.setText(Double.toString(selectedAcceptedOffer.getPriceper()));
+        PriceTotalLabel.setText(Double.toString(selectedAcceptedOffer.getPricetotal()));
+        CompletionDateLabel.setText(selectedAcceptedOffer.getCompletionDate());
+        DeliveryDateLabel.setText(selectedAcceptedOffer.getDeliveryDate());
         DeadlineLabel.setText("");
-        DescriptionTextArea.setText(selectedApprovedOrder.getBriefdescription());
-        OfferIdLabel.setText(Integer.toString(selectedApprovedOrder.getId()));
+        DescriptionTextArea.setText(selectedAcceptedOffer.getBriefDescription());
+        OfferIdLabel.setText(Integer.toString(selectedAcceptedOffer.getOfferID()));
     }
 
     @FXML
@@ -503,16 +504,16 @@ public class ManufactorerPortalViewController extends SuperController implements
         showOrderEditView.setVisible(false);
         ClientController cc = new ClientController();
         String[] id = acceptOfferList.getSelectionModel().getSelectedItem().split(" ");
-        selectedApprovedOrder = cc.getOrder(id[0]);
-        TitelLabel.setText(selectedApprovedOrder.getTitle());
-        AmountLabel.setText(Integer.toString(selectedApprovedOrder.getAmount()));
-        PricePerLabel.setText(Double.toString(selectedApprovedOrder.getPriceper()));
-        PriceTotalLabel.setText(Double.toString(selectedApprovedOrder.getPricetotal()));
-        CompletionDateLabel.setText(selectedApprovedOrder.getCompletionDate());
-        DeliveryDateLabel.setText(selectedApprovedOrder.getDeliveryDate());
+        selectedOffer = cc.getOffer(id[0]);
+        TitelLabel.setText(selectedOffer.getTitle());
+        AmountLabel.setText(Integer.toString(selectedOffer.getAmount()));
+        PricePerLabel.setText(Double.toString(selectedOffer.getPriceper()));
+        PriceTotalLabel.setText(Double.toString(selectedOffer.getPricetotal()));
+        CompletionDateLabel.setText(selectedOffer.getCompletionDate());
+        DeliveryDateLabel.setText(selectedOffer.getDeliveryDate());
         DeadlineLabel.setText("");
-        DescriptionTextArea.setText(selectedApprovedOrder.getBriefdescription());
-        OfferIdLabel.setText(Integer.toString(selectedApprovedOrder.getId()));
+        DescriptionTextArea.setText(selectedOffer.getBriefDescription());
+        OfferIdLabel.setText(Integer.toString(selectedOffer.getOfferID()));
     }
 
     private void clearApprovedOrder() {
@@ -526,7 +527,7 @@ public class ManufactorerPortalViewController extends SuperController implements
         DescriptionTextArea.setText("");
         OfferIdLabel.setText("");
         productSpecification = null;
-        selectedApprovedOrder = null;
+        selectedAcceptedOffer = null;
     }
 
     private void clearPendingOrder() {

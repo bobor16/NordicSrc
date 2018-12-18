@@ -291,7 +291,10 @@ public class CustomerPortalViewController extends SuperController implements Ini
     }
 
     @FXML
-    private void ShowOfferOnAction(ActionEvent event) {
+    private void ShowOffersOnAction(ActionEvent event) {
+        OfferView.setVisible(true);
+        showApproved.setVisible(false);
+        updateOfferList();
     }
 
     @FXML
@@ -358,6 +361,15 @@ public class CustomerPortalViewController extends SuperController implements Ini
         }
         for (String order : approved) {
             CaseListView1111.getItems().add(order);
+        }
+    }
+
+    private void updateOfferList(){
+        ClientController cc = new ClientController();
+        ArrayList<String> offers = cc.getOfferList("");
+        CaseListView112.getItems().clear();
+        for (String offer: offers) {
+            CaseListView112.getItems().add(offer);
         }
     }
 

@@ -337,7 +337,7 @@
                                                       <Pane prefHeight="5.0" />
                                                       <ListView fx:id="pendingOfferList" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
                                                       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
-                                                      <Button fx:id="ShowOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ShowOrderOnAction" prefHeight="25.0" prefWidth="190.0" text="Show Order">
+                                                      <Button fx:id="ShowOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ShowOfferOnActionPending" prefHeight="25.0" prefWidth="190.0" text="Show Order">
                                                          <padding>
                                                             <Insets left="5.0" right="5.0" />
                                                          </padding>
@@ -617,7 +617,7 @@
                                                       <Pane prefHeight="5.0" />
                                                       <ListView fx:id="acceptOfferList" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="190.0" VBox.vgrow="ALWAYS" />
                                                       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" VBox.vgrow="ALWAYS" />
-                                                      <Button fx:id="ShowOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ShowOrderOnAction" prefHeight="25.0" prefWidth="190.0" text="Show Order">
+                                                      <Button fx:id="ShowOrderButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ShowOfferOnActionAccepted" prefHeight="25.0" prefWidth="190.0" text="Show Order">
                                                          <padding>
                                                             <Insets left="5.0" right="5.0" />
                                                          </padding>

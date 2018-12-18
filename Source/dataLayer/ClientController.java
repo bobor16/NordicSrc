@@ -60,7 +60,7 @@ public class ClientController {
         });
 
         try {
-            future.get(10, TimeUnit.SECONDS);
+            future.get(100, TimeUnit.SECONDS);
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         } catch (TimeoutException e) {
@@ -81,7 +81,7 @@ public class ClientController {
             }
         });
         try {
-            future.get(10, TimeUnit.SECONDS);
+            future.get(100, TimeUnit.SECONDS);
             return p;
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
@@ -220,7 +220,6 @@ public class ClientController {
         sendPackage(p);
         p = receivePackage();
         if (p.getId() == 39) {
-             System.out.println(p.getObject() +"AFTER ID CHECK");
             return (ArrayList<String>) p.getObject();
         }
         return null;
